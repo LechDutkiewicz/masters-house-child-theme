@@ -35,9 +35,9 @@ get_header();
 			$agent_email = get_option( 'admin_email' );
 		}
 		if ( $_SESSION['layoutType'] === 'mobile' ) {
-			$size = 'agent_small_mobile';
+			$size = 'mobile_agent_large';
 		} else {
-			$size = 'agent_small';
+			$size = 'agent_large';
 		}
 
 		do_atomic( 'before_loop' );
