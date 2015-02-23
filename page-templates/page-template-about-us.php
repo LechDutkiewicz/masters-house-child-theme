@@ -84,7 +84,7 @@ get_header();
 					<span><?php echo $contentSecond; ?></span>
 				</div>
 				<div class="column large-6">
-					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'post_id' => $imgSecond, 'size' => 'listing_medium', 'link_to_post' => false, 'image_class' => 'auto' ) ); ?>
+					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'post_id' => $imgSecond, 'size' => 'listing_medium', 'link_to_post' => false, 'image_class' => array('auto', 'boxed') ) ); ?>
 				</div>
 			<?php endif; ?>
 		</section>

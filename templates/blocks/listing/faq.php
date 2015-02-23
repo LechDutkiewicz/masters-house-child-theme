@@ -37,7 +37,7 @@ if ( $loop->have_posts() ) :
 		?>
 	</ul>
 	<?php if ($loop->post_count > 5 && is_singular( 'listing' ) ) : ?>
-	<a class="button flat silver radius" data-toggle="collapse" href="#faqCollapse" aria-expanded="false" aria-controls="faqCollapse">
+	<a class="button flat green-sea radius" data-toggle="collapse" href="#faqCollapse" aria-expanded="false" aria-controls="faqCollapse">
 	  <?php _e('Show more', 'bon'); ?>
 	</a>
 	<?php endif; ?>
