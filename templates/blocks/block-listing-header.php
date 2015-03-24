@@ -45,7 +45,7 @@ $size = ( isset( $_GET['view'] ) && $_GET['view'] == 'list' ) ? 'listing_list' :
 	}
 	?>	
 		<?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
-		<a class="header-link" href="<?php the_permalink(); ?>">
+		<a class="header-link product-link" href="<?php the_permalink(); ?>">
 			<div class="overlay"></div>
 			<?php
 			if ( current_theme_supports( 'get-the-image' ) ) {

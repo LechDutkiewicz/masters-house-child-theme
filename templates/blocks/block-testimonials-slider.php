@@ -1,5 +1,12 @@
 <?php
-$args = array( 'post_type' => 'testimonial', 'posts_per_page' => 10 );
+$prefix = bon_get_prefix();
+$args = array(
+	'post_type' => 'testimonial',
+	'posts_per_page' => 10,
+	'meta_key' => $prefix . 'user_img',
+	'meta_value' => 0,
+	'meta_compare' => '!='
+	);
 $loop = new WP_Query( $args );
 if ( $loop->have_posts() ) :
 	?>
@@ -16,6 +23,7 @@ if ( $loop->have_posts() ) :
 						<ul class="slides testimonial-slides bxslider-no-thumb">
 
 							<?php while ( $loop->have_posts() ) : $loop->the_post();
+							if ( $imgID = shandora_get_meta( $post->ID, 'user_img' ) ) :
 								?>
 								<li>
 									<div class="testimonial-container">
@@ -35,7 +43,7 @@ if ( $loop->have_posts() ) :
 												<div class="column large-2 blank"></div>
 											<?php endif; ?>
 											<div class="testimonial-author column large-<?php echo shandora_is_home() ? '8' : '12'; ?> text-right">
-												<span><?php echo get_the_title(); ?><?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'user_small', 'link_to_post' => false, 'image_class' => array( 'circle', 'auto' ) ) ); ?></span>
+												<span><?php echo get_the_title(); ?><?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'post_id' => $imgID, 'size' => 'user_small', 'link_to_post' => false, 'image_class' => array( 'circle', 'auto' ) ) ); ?></span>
 												<?php
 												$link = shandora_get_meta( $post->ID, 'related_post' );
 												if ( !empty( $link ) ) {
@@ -52,6 +60,7 @@ if ( $loop->have_posts() ) :
 									</div>
 								</li>
 								<?php
+								endif;
 							endwhile;
 							?>
 						</ul>

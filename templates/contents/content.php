@@ -51,6 +51,40 @@ if ( $builder && is_singular( get_post_type() ) ) {
 
 			<div class="entry-content clear">
 				<?php the_content(); ?>
+
+<div class="header-lined">
+	<h3><?php _e( 'Related posts', 'roots'); ?></h3>
+</div>
+
+<?php
+$orig_post = $post;
+global $post;
+$tags = wp_get_post_tags($post->ID);
+
+if ($tags) {
+	$tag_ids = array();
+	foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
+	$args=array(
+		'tag__in' => $tag_ids,
+		'post__not_in' => array($post->ID),
+		'caller_get_posts'=>1
+		);
+
+	$my_query = new wp_query( $args );
+
+	while( $my_query->have_posts() ) {
+		$my_query->the_post();
+		?>
+		
+		<?php get_template_part('templates/content'); ?>
+
+		<?php }
+
+	}
+	$post = $orig_post;
+	wp_reset_query();
+	?>
+
 				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 			</div><!-- .entry-content -->
 

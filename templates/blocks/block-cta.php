@@ -5,7 +5,7 @@ if ( $_SESSION['layoutType'] === 'mobile' ) {
 	$size = 'listing_two_thirds';
 }
 ?>
-<section>
+<section class="bottom-cta">
 	<header>
 		<h3 class="cta-header"><?php the_title(); ?></h3>
 		<hr />

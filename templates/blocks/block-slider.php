@@ -27,7 +27,7 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 	<div class="slider-bg" style="background-image:url('<?php echo esc_url( $src['url'] ); ?>')"></div>
 	<div class="mask <?php echo $visited; ?>"></div>
 
-	<div class="flex-caption home-cta-container">
+	<div class="flex-caption home-cta-container top">
 		<?php if ( $slogan ) { ?>
 			<h2 class="primary-title"><span><?php echo $slogan; ?></span></h2>
 		<?php } ?>

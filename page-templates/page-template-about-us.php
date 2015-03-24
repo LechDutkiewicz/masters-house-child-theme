@@ -44,19 +44,26 @@ get_header();
 		?>
 
 		<section class="row entry-content">
+
 			<?php if ( $headFirst && $contentFirst ) : ?>
+
 				<header class="column large-<?php echo ( $headAdvantages && !empty( $advantages ) ) ? '8' : '12'; ?>">
 					<h3 ><?php echo $headFirst; ?></h3>
 					<hr />
 					<span><?php echo $contentFirst; ?></span>
 				</header>	
+
 			<?php endif; ?>		
+
 			<?php if ( $headAdvantages && !empty( $advantages ) ) : ?>
+
 				<div class="column large-<?php echo ( $headFirst && $contentFirst ) ? '4' : '12'; ?>">
 					<h3 ><?php echo $headAdvantages; ?></h3>
 					<hr />
 					<div class="adv-result">
+
 						<?php foreach ( $advantages as $advantage ) : ?>
+
 							<div class="adv-option">
 								<div class="adv-details">
 									<span class="option-label"><?php echo $advantage['advantage_name']; ?></span>
@@ -66,16 +73,26 @@ get_header();
 								</div>
 								<div class="adv-result"></div>
 							</div>
+
 						<?php endforeach; ?>
+
 					</div>
 				</div>
-			<?php endif; ?>		
+
+			<?php endif; ?>	
+
 		</section>
 
 		<?php bon_get_template_part( 'block', 'listing/home-features' ); ?>
 
+		<div class="print-only">
+			<?php var_dump($imgSecond); ?>
+		</div>
+
 		<section class="row entry-content">
+
 			<?php if ( $headSecond && $contentSecond && $imgSecond ) : ?>
+
 				<header class="column large-12">
 					<h3 ><?php echo $headSecond; ?></h3>
 					<hr />
@@ -86,13 +103,17 @@ get_header();
 				<div class="column large-6">
 					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'post_id' => $imgSecond, 'size' => 'listing_medium', 'link_to_post' => false, 'image_class' => array('auto', 'boxed') ) ); ?>
 				</div>
+
 			<?php endif; ?>
+
 		</section>
 
 		<?php bon_get_template_part( 'block', 'testimonials-slider' ); ?>
 		
 		<section class="row entry-content">
+
 			<?php if ( $headTeam && $contentTeam ) : ?>
+
 				<div class="listing-contact">
 					<header class="column large-12">
 						<h3><?php echo $headTeam; ?></h3>
@@ -102,24 +123,34 @@ get_header();
 						<h3 class="subheader agent-name"><?php echo get_the_title( $agent_id ); ?></h3>
 						<h4><?php echo shandora_get_meta( $agent_id, 'agentjob' ); ?></h4>
 						<span><?php echo $contentTeam; ?></span>
+
 						<?php if ( shandora_get_meta( $agent_id, 'agentmobilephone' ) ) { ?> 
+
 							<div class="agent-info">
 								<strong><?php _e( 'Mobile:', 'bon' ); ?></strong>
 								<span><?php echo shandora_get_meta( $agent_id, 'agentmobilephone' ); ?></span>
 							</div>
+
 						<?php } ?>
+
 						<?php if ( shandora_get_meta( $agent_id, 'agentofficephone' ) ) { ?>
+
 							<div class="agent-info">	
 								<strong><?php _e( 'Offce:', 'bon' ); ?></strong>
 								<span><?php echo shandora_get_meta( $agent_id, 'agentofficephone' ); ?></span>
 							</div>
+
 						<?php } ?>
+
 						<?php if ( shandora_get_meta( $agent_id, 'agentfax' ) ) { ?>
+
 							<div class="agent-info">			
 								<strong><?php _e( 'Fax:', 'bon' ); ?></strong>
 								<span><?php echo shandora_get_meta( $agent_id, 'agentfax' ); ?></span>
 							</div>
-						<?php } ?>			
+
+						<?php } ?>	
+
 					</div>
 					<div class="column large-3 small-4 agent-detail">				
 						<figure>
@@ -131,11 +162,15 @@ get_header();
 						</figure>
 					</div>
 				</div>
+
 			<?php endif; ?>
+
 		</section>
 
 		<section class="row entry-content">
+
 			<?php if ( $headContact ) : ?>
+
 				<header class="column large-12">
 					<h3><?php echo $headContact; ?></h3>
 					<hr />
@@ -198,7 +233,9 @@ get_header();
 						</div>
 					</section>
 				</div>
+
 			<?php endif; ?>
+
 		</section>
 
 		<?php wp_reset_query(); ?>

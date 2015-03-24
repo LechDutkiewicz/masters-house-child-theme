@@ -4,7 +4,7 @@
 /*$dimensions = array(
 	shandora_get_meta( $post->ID, 'listing_dimensionswidth' ),
 	shandora_get_meta( $post->ID, 'listing_dimensionsheight' )
-);*/
+	);*/
 $dimensions = get_post_meta( $post->ID, bon_get_prefix() . 'listing_plandimensions' );
 $dimensions = shandora_get_dimensions($dimensions);
 $height = shandora_get_meta( $post->ID, 'listing_height' );
@@ -47,7 +47,7 @@ $details = apply_atomic( 'property_details_tab_content', array(
 	'terracesqmt' => __( 'Terrace size:', 'bon' ),
 	'rooms' => __( 'Rooms:', 'bon' ),
 	'floors' => __( 'Floors:', 'bon' ),
-		) );
+	) );
 
 $specs = apply_atomic( 'property_specifications_tab_content', array(
 	'dimensions' => __( 'Dimensions:', 'bon' ),
@@ -60,85 +60,105 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 	'windowssizes' => __( 'Windows sizes:', 'bon' ),
 	'doors' => __( 'Doors:', 'bon' ),
 	'doorssizes' => __( 'Doors sizes:', 'bon' )
-		) );
-?>
-<section>
-	<nav class="tab-nav">
-		<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
+	) );
+	?>
+	<section>
+		<nav class="tab-nav">
+
+			<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
+
 			<a class="active" href="#tab-target-details"><?php _e( 'Details', 'bon' ); ?></a>
-		<?php } ?>
 
-		<a class="<?php
-		if ( empty( $details ) || !is_array( $details ) ) {
-			echo 'active';
-		}
-		?>" href="#tab-target-features"><?php _e( 'Additional services', 'bon' ); ?></a>
-		   <?php if ( !empty( $specs ) && is_array( $specs ) ) { ?> 
+			<?php } ?>
+
+			<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?>
+
 			<a href="#tab-target-spec"><?php _e( 'Specifications', 'bon' ); ?></a>
-		<?php } ?>
-	</nav>
-	<div class="tab-contents">
 
-		<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
+			<?php } ?>
+
+			<a class="<?php
+			if ( empty( $details ) || !is_array( $details ) ) {
+				echo 'active';
+			}
+			?>" href="#tab-target-features"><?php _e( 'Additional services', 'bon' ); ?></a>
+
+		</nav>
+		<div class="tab-contents">
+
+			<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
 			<div id="tab-target-details" class="tab-content active">
 
 				<ul class="property-details">
 					<?php foreach ( $details as $key => $value ) { ?>
-						<?php if ( !empty( $$key ) ) { ?> 
-							<li>
-								<strong><?php echo $value; ?> </strong>
-								<span>
-									<?php
-									echo $$key;
-									if ( $key == 'lotsize' || $key == 'terracesqmt' ) {
-										echo ' ' . $sizemeasurement;
-									}
-									if ( $key == 'price' || $key == 'monprice' ) {
-										echo ' ' . $currency;
-									}
-									?>
-								</span>
-							</li>
-						<?php } ?>
+					<?php if ( !empty( $$key ) ) { ?> 
+					<li>
+						<strong><?php echo $value; ?> </strong>
+						<span>
+							<?php
+							echo $$key;
+
+							if ( $key == 'lotsize' || $key == 'terracesqmt' ) {
+
+								echo ' ' . $sizemeasurement;
+
+							}
+
+							if ( $key == 'price' || $key == 'monprice' ) {
+
+								echo ' ' . $currency;
+
+							} ?>
+						</span>
+					</li>
+					<?php } ?>
 					<?php }
 					?>
 				</ul>
 
 			</div>
 
-		<?php } ?>
+			<?php } ?>
 
-		<div id="tab-target-features" class="tab-content">
+			<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?> 
 
-			<ul class="bon-toolkit-accordion" id="accordion-services">
-				<?php
-				bon_get_template_part( 'block', trailingslashit( get_post_type() ) . 'additional-services' );
-				?>
-			</ul>
-
-		</div>
-
-		<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?> 
 			<div id="tab-target-spec" class="tab-content">
 				<ul class="property-spec">
+
 					<?php foreach ( $specs as $key => $value ) { ?>
-						<?php if ( !empty( $$key ) ) { ?> 
-							<li>
-								<strong><?php echo $value; ?> </strong>
-								<span>
-									<?php
-									echo $$key;
-									if ( $key == 'height' || $key == 'wallheight' || $key == 'wallthickness' || $key == 'floorthickness' || $key == 'roofthickness' ) {
-										echo ' ' . $heightmeasurement;
-									}
-									?>
-								</span>
-							</li>
-						<?php } ?>
-					<?php }
-					?>
+
+					<?php if ( !empty( $$key ) ) { ?> 
+
+					<li>
+						<strong><?php echo $value; ?> </strong>
+						<span>
+							<?php
+							echo $$key;
+							if ( $key == 'height' || $key == 'wallheight' || $key == 'wallthickness' || $key == 'floorthickness' || $key == 'roofthickness' ) {
+								echo ' ' . $heightmeasurement;
+							}
+							?>
+						</span>
+					</li>
+
+					<?php } ?>
+
+					<?php }	?>
+
 				</ul>
 			</div>
-		<?php } ?>
-	</div>
-</section>
+
+			<div id="tab-target-features" class="tab-content">
+
+				<ul class="bon-toolkit-accordion" id="accordion-services">
+					<?php
+					bon_get_template_part( 'block', trailingslashit( get_post_type() ) . 'additional-services' );
+					?>
+				</ul>
+
+			</div>
+
+			<?php } ?>
+
+		</div>
+	</section>

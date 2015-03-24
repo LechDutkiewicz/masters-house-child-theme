@@ -17,7 +17,7 @@ if ( $visited != 3 ) {
 	</header>
 	<div  class="row entry-row">
 		<div class="padding-medium clearfix">
-			<div class="column large-12 text-center home-ctas-container">
+			<div class="column large-12 text-center home-ctas-container bottom">
 				<?php shandora_home_cta( $ctas, $visited ); ?>
 			</div>
 		</div>
