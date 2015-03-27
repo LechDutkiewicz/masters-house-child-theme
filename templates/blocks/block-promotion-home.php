@@ -35,14 +35,9 @@ while ( $loop->have_posts() ) : $loop->the_post();
 	</header>
 	<div class="row entry-row">
 		<div class="column large-12">
-			<?php if ( current_theme_supports( 'get-the-image' ) )
-		get_the_image( array( 'size' => 'full', 'image_class' => 'auto' ) ); ?>
+			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'full', 'image_class' => 'auto' ) ); ?>
+			<a href="<?php the_permalink(); ?>" class="flat button wet-asphalt radius cta button-absolute bottom right hide-for-small"><?php _e( 'Read more', 'bon' ); ?></a>
 		</div>
-		<!--<div class="column large-4">
-			<p><?php the_content('', TRUE); ?></p>
-			<a href="<?php the_permalink(); ?>" class="flat button wet-asphalt radius cta"><?php _e( 'Read more', 'bon' ); ?></a>
-		</div>-->
-		<!--<a href="<?php the_permalink(); ?>" class="flat button wet-asphalt radius cta cta-absolute"><?php _e( 'Read more', 'bon' ); ?></a>-->
 	</div>
 </section>
 
