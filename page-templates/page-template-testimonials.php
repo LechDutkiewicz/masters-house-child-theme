@@ -24,6 +24,16 @@ wp_enqueue_script( 'bon-toolkit-map' );
 		do_atomic( 'before_loop' );
 		?>
 
+		<?php while ( have_posts() ) { the_post();
+
+			if (get_the_content() ) { ?>
+
+			<p class="margin-big bottom"><?php the_content();?></p>
+
+			<?php }
+
+		} ?>
+
 		<?php $testimonial_args = array(
 			'post_type' => 'Testimonial',
 			'posts_per_page' => -1
@@ -41,33 +51,45 @@ wp_enqueue_script( 'bon-toolkit-map' );
 			var infoWindows = [];
 			<?php
 			$i = 0;
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) { the_post();
+
 				$cottage = shandora_get_meta( $post->ID, 'related_cottage' );
-			?>
-				coordinates[<?php echo $i; ?>] = {'id': <?php echo $post->ID; ?>,'latitude': <?php echo shandora_get_meta( $post->ID, 'maplatitude' ); ?>,'longitude': <?php echo shandora_get_meta( $post->ID, 'maplongitude' ); ?>};
-				<?php if ( !empty($cottage) ) : ?>
-				infoWindows[<?php echo $i; ?>] =
-				'<div id="content" style="width:267px">'+
-					'<div class="listings">'+
-						'<article>'+
-							'<h4 id="firstHeading" class="firstHeading"><?php the_title(); ?></h4>'+
-							'<header class="entry-header">'+
-								'<?php if ( has_post_thumbnail && current_theme_supports( "get-the-image" ) ) get_the_image( array( "size" => "listing_small", "link_to_post" => false, "image_class" => array( "auto" ) ) ); ?>'+
-							'</header>'+
-							'<div class="entry-summary">'+
-								'<h4 class="entry-title">'+'<?php echo get_the_title($cottage); ?>'+'</h4>'+
-							'</div>'+
-						'<footer class="entry-footer property-price">'+
-							'<a href="<?php echo get_permalink($cottage); ?>">'+'<?php _e( "Read more", "bon"); ?>'+'</a>'+
-						'</footer>'+
-					'</article>'+
-				'</div>'+
-			'</div>';
+				?>
+
+				<?php if ( shandora_get_meta( $post->ID, 'maplatitude' ) && shandora_get_meta( $post->ID, 'maplongitude' ) ) { ?>
 				
-			<?php
-				endif;
+					coordinates[<?php echo $i; ?>] = {'id': <?php echo $post->ID; ?>,'latitude': <?php echo shandora_get_meta( $post->ID, 'maplatitude' ); ?>,'longitude': <?php echo shandora_get_meta( $post->ID, 'maplongitude' ); ?>};
+
+				<?php } ?>
+				
+				<?php if ( !empty($cottage) ) { ?>
+
+					infoWindows[<?php echo $i; ?>] =
+					'<div id="content" style="width:267px">'+
+					'<div class="listings">'+
+					'<article>'+
+					'<h4 id="firstHeading" class="firstHeading"><?php the_title(); ?></h4>'+
+					'<header class="entry-header">'+
+					'<?php if ( has_post_thumbnail() && current_theme_supports( "get-the-image" ) ) get_the_image( array( "size" => "listing_small", "link_to_post" => false, "image_class" => array( "auto" ) ) ); ?>'+
+					'</header>'+
+					'<div class="entry-summary">'+
+					'<h4 class="entry-title">'+'<?php echo get_the_title($cottage); ?>'+'</h4>'+
+					'</div>'+
+					'<footer class="entry-footer property-price">'+
+					'<a href="<?php echo get_permalink($cottage); ?>">'+'<?php _e( "Read more", "bon"); ?>'+'</a>'+
+					'</footer>'+
+					'</article>'+
+					'</div>'+
+					'</div>';
+
+					<?php
+
+				}
+
 				$i++;
-			endwhile;
+
+			}
+
 			?>
 			</script>
 
