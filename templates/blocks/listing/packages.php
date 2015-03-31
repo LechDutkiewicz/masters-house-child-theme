@@ -40,9 +40,15 @@ $packages = get_packages_list();
 
 			<div id="tab-target-<?php echo sanitize_text_field( $package['package_name'] ); ?>" class="tab-content<?php if ( $key === 0 ) echo ' active'; ?>">
 				
-				<p><?php echo get_post_meta( $post->ID, $prefix . $package_prefix . '_content', true ); ?></p>
+				<?php echo get_post_meta( $post->ID, $prefix . $package_prefix . '_content', true ); ?>
 
-				<ul class="property-details">
+				<div class="row">
+
+					<?php bon_get_template_part( 'block', 'listing/addon' ); ?>
+
+				</div>
+
+				<ul class="property-details margin-medium top">
 
 					<?php package_details( $id, $package_prefix ); ?>
 

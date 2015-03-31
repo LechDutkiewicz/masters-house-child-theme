@@ -27,7 +27,7 @@ $packages = get_packages_list();
 	<div class="price text blue"><?php shandora_get_listing_price(); ?></div>
 	<small>(<?php _e( 'includes VAT', 'bon' ); ?>)</small>
 
-	<?php if ( shandora_get_meta( $post->ID, 'listing_enable_packages' ) && !$package_form_active ) { ?>
+	<?php if ( shandora_get_meta( $post->ID, 'listing_enable_packages' ) && !defined('PACKAGE_FORM') ) { ?>
 
 	<form class="custom package-form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST" name="package-form">
 		<div class="row">
@@ -46,7 +46,7 @@ $packages = get_packages_list();
 		</div>
 	</form>
 
-	<?php $package_form_active = true; ?>
+	<?php define('PACKAGE_FORM', true); ?>
 
 	<?php } ?>
 
@@ -54,6 +54,6 @@ $packages = get_packages_list();
 
 
 
-<a href="#contact-modal" role="button" data-toggle="modal" class="flat button orange radius cta expand" title="">
+<a href="#contact-modal" role="button" data-toggle="modal" class="flat button main radius cta expand" title="">
 	<span class="cta-headline"><?php _e( 'Contact us', 'bon' ); ?></span><span class="cta-subline"><?php _e( 'and order your cottage', 'bon' ); ?></span>
 </a>

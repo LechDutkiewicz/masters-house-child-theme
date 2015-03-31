@@ -54,7 +54,8 @@ foreach ( $packages as $key => $package ) {
 	<li class="wall<?php echo ( $key === 0 ) ? ' active' : ' hide'; ?>"><div class="meta-wrap">
 		<i class="sha-wall"></i>
 		<span class="meta-value">
-			<span data-meta="thickness"><?php echo $value; ?></span><?php echo ' ' . strtolower($heightmeasurement) . ' ' . __( 'wall thickness', 'bon' ); ?>
+			<span data-meta="thickness"><?php echo $value; ?></span><?php echo ' ' . strtolower($heightmeasurement); ?>
+			<span><em><strong><?php echo strtolower( __( 'Wall thickness', 'bon' ) ); ?></strong></em></span>
 		</span></div>
 	</li>
 
@@ -66,7 +67,7 @@ foreach ( $packages as $key => $package ) {
 	<li class="roof"><div class="meta-wrap">
 		<i class="sha-roof"></i>
 		<span class="meta-value">
-			<?php _e( 'Insulated Roof' ); ?>
+			<em><strong><?php _e( 'Insulated', 'bon' ); ?></strong></em> <?php _e( 'roof', 'bon' ); ?>
 		</span></div>
 	</li>
 <?php endif; ?>
@@ -75,7 +76,7 @@ foreach ( $packages as $key => $package ) {
 	<li class="drill"><div class="meta-wrap">
 		<i class="sha-drill"></i>
 		<span class="meta-value">
-			<?php _e( 'Assemblage included'); ?>
+			<em><strong><?php _e( 'Assemblage', 'bon' ); ?></strong></em> <?php _e( 'included', 'bon' ); ?>
 		</span></div>
 	</li>
 <?php endif; ?>

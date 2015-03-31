@@ -14,11 +14,13 @@ if ( is_singular( get_post_type() ) ) {
 			<div class="row">
 				<div class="column large-8">
 					<?php the_content(); ?>
-					<!-- addons included in price -->
-					<?php shandora_listing_addon(); ?>
 				</div>
 				<div class="column large-4 top-cta">
 					<?php bon_get_template_part( 'block', 'block-price' ); ?>
+				</div>
+				<div class="column large-12">
+					<!-- addons included in price -->
+					<?php shandora_listing_addon(); ?>
 				</div>
 				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 			</div>
