@@ -30,7 +30,7 @@ $packages = get_packages_list();
 	<section>
 		<nav class="tab-nav">
 			<?php foreach ($packages as $key => $package) { ?>
-			<a class="bg desaturate <?php echo $package['package_color']; ?><?php if ( $key === 0 ) echo ' active'; ?>" href="#tab-target-<?php echo sanitize_text_field( $package['package_name'] ); ?>"><?php echo $package['package_name']; ?></a>
+			<a class="bg desaturate <?php echo $package['package_color']; ?><?php if ( $key === 0 ) echo ' active'; ?>" href="#tab-target-<?php echo sanitize_title( $package['package_name'] ); ?>"><?php echo $package['package_name']; ?></a>
 			<?php } ?>
 		</nav>
 		<div class="tab-contents">
@@ -38,9 +38,12 @@ $packages = get_packages_list();
 
 			<?php $package_prefix = $suffix . $package['package_name']; ?>
 
-			<div id="tab-target-<?php echo sanitize_text_field( $package['package_name'] ); ?>" class="tab-content<?php if ( $key === 0 ) echo ' active'; ?>">
+			<div id="tab-target-<?php echo sanitize_title( $package['package_name'] ); ?>" class="tab-content<?php if ( $key === 0 ) echo ' active'; ?>">
 				
-				<?php echo get_post_meta( $post->ID, $prefix . $package_prefix . '_content', true ); ?>
+				<?php // Uncomment this if each product would have it's own package descriptions
+				/* echo get_post_meta( $post->ID, $prefix . $package_prefix . '_content', true );*/ ?>
+
+				<?php echo $package['package_desc']; ?>
 
 				<div class="row">
 
@@ -50,7 +53,10 @@ $packages = get_packages_list();
 
 				<ul class="property-details margin-medium top">
 
-					<?php package_details( $id, $package_prefix ); ?>
+					<?php // Uncomment this if each product would have it's own package descriptions
+					/*package_details( $id, $package_prefix ); */?>
+					
+					<?php packages_details( $id, $package_prefix, $package['package_name'] ); ?>
 
 				</ul>
 

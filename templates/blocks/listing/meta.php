@@ -11,7 +11,9 @@ $rooms = shandora_get_meta( $post->ID, 'listing_rooms' );
 
 $size = shandora_get_meta( $post->ID, 'listing_lotsize' );
 
-$wall = array();
+// Uncomment this if each product would have it's own package descriptions
+
+/*$wall = array();
 
 foreach ( $packages as $key => $package ) {
 
@@ -22,7 +24,11 @@ foreach ( $packages as $key => $package ) {
 
 	}
 
-}
+}*/
+
+$packages = get_packages_list();
+
+$wall = $packages[0];
 
 ?>
 <ul class="large-custom-grid-5 small-custom-grid-3">
@@ -49,17 +55,13 @@ foreach ( $packages as $key => $package ) {
 
 <?php if( !empty( $wall ) ) : ?>
 
-	<?php foreach ( $wall as $key => $value ) { ?>
-
-	<li class="wall<?php echo ( $key === 0 ) ? ' active' : ' hide'; ?>"><div class="meta-wrap">
+	<li class="wall"><div class="meta-wrap">
 		<i class="sha-wall"></i>
 		<span class="meta-value">
-			<span data-meta="thickness"><?php echo $value; ?></span><?php echo ' ' . strtolower($heightmeasurement); ?>
+			<span data-meta="thickness"><?php echo($wall['package_wall_thickness']); ?></span><?php echo ' ' . strtolower($heightmeasurement); ?>
 			<span><em><strong><?php echo strtolower( __( 'Wall thickness', 'bon' ) ); ?></strong></em></span>
 		</span></div>
 	</li>
-
-	<?php } ?>
 
 <?php endif; ?>
 
