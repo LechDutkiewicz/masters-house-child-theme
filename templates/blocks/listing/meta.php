@@ -31,7 +31,7 @@ $packages = get_packages_list();
 $wall = $packages[0];
 
 ?>
-<ul class="large-custom-grid-5 small-custom-grid-3">
+<ul class="large-custom-grid-5 small-custom-grid-1">
 
 	<?php if( !empty( $rooms ) ) : ?>
 	<li class="room"><div class="meta-wrap">

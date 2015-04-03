@@ -178,7 +178,7 @@ get_header();
 				<div class="column large-12">
 					<p><?php echo $contentContact; ?></p>
 				</div>
-				<div id="detail-tab" class="column large-12">
+				<div id="detail-tab" class="column tabs-container large-12">
 					<section>
 						<nav class="tab-nav">
 							<a class="active" href="#tab-target-contact"><?php _e( 'Contact', 'bon' ); ?></a>
