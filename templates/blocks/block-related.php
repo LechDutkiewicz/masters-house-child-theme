@@ -144,7 +144,7 @@ if ( $related_query ) :
 							}
 							?>
 							<?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
-								<a class="header-link" href="<?php the_permalink(); ?>">
+								<a class="header-link product-link" href="<?php the_permalink(); ?>">
 									<div class="overlay"></div>
 									<?php get_the_image( array( 'size' => $size, 'link_to_post' => false, 'image_class' => 'auto' ) ); ?>
 								</a>
