@@ -1,12 +1,16 @@
 <?php
 //Changed by Lech Dutkiewicz
 
-/*$dimensions = array(
-	shandora_get_meta( $post->ID, 'listing_dimensionswidth' ),
-	shandora_get_meta( $post->ID, 'listing_dimensionsheight' )
-	);*/
+$price = shandora_get_meta( $post->ID, 'listing_price', true );
+//$monprice = shandora_get_meta( $post->ID, 'listing_monprice' );
+$lotsize = shandora_get_meta( $post->ID, 'listing_lotsize' );
+$terracesqmt = shandora_get_meta( $post->ID, 'listing_terracesqmt' );
+$rooms = shandora_get_meta( $post->ID, 'listing_rooms' );
+$floors = shandora_get_meta( $post->ID, 'listing_floors' );
+
 $dimensions = get_post_meta( $post->ID, bon_get_prefix() . 'listing_plandimensions' );
-$dimensions = shandora_get_dimensions($dimensions);
+$dimensions = shandora_get_dimensions($dimensions, $lotsize);
+
 $height = shandora_get_meta( $post->ID, 'listing_height' );
 $wallheight = shandora_get_meta( $post->ID, 'listing_wallheight' );
 $wallthickness = shandora_get_meta( $post->ID, 'listing_wallthickness' );
@@ -20,13 +24,6 @@ $windowssizes = shandora_get_windows( $windowssizes );
 //$doorssizes = shandora_get_meta( $post->ID, 'listing_doorssizes' );
 $doorssizes = get_post_meta( $post->ID, bon_get_prefix() . 'listing_doorssizes' );
 $doorssizes = shandora_get_doors( $doorssizes );
-
-$price = shandora_get_meta( $post->ID, 'listing_price', true );
-//$monprice = shandora_get_meta( $post->ID, 'listing_monprice' );
-$lotsize = shandora_get_meta( $post->ID, 'listing_lotsize' );
-$terracesqmt = shandora_get_meta( $post->ID, 'listing_terracesqmt' );
-$rooms = shandora_get_meta( $post->ID, 'listing_rooms' );
-$floors = shandora_get_meta( $post->ID, 'listing_floors' );
 
 $currency = bon_get_option( 'currency' );
 $sizemeasurement = bon_get_option( 'measurement' );

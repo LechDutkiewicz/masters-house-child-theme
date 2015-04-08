@@ -33,7 +33,9 @@ $posts_per_column = ceil( $posts / 2 );
 
 if ( !empty( $loop->posts ) ) :
 	?>
+
 <div class="column large-12">
+<hr>
 	<h5 class="text main margin-medium top"><?php _e( 'Price includes', 'bon' ); ?></h5>
 </div>
 <div class="column small-12 large-6">

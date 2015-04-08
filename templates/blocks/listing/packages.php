@@ -51,6 +51,8 @@ $packages = get_packages_list();
 
 				</div>
 
+				<hr>
+
 				<ul class="property-details margin-medium top">
 
 					<?php // Uncomment this if each product would have it's own package descriptions
