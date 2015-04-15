@@ -3,7 +3,7 @@
 * Template Name: All Cottages
 */
 get_header(); 
-        
+
 ?>
 <div id="inner-wrap" class="<?php echo shandora_is_home() ? 'home ' : ''; ?>slide">
 
@@ -24,64 +24,76 @@ get_header();
 
         do_atomic('before_loop'); ?>
 
-                <?php
-                $numberposts = (bon_get_option('listing_per_page')) ? bon_get_option('listing_per_page') : 8;
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-                $orderby = bon_get_option('listing_orderby');
-                $order = bon_get_option('listing_order', 'DESC');
-                $key = '';
+        <?php
+        $numberposts = (bon_get_option('listing_per_page')) ? bon_get_option('listing_per_page') : 8;
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+        $orderby = bon_get_option('listing_orderby');
+        $order = bon_get_option('listing_order', 'DESC');
+        $key = '';
 
-                if(isset($_GET['search_orderby'])) {
-                    $orderby = $_GET['search_orderby'];
-                }
+        if(isset($_GET['search_orderby'])) {
+            switch ( $_GET['search_orderby'] ) {
+                case __( 'Price', 'bon' ):
+                $orderby = 'price';
+                break;
+
+                case __( 'Size', 'bon' ):
+                $orderby = 'size';
+                break; 
                 
-                if(isset($_GET['search_order'])) {
-                    $order = $_GET['search_order'];
-                }
-                
-                switch ( $orderby ) {
-                    case 'price':
-                        $orderby = 'meta_value_num';
-                        $key = bon_get_prefix() . 'listing_price';
-                        break;
-                    
-                    case 'title':
-                        $orderby = 'title';
+                default:
+                $orderby = 'price';
+                break;
+            }
+        }
+        
+        if(isset($_GET['search_order'])) {
+            $order = $_GET['search_order'];
+        }
+        
+        switch ( $orderby ) {
+            case 'price':
+            $orderby = 'meta_value_num';
+            $key = bon_get_prefix() . 'listing_price';
+            break;
+            
+            case 'title':
+            $orderby = 'title';
 
-                        break;
+            break;
 
-                    case 'size':
-                        $orderby = 'meta_value_num';
-                        $key = bon_get_prefix() . 'listing_lotsize';
+            case 'size':
+            $orderby = 'meta_value_num';
+            $key = bon_get_prefix() . 'listing_lotsize';
 
-                        break;
+            break;
 
-                    default:
-                        $orderby = 'date';
-                        break;
-                }
-                
-               
-                
-                $status_key = bon_get_prefix() . 'listing_status';
-                $listing_args = array(
-                        'post_type' => 'listing',
-                        'posts_per_page' => $numberposts,
-                        'paged' => $paged,
-                        'meta_key' => $key,
-                        'orderby' => $orderby,
-                        'order' => $order,
-                        'meta_key__not_in' => $status_key,
-                        'meta_value__not_in' => array( 'sold', 'rented')
-                    );
+            default:
+            $orderby = 'date';
+            break;
+        }
+        
+        
+        
+        $status_key = bon_get_prefix() . 'listing_status';
+        $listing_args = array(
+            'post_type' => 'listing',
+            'posts_per_page' => $numberposts,
+            'paged' => $paged,
+            'meta_key' => $key,
+            'orderby' => $orderby,
+            'order' => $order,
+            'meta_key__not_in' => $status_key,
+            'meta_value__not_in' => array( 'sold', 'rented')
+            );
 
-                $wp_query = new WP_Query($listing_args);
+        $wp_query = new WP_Query($listing_args);
 
-                bon_get_template_part('loop', 'listing');
+        bon_get_template_part('loop', 'listing');
 
-                bon_get_template_part( 'loop','nav' ); // Loads the loop-nav.php template. ?>
-                
-            <?php 
+        bon_get_template_part( 'loop','nav' ); // Loads the loop-nav.php template. ?>
+        
+        <?php 
 
             /**
              * Shandora After Loop Hook
@@ -94,7 +106,7 @@ get_header();
 
             do_atomic('after_loop'); ?>
 
-    </div>
+        </div>
 
 
-<?php get_footer(); ?>
+        <?php get_footer(); ?>
