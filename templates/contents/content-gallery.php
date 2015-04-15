@@ -14,7 +14,7 @@
 	}
 	?>
 
-	<?php if ( is_singular( get_post_type() ) ) { ?>
+	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
 
 		<header class="entry-header <?php echo $color; ?>">
 			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="entry-title">', '</h1>', false ) ); ?>
@@ -23,6 +23,9 @@
 
 		<div class="entry-content clear">
 			<?php the_content(); ?>
+
+			<?php do_atomic( "after_single_post_content" ); ?>
+
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 		</div><!-- .entry-content -->
 
@@ -48,3 +51,9 @@
 	<?php } ?>
 
 </article><!-- .hentry -->
+
+	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) {
+
+		do_atomic( "after_single_post_entry" );
+
+	} ?>

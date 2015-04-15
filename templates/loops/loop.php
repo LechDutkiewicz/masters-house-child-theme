@@ -8,19 +8,6 @@
 	?>
 
 	<?php
-
-// remove comments from WooCommerce pages
-	if ( is_singular() && !is_front_page() && post_type_supports( get_post_type(), 'comments' ) ) {
-		if (shandora_woocommerce_plugin_active()) {
-			if ( is_woocommerce() || is_cart() || is_checkout() ) {
-			} else {
-				comments_template();
-			}
-		} else {
-			comments_template();	
-		}
-
-	} // Loads the comments.php template. 
 	?>
 
 <?php endwhile; ?>

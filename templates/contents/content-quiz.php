@@ -8,10 +8,13 @@
 	$color = $color['color'];
 	?>
 
-	<?php if ( is_singular( get_post_type() ) ) { ?>
+	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
 
 		<div class="entry-content clear">
-			<?php echo apply_atomic_shortcode( 'entry_quiz', '[bt-quiz id="'.$post->ID.'"]'); ?>			
+			<?php echo apply_atomic_shortcode( 'entry_quiz', '[bt-quiz id="'.$post->ID.'"]'); ?>
+
+			<?php do_atomic( "after_single_post_content" ); ?>
+	
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 		</div><!-- .entry-content -->
 
@@ -31,3 +34,9 @@
 	<?php } ?>
 
 </article><!-- .hentry -->
+
+	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) {
+
+		do_atomic( "after_single_post_entry" );
+
+	} ?>

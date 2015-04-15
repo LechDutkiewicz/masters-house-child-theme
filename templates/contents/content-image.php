@@ -15,7 +15,7 @@
 	
 	?>
 
-	<?php if ( is_singular( get_post_type() ) ) { ?>
+	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
 
 		<header class="entry-header <?php echo $color; ?>">
 			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'before' => '<div class="featured-image">', 'after' => '</div>', 'image_class' => 'auto'  ) ); ?>
@@ -25,6 +25,9 @@
 
 		<div class="entry-content clear">
 			<?php the_content(); ?>
+
+			<?php do_atomic( "after_single_post_content" ); ?>
+
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 		</div><!-- .entry-content -->
 
@@ -48,3 +51,9 @@
 	<?php } ?>
 
 </article><!-- .hentry -->
+
+	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) {
+
+		do_atomic( "after_single_post_entry" );
+
+	} ?>
