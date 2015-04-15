@@ -58,8 +58,8 @@ $wall = $packages[0];
 	<li class="wall"><div class="meta-wrap">
 		<i class="sha-wall"></i>
 		<span class="meta-value">
+			<span><em><strong><?php _e( 'Wall thickness', 'bon' ); ?></strong></em></span>
 			<span data-meta="thickness"><?php echo($wall['package_wall_thickness']); ?></span><?php echo ' ' . strtolower($heightmeasurement); ?>
-			<span><em><strong><?php echo strtolower( __( 'Wall thickness', 'bon' ) ); ?></strong></em></span>
 		</span></div>
 	</li>
 
