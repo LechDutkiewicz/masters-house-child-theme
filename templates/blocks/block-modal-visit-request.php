@@ -1,7 +1,7 @@
 <div id="visit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="visit-modal-label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg midnight-blue">
+			<div class="modal-header bg <?php echo $button_color = bon_get_option( 'search_button_color', 'red' ); ?>">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h4 class="modal-title" id="visit-modal-label"><?php _e( 'Request a free visit', 'bon' ); ?></h4>
 			</div>
@@ -50,7 +50,7 @@
 						<input type="hidden" name="subject" value="<?php echo "[" . __( 'Free visit request', 'bon' ) . "]"; ?>" />
 						<input type="hidden" name="receiver" value="<?php echo get_option( 'admin_email' ); ?>" />
 						<input type="hidden" name="messages" value="<?php _e( 'Visit request', 'bon' ); ?>" />
-						<input class="flat button midnight-blue radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Request a free visit', 'bon' ); ?>" />
+						<input class="flat button <?php echo $button_color; ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Request a free visit', 'bon' ); ?>" />
 						<span class="contact-loader"><img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/loader.gif" alt="loading..." />
 					</div>
 					<div class="sending-result"><div class="green bon-toolkit-alert"></div></div>
