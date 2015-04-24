@@ -85,10 +85,6 @@ get_header();
 
 		<?php bon_get_template_part( 'block', 'listing/home-features' ); ?>
 
-		<div class="print-only">
-			<?php var_dump($imgSecond); ?>
-		</div>
-
 		<section class="row entry-content">
 
 			<?php if ( $headSecond && $contentSecond && $imgSecond ) : ?>

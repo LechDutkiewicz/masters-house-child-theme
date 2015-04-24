@@ -10,14 +10,14 @@ if ( $_SESSION['layoutType'] === 'tablet' || $_SESSION['layoutType'] === 'classi
 			<hr />
 			<div class="row entry-content">
 				<div class="column large-6">
-					<h5 class="text orange"><?php echo bon_get_option( 'tool_section_heading', 'yes' ); ?></h5>
+					<h5 class="text main"><?php echo bon_get_option( 'tool_section_heading', 'yes' ); ?></h5>
 					<p><?php echo bon_get_option( 'tool_section_content', 'yes' ); ?></p>
 					<?php if ( bon_get_option( 'tool_section_cta_link_url' ) ) : ?>
 						<a href="<?php echo bon_get_option( 'tool_section_cta_link_url' ); ?>" class="flat button <?php echo bon_get_option( 'tool_section_cta_color' ) ? bon_get_option( 'tool_section_cta_color' ) : 'blue'; ?> radius cta" onclick="window.open('<?php echo bon_get_option( 'tool_section_cta_link_url' ); ?>', 'VPWindow', 'width=1035,height=690,toolbar=0,resizable=1,scrollbars=1,status=0,location=0');
 								return false;" ><?php echo bon_get_option( 'tool_section_cta' ); ?></a>
 					   <?php endif; ?>
 					   <?php if ( bon_get_option( 'tool_section_contact_display' ) == 1 || bon_get_option( 'tool_section_contact_display' ) == 2 ) : ?>
-						<a href="#customize-modal" role="button" data-toggle="modal" class="flat button blue radius cta" title="Contact us"><?php _e( 'Contact us', 'bon' ); ?></a>
+						<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="Contact us"><?php _e( 'Contact us', 'bon' ); ?></a>
 						<?php
 						bon_get_template_part( 'block', 'block-modal-customize' );
 					endif;

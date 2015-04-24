@@ -11,7 +11,7 @@ if ( $loop->have_posts() ) :
 		?>
 	<section class="entry-content">
 		<header>
-			<h3><?php _e( 'faq', 'bon' ); ?></h3>
+			<h3><?php _e( 'FAQ', 'bon' ); ?></h3>
 			<hr />
 		</header>
 	<?php endif; ?>

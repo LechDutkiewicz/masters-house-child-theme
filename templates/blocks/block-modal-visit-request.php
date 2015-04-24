@@ -1,7 +1,7 @@
 <div id="visit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="visit-modal-label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg <?php echo $button_color = bon_get_option( 'search_button_color', 'red' ); ?>">
+			<div class="modal-header bg <?php echo bon_get_option( 'search_button_color', 'peter-river' ); ?>">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h4 class="modal-title" id="visit-modal-label"><?php _e( 'Request a free visit', 'bon' ); ?></h4>
 			</div>
@@ -25,22 +25,19 @@
 							<p><?php _e( 'We work from Monday to Friday 8 am to 4 pm. During this time we contact you back within one hour', 'bon' ); ?></p>
 						</div>
 					</div>
-					<div class="row collapse input-container">
-						<!--<div class="column large-2 small-1"><span class="attached-label prefix"><i class="sha-user"></i></span></div>-->
+					<!--<div class="row collapse input-container">
 						<div class='column large-12 small-11 input-container-inner name'>
 							<input class="attached-input required" type="text" placeholder="<?php _e( 'Full Name', 'bon' ); ?>"  name="name" id="name" value="" size="22" tabindex="1" />
 							<div class="contact-form-error" ><?php _e( 'Please enter your name.', 'bon' ); ?></div>
 						</div>
-					</div>
+					</div>-->
 					<div class="row collapse input-container">
-						<!--<div class="column large-2 small-1"><span class="attached-label prefix"><i class="sha-mail-2"></i></span></div>-->
 						<div class='column large-12 small-11 input-container-inner mail'>
 							<input class="attached-input required email" type="email" placeholder="<?php _e( 'Email Address', 'bon' ); ?>"  name="email" id="email" value="" size="22" tabindex="2" />
 							<div class="contact-form-error" ><?php _e( 'Please enter your email.', 'bon' ); ?></div>
 						</div>
 					</div>									
 					<div class="row collapse input-container">
-						<!--<div class="column large-2 small-1"><span class="attached-label prefix"><i class="sha-phone-2"></i></span></div>-->
 						<div class='column large-12 small-11 input-container-inner phone'>
 							<input class="attached-input" type="text" placeholder="<?php _e( 'Phone Number (optional)', 'bon' ); ?>"  name="phone" id="phone" value="" size="22" tabindex="1" />
 							<div class="contact-form-error" ><?php _e( 'Please enter your phone number.', 'bon' ); ?></div>
@@ -50,7 +47,7 @@
 						<input type="hidden" name="subject" value="<?php echo "[" . __( 'Free visit request', 'bon' ) . "]"; ?>" />
 						<input type="hidden" name="receiver" value="<?php echo get_option( 'admin_email' ); ?>" />
 						<input type="hidden" name="messages" value="<?php _e( 'Visit request', 'bon' ); ?>" />
-						<input class="flat button <?php echo $button_color; ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Request a free visit', 'bon' ); ?>" />
+						<input class="flat button <?php echo bon_get_option( 'cta_button_color', 'emerald' ); ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Request a free visit', 'bon' ); ?>" />
 						<span class="contact-loader"><img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/loader.gif" alt="loading..." />
 					</div>
 					<div class="sending-result"><div class="green bon-toolkit-alert"></div></div>
