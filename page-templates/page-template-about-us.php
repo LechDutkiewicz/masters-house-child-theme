@@ -106,7 +106,7 @@ get_header();
 
 		<?php bon_get_template_part( 'block', 'testimonials-slider' ); ?>
 		
-		<section class="row entry-content">
+		<section id="agent-contact" class="row entry-content">
 
 			<?php if ( $headTeam && $contentTeam ) : ?>
 
