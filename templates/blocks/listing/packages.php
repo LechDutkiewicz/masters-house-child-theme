@@ -45,12 +45,6 @@ $packages = get_packages_list();
 
 				<?php echo $package['package_desc']; ?>
 
-				<div class="row">
-
-					<?php bon_get_template_part( 'block', 'listing/addon' ); ?>
-
-				</div>
-
 				<hr>
 
 				<ul class="property-details margin-medium top">

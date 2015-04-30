@@ -3,7 +3,7 @@ if ( $_SESSION['layoutType'] === 'tablet' || $_SESSION['layoutType'] === 'classi
 	$imgid = pippin_get_image_id( bon_get_option( 'tool_section_img', 'yes' ) );
 	if ( !empty( $imgid ) ) :
 		?>
-		<section>
+		<section class="customize">
 			<header>
 				<h3><?php echo bon_get_option( 'tool_section_title', 'yes' ); ?></h3>
 			</header>
