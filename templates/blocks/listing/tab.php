@@ -25,6 +25,18 @@ $windowssizes = shandora_get_windows( $windowssizes );
 $doorssizes = get_post_meta( $post->ID, bon_get_prefix() . 'listing_doorssizes' );
 $doorssizes = shandora_get_doors( $doorssizes );
 
+// fetch additional parameters if cottage has construction layout
+if ( shandora_get_meta( $post->ID, 'listing_enable_construction' ) ) {
+
+	$roofsize = shandora_get_meta( $post->ID, 'listing_constructionroofsize' );
+	$columnssizes = get_post_meta( $post->ID, bon_get_prefix() . 'listing_columnssizes' );
+	$columnssizes = shandora_get_columns( $columnssizes );
+	//var_dump($columnssizes);
+	$rafterssizes = get_post_meta( $post->ID, bon_get_prefix() . 'listing_rafterssizes' );
+	$rafterssizes = shandora_get_rafters( $rafterssizes );
+
+}
+
 $currency = bon_get_option( 'currency' );
 $sizemeasurement = bon_get_option( 'measurement' );
 $heightmeasurement = bon_get_option( 'height_measure' );
@@ -56,7 +68,10 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 	'windows' => __( 'Windows:', 'bon' ),
 	'windowssizes' => __( 'Windows sizes:', 'bon' ),
 	'doors' => __( 'Doors:', 'bon' ),
-	'doorssizes' => __( 'Doors sizes:', 'bon' )
+	'doorssizes' => __( 'Doors sizes:', 'bon' ),
+	'roofsize' => __( 'Roof size', 'bon' ),
+	'columnssizes' => __( 'Columns size', 'bon' ),
+	'rafterssizes' => __( 'Rafters size', 'bon' ),
 	) );
 	?>
 	<section>
@@ -95,13 +110,13 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 							<?php
 							echo $$key;
 
-							if ( $key == 'lotsize' || $key == 'terracesqmt' ) {
+							if ( $key === 'lotsize' || $key === 'terracesqmt' ) {
 
 								echo ' ' . $sizemeasurement;
 
 							}
 
-							if ( $key == 'price' || $key == 'monprice' ) {
+							if ( $key === 'price' || $key === 'monprice' ) {
 
 								echo ' ' . $currency;
 
@@ -131,8 +146,10 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 						<span>
 							<?php
 							echo $$key;
-							if ( $key == 'height' || $key == 'wallheight' || $key == 'wallthickness' || $key == 'floorthickness' || $key == 'roofthickness' ) {
+							if ( $key === 'height' || $key === 'wallheight' || $key === 'wallthickness' || $key === 'floorthickness' || $key === 'roofthickness' ) {
 								echo ' ' . $heightmeasurement;
+							} else if ( $key === 'roofsize' ) {
+								echo ' ' . $sizemeasurement;
 							}
 							?>
 						</span>
