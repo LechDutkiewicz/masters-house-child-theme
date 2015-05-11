@@ -20,7 +20,8 @@ if ( $listing_gal ) {
 	if ( $attachments ) {
 		?>
 	<section>
-		<div class="entry-gallery">
+		<div class="entry-gallery badge-container">
+			<?php the_badge(); ?>
 			<?php
 			$with_thumbnail = bon_get_option( 'listing_gallery_thumbnail' );
 
