@@ -1,5 +1,3 @@
-
-
 <?php if ( shandora_get_meta( get_the_ID(), 'listing_enable_packages' ) ) { ?>
 
 <ul class="large-custom-grid-5 small-custom-grid-1">
