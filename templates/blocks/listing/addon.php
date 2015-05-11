@@ -1,31 +1,33 @@
 <?php
 
+/*$args = array(
+	'post_type' => 'addon',
+	'posts_per_page' => 10,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
+	);*/
+
+$addons = 'cottage';
+
 if ( shandora_get_meta( get_the_ID(), 'listing_enable_packages' ) ) {
-	
-	$args = array(
-		'post_type' => 'addon',
-		'posts_per_page' => 10,
-		'orderby' => 'menu_order',
-		'order' => 'ASC',
-		);
-
-} else {
-	
-	$args = array(
-		'post_type' => 'addon',
-		'posts_per_page' => 10,
-		'orderby' => 'menu_order',
-		'order' => 'ASC',
-		'meta_query' => array(
-			array(
-				'key' => 'shandora_enabled',
-				'value' => true,
-				'compare' => '!='
-				),
-			),
-		);
-
+	$addons = 'big';
+} else if ( shandora_get_meta( get_the_ID(), 'listing_enable_construction' ) ) {
+	$addons = 'construction';
 }
+
+$args = array(
+	'post_type' => 'addon',
+	'posts_per_page' => -1,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
+	'meta_query' => array(
+		array(
+			'key' => 'shandora_enabled_' . $addons,
+			'value' => true,
+			'compare' => '==='
+			),
+		),
+	);
 
 $loop = new WP_Query( $args );
 $posts = $loop->post_count;
@@ -35,14 +37,12 @@ if ( !empty( $loop->posts ) ) :
 	?>
 
 <div class="column large-12">
-<hr>
+	<hr>
 	<h5 class="text main margin-medium top"><?php _e( 'Price includes', 'bon' ); ?></h5>
 </div>
 <div class="column small-12 large-6">
 	<ul>
-		<?php
-		while ( $loop->have_posts() ) : $loop->the_post();
-		?>
+		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 		<li>
 			<?php the_title(); ?>
 		</li>
