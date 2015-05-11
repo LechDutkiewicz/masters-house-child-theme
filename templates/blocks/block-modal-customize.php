@@ -33,14 +33,14 @@
 					</div>-->
 					<div class="row collapse input-container">
 						<div class='column large-12 small-11 input-container-inner mail'>
-							<input class="attached-input required email" type="email" placeholder="<?php _e( 'Email Address', 'bon' ); ?>"  name="email" id="email" value="" size="22" tabindex="2" />
-							<div class="contact-form-error" ><?php _e( 'Please enter your email.', 'bon' ); ?></div>
+							<input class="attached-input email" type="email" placeholder="<?php echo __( 'Email Address', 'bon' ) . ' (' . __( 'optional', 'bon' ) . ')'; ?>"  name="email" id="email" value="" size="22" tabindex="2" />
+							<div class="contact-form-error" ><?php _e( 'Please enter either your email or phone number.', 'bon' ); ?></div>
 						</div>
 					</div>									
 					<div class="row collapse input-container">
 						<div class='column large-12 small-11 input-container-inner phone'>
-							<input class="attached-input" type="text" placeholder="<?php _e( 'Phone Number (optional)', 'bon' ); ?>"  name="phone" id="phone" value="" size="22" tabindex="1" />
-							<div class="contact-form-error" ><?php _e( 'Please enter your phone number.', 'bon' ); ?></div>
+							<input class="attached-input" type="text" placeholder="<?php echo __( 'Phone Number', 'bon' ) . ' (' . __( 'optional', 'bon' ) . ')'; ?>"  name="phone" id="phone" value="" size="22" tabindex="1" />
+							<div class="contact-form-error" ><?php _e( 'Please enter either your email or phone number.', 'bon' ); ?></div>
 						</div>
 					</div>
 					<div class="row collapse textarea-container input-container" data-match-height>
