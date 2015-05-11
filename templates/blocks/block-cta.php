@@ -12,7 +12,10 @@ if ( $_SESSION['layoutType'] === 'mobile' ) {
 	</header>
 	<div class="row entry-content">
 		<div class="column large-8">
-			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'link_to_post' => false, 'before' => '<div class="featured-image">', 'after' => '</div>', 'image_class' => 'auto' ) ); ?>
+			<div class="badge-container">
+				<?php the_badge(); ?>
+				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'link_to_post' => false, 'before' => '<div class="featured-image">', 'after' => '</div>', 'image_class' => 'auto' ) ); ?>
+			</div>
 		</div>
 		<div class="column large-4">
 			<?php bon_get_template_part( 'block', 'block-price' ); ?>

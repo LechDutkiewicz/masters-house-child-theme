@@ -131,7 +131,9 @@ if ( $related_query ) :
 				?>
 				<li class="<?php echo extra_class($post->ID); ?>">
 					<article id="post-<?php $post->ID; ?>" <?php post_class(get_cat_color($post->ID)); ?> itemscope itemtype="http://schema.org/RealEstateAgent">
-						<header class="entry-header">
+						<header class="entry-header badge-container">
+
+							<?php the_badge(); ?>
 
 							<?php
 							$terms = get_the_terms( $post->ID, "property-type" );

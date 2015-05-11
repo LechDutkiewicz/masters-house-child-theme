@@ -1,10 +1,9 @@
 <?php
-$status = shandora_get_meta( $post->ID, 'listing_status' );
-$badge = shandora_get_meta( $post->ID, 'listing_badge' );
-$badgeclr = shandora_get_meta( $post->ID, 'listing_badge_color' );
 $size = ( isset( $_GET['view'] ) && $_GET['view'] == 'list' ) ? 'listing_list' : 'listing_small';
 ?>
-<header class="entry-header">
+<header class="entry-header badge-container">
+
+	<?php the_badge(); ?>
 
 	<?php
 	$_overlay_btns = bon_get_option( 'overlay_buttons', array( 'link' => true, 'gallery' => true, 'compare' => true ) );
@@ -59,36 +58,5 @@ $size = ( isset( $_GET['view'] ) && $_GET['view'] == 'list' ) ? 'listing_list' :
 			?>
 		</a>
 	<?php } ?>
-	<?php $status_opt = shandora_get_search_option( 'status' ); ?>
-
-	<?php if ( get_post_type() == 'listing' ) : ?>
-		<div class="badge <?php
-			 echo $status;
-			 echo ($size == 'listing_list') ? ' hide-for-small' : '';
-			 ?>">
-			<span>
-				<?php
-				if ( $status != 'none' ) {
-					if ( array_key_exists( $status, $status_opt ) ) {
-						echo $status_opt[$status];
-					}
-				}
-				?>
-			</span>
-		</div>
-		 <?php else : ?>
-		<div class="badge <?php
-			 echo $badgeclr;
-			 echo ($size == 'listing_list') ? ' hide-for-small' : '';
-			 ?>">
-			<span>
-				<?php
-				if ( $badgeclr != 'none' && !empty( $badge ) ) {
-					echo $badge;
-				}
-				?>
-			</span>
-		</div>
-<?php endif; ?>
 
 </header><!-- .entry-header -->
