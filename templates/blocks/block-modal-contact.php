@@ -9,44 +9,17 @@
 				<form action="" method="post" id="contact-requestform" class="modal-form">
 					<div class="row collapse input-container">
 						<div class="column large-12 small-11">											
-							<?php
-							$phone_html = '';
-							$phone = explode( ',', esc_attr( bon_get_option( 'hgroup1_content' ) ) );
-							$phone_count = count( $phone );
-							if ( $phone_count > 1 ) {
-								foreach ( $phone as $number ) {
-									$phone_html .= '<strong>' . $number . '</strong>';
-								}
-							} else {
-								$phone_html = '<strong><a href="tel:' . esc_attr( bon_get_option( 'hgroup1_content' ) ) . '">' . esc_attr( bon_get_option( 'hgroup1_content' ) ) . '</a></strong>';
-							}
-							?>
-							<p><?php _e( 'Call us directly at:', 'bon' ); ?><span class="phone phone-<?php echo $phone_count; ?>"> <?php echo $phone_html; ?> </span><?php _e( 'or leave us your details data, so our representative can contact you.', 'bon' ); ?></p>
-							<p><?php _e( 'We work from Monday to Friday 8 am to 4 pm. During this time we contact you back within one hour', 'bon' ); ?></p>
-						</div>
+							<?php the_contact_form_content(); ?>
+							</div>
 					</div>
-					<!--<div class="row collapse input-container">
-						<div class='column large-12 small-11 input-container-inner name'>
-							<input class="attached-input required" type="text" placeholder="<?php _e( 'Full Name', 'bon' ); ?>"  name="name" id="name" value="" size="22" tabindex="1" />
-							<div class="contact-form-error" ><?php _e( 'Please enter your name.', 'bon' ); ?></div>
-						</div>
-					</div>-->
 					<div class="row collapse input-container">
-						<div class='column large-12 small-11 input-container-inner mail'>
-							<input class="attached-input email" type="email" placeholder="<?php echo __( 'Email Address', 'bon' ) . ' (' . __( 'optional', 'bon' ) . ')'; ?>"  name="email" id="email" value="" size="22" tabindex="2" />
-							<div class="contact-form-error" ><?php _e( 'Please enter either your email or phone number.', 'bon' ); ?></div>
-						</div>
+						<?php the_email_input(); ?>
 					</div>									
 					<div class="row collapse input-container">
-						<div class='column large-12 small-11 input-container-inner phone'>
-							<input class="attached-input" type="text" placeholder="<?php echo __( 'Phone Number', 'bon' ) . ' (' . __( 'optional', 'bon' ) . ')'; ?>"  name="phone" id="phone" value="" size="22" tabindex="1" />
-							<div class="contact-form-error" ><?php _e( 'Please enter either your email or phone number.', 'bon' ); ?></div>
-						</div>
+						<?php the_phone_input(); ?>
 					</div>
 					<div class="row collapse textarea-container input-container">
-						<div class='column large-12 small-11 input-container-inner pencil'>
-							<textarea class="attached-input" placeholder="<?php _e( "In case you want to ask us about something, type it here. You can also leave it empty and we'll contact you soon.", 'bon' ); ?>"  name="messages" id="messages" value="" cols="58" rows="10" tabindex="4" /></textarea>
-						</div>
+						<?php the_textarea(); ?>
 					</div>
 					<div>
 						<input type="hidden" name="subject" value="<?php printf( __( 'Email from %s', 'bon' ), get_the_title() ); ?>" />
