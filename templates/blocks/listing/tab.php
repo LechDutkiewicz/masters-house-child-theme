@@ -106,6 +106,18 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 					<?php if ( !empty( $$key ) ) { ?> 
 					<li>
 						<strong><?php echo $value; ?> </strong>
+
+						<?php
+						// display other layout if meta is price
+						if ( $key === 'price' ) {
+
+							shandora_get_listing_price();
+
+						} else {
+
+						// display regular layout for all other meta values
+						?>
+
 						<span>
 							<?php
 							echo $$key;
@@ -122,6 +134,9 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 
 							} ?>
 						</span>
+
+						<?php } ?>
+
 					</li>
 					<?php } ?>
 					<?php }
