@@ -130,7 +130,7 @@ if ( $related_query ) :
 // loop for custom colors for product's types	
 				?>
 				<li class="<?php echo extra_class($post->ID); ?>">
-					<article id="post-<?php $post->ID; ?>" <?php post_class(get_cat_color($post->ID)); ?> itemscope itemtype="http://schema.org/RealEstateAgent">
+					<article id="post-<?php $post->ID; ?>" <?php post_class(get_cat_color($post->ID)); ?>>
 						<header class="entry-header badge-container">
 
 							<?php the_badge(); ?>

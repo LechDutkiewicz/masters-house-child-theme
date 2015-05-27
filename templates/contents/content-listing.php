@@ -10,9 +10,9 @@ if ( is_singular( get_post_type() ) ) {
 
 		<?php do_atomic( 'before_single_entry_content' ); ?>
 
-		<section class="entry-content clear" itemprop="description">
+		<section class="entry-content clear">
 			<div class="row">
-				<div class="column large-8">
+				<div class="column large-8" itemprop="description">
 					<?php the_content(); ?>
 				</div>
 				<div class="column large-4 top-cta">

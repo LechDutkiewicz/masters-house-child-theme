@@ -14,7 +14,7 @@ if ( $_SESSION['layoutType'] === 'mobile' ) {
 		<div class="column large-8">
 			<div class="badge-container">
 				<?php the_badge(); ?>
-				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'link_to_post' => false, 'before' => '<div class="featured-image">', 'after' => '</div>', 'image_class' => 'auto' ) ); ?>
+				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'link_to_post' => false, 'before' => '<div class="featured-image">', 'after' => '</div>', 'image_class' => 'auto', 'itemprop' => true ) ); ?>
 			</div>
 		</div>
 		<div class="column large-4">
