@@ -1,33 +1,124 @@
 <?php
-if ( $_SESSION['layoutType'] === 'tablet' || $_SESSION['layoutType'] === 'classic' ) :
-	$imgid = pippin_get_image_id( bon_get_option( 'tool_section_img', 'yes' ) );
-	if ( !empty( $imgid ) ) :
-		?>
-		<section class="customize">
-			<header>
-				<h3><?php echo bon_get_option( 'tool_section_title', 'yes' ); ?></h3>
-			</header>
-			<hr />
+if ( $_SESSION['layoutType'] === 'tablet' || $_SESSION['layoutType'] === 'classic' ) {
+	$mobile = false;
+} else if ( $_SESSION['layoutType'] === 'mobile' ) {
+	$mobile = true;
+}
+
+$imgs = array(
+	1 => array(
+		'id' => pippin_get_image_id( bon_get_option( 'customize_section_img_1', 'yes' ) )
+		),
+	2 => array(
+		'id' => pippin_get_image_id( bon_get_option( 'customize_section_img_2', 'yes' ) )
+		),
+	3 => array(
+		'id' => pippin_get_image_id( bon_get_option( 'customize_section_img_3', 'yes' ) )
+		),
+	);
+
+if ( !empty( $imgs ) ) :
+	?>
+
+<section class="customize">
+
+	<header>
+		<h3><?php echo bon_get_option( 'customize_section_title', 'yes' ); ?></h3>
+	</header>
+
+	<span class="separator"></span>
+
+	<div class="row entry-content">
+
+		<?php if ( $mobile ) { ?>
+
+		<div class="column small-12 margin-medium bottom">
+			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+		</div>
+
+		<?php } ?>
+
+		<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
+			<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h5>
+			<p><?php echo bon_get_option( 'customize_section_content_1', 'yes' ); ?></p>
+			<a class="button flat main radius" data-toggle="collapse" href="#customizeCollapse" aria-expanded="false" aria-controls="customizeCollapse"><?php _e('Show more', 'bon'); ?></a>
+		</div>
+
+		<?php if ( !$mobile ) { ?>
+
+		<div class="column small-4">
+			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+		</div>
+
+		<?php } ?>
+
+	</div>
+
+	<div class="collapse panel-collapse" id="customizeCollapse">
+
+		<div class="well">
+
+			<span class="separator"></span>
+
 			<div class="row entry-content">
-				<div class="column large-6">
-					<h5 class="text main"><?php echo bon_get_option( 'tool_section_heading', 'yes' ); ?></h5>
-					<p><?php echo bon_get_option( 'tool_section_content', 'yes' ); ?></p>
-					<?php if ( bon_get_option( 'tool_section_cta_link_url' ) ) : ?>
-						<a href="<?php echo bon_get_option( 'tool_section_cta_link_url' ); ?>" class="flat button <?php echo bon_get_option( 'tool_section_cta_color' ) ? bon_get_option( 'tool_section_cta_color' ) : 'blue'; ?> radius cta" onclick="window.open('<?php echo bon_get_option( 'tool_section_cta_link_url' ); ?>', 'VPWindow', 'width=1035,height=690,toolbar=0,resizable=1,scrollbars=1,status=0,location=0');
-								return false;" ><?php echo bon_get_option( 'tool_section_cta' ); ?></a>
-					   <?php endif; ?>
-					   <?php if ( bon_get_option( 'tool_section_contact_display' ) == 1 || bon_get_option( 'tool_section_contact_display' ) == 2 ) : ?>
-						<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="Contact us"><?php _e( 'Contact us', 'bon' ); ?></a>
-						<?php
-						bon_get_template_part( 'block', 'block-modal-customize' );
-					endif;
-					?>
+
+				<?php if ( !$mobile ) { ?>
+
+				<div class="column small-4">
+					<?php echo wp_get_attachment_image( $imgs['2']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
 				</div>
-				<div class="column large-6">
-					<?php echo wp_get_attachment_image( $imgid, 'listing_two_thirds' ); ?>
+
+				<?php } ?>
+
+				<?php if ( $mobile ) { ?>
+
+				<div class="column small-12 margin-medium bottom">
+					<?php echo wp_get_attachment_image( $imgs['2']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+				</div>
+
+				<?php } ?>
+
+				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
+					<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h5>
+					<p><?php echo bon_get_option( 'customize_section_content_2', 'yes' ); ?></p>
 				</div>
 			</div>
-		</section>
-		<?php
-	endif;
+
+			<span class="separator"></span>
+
+			<div class="row entry-content">
+
+				<?php if ( $mobile ) { ?>
+
+				<div class="column small-12 margin-medium bottom">
+					<?php echo wp_get_attachment_image( $imgs['3']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+				</div>
+
+				<?php } ?>
+
+				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
+					<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h5>
+					<p><?php echo bon_get_option( 'customize_section_content_3', 'yes' ); ?></p>
+					<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="Contact us"><?php _e( 'Contact us', 'bon' ); ?></a>
+				</div>
+
+				<?php if ( !$mobile ) { ?>
+
+				<div class="column small-4">
+					<?php echo wp_get_attachment_image( $imgs['3']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+				</div>
+
+				<?php } ?>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<?php bon_get_template_part( 'block', 'block-modal-customize' ); ?>
+
+</section>
+
+<?php
 endif;
