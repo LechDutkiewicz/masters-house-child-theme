@@ -27,6 +27,7 @@ $args = array(
 			'compare' => '==='
 			),
 		),
+	'post__not_in' => shandora_get_excluded_addons(),
 	);
 
 $loop = new WP_Query( $args );
