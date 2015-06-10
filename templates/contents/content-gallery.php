@@ -25,9 +25,7 @@
 		<?php the_content(); ?>
 
 		<?php //check if there is listing related to this post, and render it's excerpt if true ?>
-		<?php if ( $$related = shandora_get_meta( $post->ID, 'related_cottage') ) { ?>
-		<?php bon_get_template_part( 'block', 'block-listing-excerpt' ); ?>
-		<?php } ?>
+		<?php bon_get_template_part( 'block', 'listing-excerpt' ); ?>
 
 		<?php do_atomic( "after_single_post_content" ); ?>
 

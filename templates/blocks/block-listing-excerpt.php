@@ -19,19 +19,21 @@ if ( !defined( 'ABSPATH' ) )
  */
 
 // setup vars
-$args = array(
-	'post_type' => 'listing',
-	'posts_per_page' => -1,
-	'orderby' => 'menu_order',
-	'order' => 'ASC',
-	'post__in' => array($related),
-	);
+if ( $related = shandora_get_meta( $post->ID, 'related_cottage') ) {
 
-$loop = new WP_Query( $args );
+	$args = array(
+		'post_type' => 'listing',
+		'posts_per_page' => -1,
+		'orderby' => 'menu_order',
+		'order' => 'ASC',
+		'post__in' => array($related),
+		);
 
-if ( !empty( $loop->posts ) ) :
-	?>
-<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+	$loop = new WP_Query( $args );
+
+	if ( !empty( $loop->posts ) ) :
+		?>
+	<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 	<section class="entry-content clear listing-excerpt margin-large top">
 
 		<header class="entry-header clear">
@@ -44,11 +46,12 @@ if ( !empty( $loop->posts ) ) :
 				<?php the_content(); ?>
 			</div>
 			<div class="column large-4 top-cta">
-				<?php bon_get_template_part( 'block', 'block-listing-price-excerpt' ); ?>
+				<?php bon_get_template_part( 'block', 'listing-price-excerpt' ); ?>
 			</div>
 		</div>
 	</section>
 
-<?php endwhile; ?>
-<?php endif; ?>
-<?php wp_reset_query(); ?>
+<?php endwhile;
+endif;
+wp_reset_query();
+}
