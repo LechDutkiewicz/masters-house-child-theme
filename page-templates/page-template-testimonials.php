@@ -54,6 +54,12 @@ wp_enqueue_script( 'bon-toolkit-map' );
 			while ( have_posts() ) { the_post();
 
 				$cottage = shandora_get_meta( $post->ID, 'related_cottage' );
+				if ( $post->post_content != "") {
+					$link_target = "";
+				} else {
+					$link_target = $cottage;
+				}
+				
 				?>
 
 				<?php if ( shandora_get_meta( $post->ID, 'maplatitude' ) && shandora_get_meta( $post->ID, 'maplongitude' ) ) { ?>
@@ -70,13 +76,10 @@ wp_enqueue_script( 'bon-toolkit-map' );
 					'<article>'+
 					'<h4 id="firstHeading" class="firstHeading"><?php the_title(); ?></h4>'+
 					'<header class="entry-header">'+
-					'<?php if ( has_post_thumbnail() && current_theme_supports( "get-the-image" ) ) get_the_image( array( "size" => "listing_small", "link_to_post" => false, "image_class" => array( "auto" ) ) ); ?>'+
+					'<?php if ( current_theme_supports( "get-the-image" ) && $imgID = shandora_get_meta( $post->ID, "map_img" ) ) get_the_image( array( "post_id" => $imgID, "size" => "map_img", "link_to_post" => false, "image_class" => array( "auto" ) ) ); ?>'+
 					'</header>'+
-					'<div class="entry-summary">'+
-					'<h4 class="entry-title">'+'<?php echo get_the_title($cottage); ?>'+'</h4>'+
-					'</div>'+
 					'<footer class="entry-footer property-price">'+
-					'<a href="<?php echo get_permalink($cottage); ?>">'+'<?php _e( "Read more", "bon"); ?>'+'</a>'+
+					'<a href="<?php echo get_permalink( $link_target ); ?>" class="product-link">'+'<?php _e( "Read more", "bon"); ?>'+'</a>'+
 					'</footer>'+
 					'</article>'+
 					'</div>'+
