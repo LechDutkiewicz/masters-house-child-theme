@@ -16,44 +16,48 @@
 
 	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
 
-		<header class="entry-header <?php echo $color; ?>">
-			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="entry-title">', '</h1>', false ) ); ?>
-			<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[entry-icon class="show-for-large-up"] [entry-published format="M, d Y" text="' . __( 'Posted on ', 'bon' ) . '"] [entry-comments-link] [entry-terms taxonomy="category"] [entry-edit-link]', 'bon' ) . '</div>' ); ?>
-		</header><!-- .entry-header -->
+	<header class="entry-header <?php echo $color; ?>">
+		<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="entry-title">', '</h1>', false ) ); ?>
+		<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[entry-icon class="show-for-large-up"] [entry-published format="M, d Y" text="' . __( 'Posted on ', 'bon' ) . '"] [entry-comments-link] [entry-terms taxonomy="category"] [entry-edit-link]', 'bon' ) . '</div>' ); ?>
+	</header><!-- .entry-header -->
 
-		<div class="entry-content clear">
-			<?php the_content(); ?>
+	<div class="entry-content clear">
+		<?php the_content(); ?>
 
-			<?php do_atomic( "after_single_post_content" ); ?>
+		<?php //check if there is listing related to this post, and render it's excerpt if true ?>
+		<?php if ( $$related = shandora_get_meta( $post->ID, 'related_cottage') ) { ?>
+		<?php bon_get_template_part( 'block', 'block-listing-excerpt' ); ?>
+		<?php } ?>
 
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
-		</div><!-- .entry-content -->
+		<?php do_atomic( "after_single_post_content" ); ?>
 
-		<footer class="entry-footer">
-			<?php echo apply_atomic_shortcode( 'entry_tag', '<div class="entry-tag">' . __( '[entry-terms text="' . __( 'Tagged in:', 'bon' ) . '"]', 'bon' ) . '</div>' ); ?>
-		</footer><!-- .entry-footer -->
+		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
+	</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+		<?php echo apply_atomic_shortcode( 'entry_tag', '<div class="entry-tag">' . __( '[entry-terms text="' . __( 'Tagged in:', 'bon' ) . '"]', 'bon' ) . '</div>' ); ?>
+	</footer><!-- .entry-footer -->
 
 	<?php } else { ?>
 
-		<header class="entry-header <?php echo $color; ?>">
-			<?php echo bon_media_grabber( array( 'type' => 'gallery' ) ); ?>
-		</header><!-- .entry-header -->
+	<header class="entry-header <?php echo $color; ?>">
+		<?php echo bon_media_grabber( array( 'type' => 'gallery' ) ); ?>
+	</header><!-- .entry-header -->
 
-		<div class="entry-summary">
-			<?php //edited by Lech Dutkiewicz  ?>
-			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h3 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'before' => 'Permalink to: ', 'echo' => false ) ) . '">', '</a></h3>', false ) ); ?>
-			<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[entry-icon class="show-for-large-up"] [entry-published format="M, d Y" text="' . __( 'Posted on ', 'bon' ) . '"] [entry-comments-link] [entry-terms limit="1" exclude_child="true" taxonomy="category"] [entry-edit-link]', 'bon' ) . '</div>' ); ?>
-			<a class="flat button <?php echo $color; ?> radius" href="<?php the_permalink(); ?>"><?php _e( 'Read more', 'bon' ); ?></a>
-			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
-		</div><!-- .entry-summary -->
+	<div class="entry-summary">
+		<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h3 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'before' => 'Permalink to: ', 'echo' => false ) ) . '">', '</a></h3>', false ) ); ?>
+		<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[entry-icon class="show-for-large-up"] [entry-published format="M, d Y" text="' . __( 'Posted on ', 'bon' ) . '"] [entry-comments-link] [entry-terms limit="1" exclude_child="true" taxonomy="category"] [entry-edit-link]', 'bon' ) . '</div>' ); ?>
+		<a class="flat button <?php echo $color; ?> radius" href="<?php the_permalink(); ?>"><?php _e( 'Read more', 'bon' ); ?></a>
+		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
+	</div><!-- .entry-summary -->
 
 
 	<?php } ?>
 
 </article><!-- .hentry -->
 
-	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) {
+<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) {
 
-		do_atomic( "after_single_post_entry" );
+	do_atomic( "after_single_post_entry" );
 
-	} ?>
+} ?>
