@@ -24,9 +24,6 @@
 	<div class="entry-content clear">
 		<?php the_content(); ?>
 
-		<?php //check if there is listing related to this post, and render it's excerpt if true ?>
-		<?php bon_get_template_part( 'block', 'listing-excerpt' ); ?>
-
 		<?php do_atomic( "after_single_post_content" ); ?>
 
 		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
