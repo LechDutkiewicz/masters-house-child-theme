@@ -43,7 +43,7 @@ $packages = get_packages_list();
 				<?php // Uncomment this if each product would have it's own package descriptions
 				/* echo get_post_meta( $post->ID, $prefix . $package_prefix . '_content', true );*/ ?>
 
-				<?php echo $package['package_desc']; ?>
+				<?php shandora_sanitize_content($package['package_desc']); ?>
 
 				<hr>
 
