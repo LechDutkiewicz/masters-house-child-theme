@@ -33,9 +33,11 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 		<?php } ?>
 
 		<?php if ( $ctas ) { ?>
-			<div class="home-ctas-container">
+		<div class="table border-spacing">
+			<div class="home-ctas-container table-row">
 				<?php shandora_home_cta( $ctas, $visited ); ?>
 			</div>
+		</div>
 		<?php } ?>
 	</div>
 </div>

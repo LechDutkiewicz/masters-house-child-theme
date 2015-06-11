@@ -12,14 +12,22 @@ if ( $visited != 3 ) {
 <section>
 	<header class="section-header">
 		<?php if ( $slogan ) { ?>
-			<h3 class="home-section-header"><?php echo $slogan; ?></h3>
+		<h3 class="home-section-header"><?php echo $slogan; ?></h3>
 		<?php } ?>
 	</header>
+
+	<?php if ( $ctas ) { ?>
 	<div  class="row entry-row">
 		<div class="padding-medium clearfix">
 			<div class="column large-12 text-center home-ctas-container bottom">
-				<?php shandora_home_cta( $ctas, $visited ); ?>
+				<div class="table centered border-spacing">
+					<div class="home-ctas-container table-row">
+						<?php shandora_home_cta( $ctas, $visited ); ?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<?php } ?>
+
 </section>
