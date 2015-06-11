@@ -81,6 +81,7 @@ if ( !empty( $imgs ) ) :
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
 					<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h5>
 					<p><?php echo bon_get_option( 'customize_section_content_2', 'yes' ); ?></p>
+					<?php shandora_tool_cta(); ?>				
 				</div>
 			</div>
 
