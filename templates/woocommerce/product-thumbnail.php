@@ -1,5 +1,5 @@
 <?php global $post, $product; ?>
-<header class="entry-header">
+<header class="entry-header badge-container">
 	<?php if ( $product->is_on_sale() ) : ?>
 		<div class="badge">
 		<?php endif; ?>

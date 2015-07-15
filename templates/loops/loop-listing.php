@@ -1,3 +1,79 @@
+<?php if ( is_tax() ) {
+    // modify query for taxonomy pages for price and size filters
+
+        $numberposts = (bon_get_option('listing_per_page')) ? bon_get_option('listing_per_page') : 8;
+        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+        $category = get_queried_object()->term_id;
+        $orderby = bon_get_option('listing_orderby');
+        $order = bon_get_option('listing_order', 'DESC');
+        $key = '';
+
+        if(isset($_GET['search_orderby'])) {
+            switch ( $_GET['search_orderby'] ) {
+                case __( 'Price', 'bon' ):
+                $orderby = 'price';
+                break;
+
+                case __( 'Size', 'bon' ):
+                $orderby = 'size';
+                break; 
+                
+                default:
+                $orderby = 'price';
+                break;
+            }
+        }
+        
+        if(isset($_GET['search_order'])) {
+            $order = $_GET['search_order'];
+        }
+        
+        switch ( $orderby ) {
+            case 'price':
+            $orderby = 'meta_value_num';
+            $key = bon_get_prefix() . 'listing_price';
+            break;
+            
+            case 'title':
+            $orderby = 'title';
+
+            break;
+
+            case 'size':
+            $orderby = 'meta_value_num';
+            $key = bon_get_prefix() . 'listing_lotsize';
+
+            break;
+
+            default:
+            $orderby = 'date';
+            break;
+        }
+        
+        
+        
+        $status_key = bon_get_prefix() . 'listing_status';
+        $listing_args = array(
+            'post_type' => 'listing',
+            'posts_per_page' => $numberposts,
+            'paged' => $paged,
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'property-type',
+                    'terms' => $category
+                    ),
+                ),
+            'meta_key' => $key,
+            'orderby' => $orderby,
+            'order' => $order,
+            'meta_key__not_in' => $status_key,
+            'meta_value__not_in' => array( 'sold', 'rented')
+            );
+
+        $wp_query = new WP_Query($listing_args);
+
+} ?>
+
 <?php if ( have_posts() ) : $compare_page = bon_get_option('compare_page'); ?>
 
     <?php while ( have_posts() ) : the_post(); ?>
