@@ -12,7 +12,7 @@ if ( !empty( $loop->posts ) ) :
 <section>
 	<?php if (shandora_is_home()) : ?>
 	<header class="section-header">
-		<h3 class="home-section-header"><?php echo bon_get_option( 'home_features_title', 'yes' ); ?></h3>
+		<h2 class="home-section-header"><?php echo bon_get_option( 'home_features_title', 'yes' ); ?></h2>
 	</header>
 <?php else : ?>
 	<header>
@@ -28,7 +28,7 @@ if ( !empty( $loop->posts ) ) :
 				<i class="icon-anim-left-right bonicons <?php echo shandora_get_meta( $post->ID, 'featureicon' ); ?>"></i>
 			</div>
 			<div class="service-content">
-				<h2 class="service-title"><?php the_title(); ?></h2>
+				<h3 class="service-title"><?php the_title(); ?></h3>
 				<p class="service-summary"><?php echo get_the_content(); ?></p>
 			</div>
 		</div>

@@ -5,9 +5,9 @@ if ( $_SESSION['layoutType'] === 'mobile' ) {
 	$size = 'listing_two_thirds';
 }
 ?>
-<section class="bottom-cta">
+<section class="bottom-cta padding-large top bottom">
 	<header>
-		<h3 class="cta-header"><?php the_title(); ?></h3>
+		<h2 class="cta-header"><?php the_title(); ?></h2>
 		<hr />
 	</header>
 	<div class="row entry-content">

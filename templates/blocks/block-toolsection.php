@@ -20,26 +20,26 @@ $imgs = array(
 if ( !empty( $imgs ) ) :
 	?>
 
-<section class="customize">
+<section class="customize padding-large top bottom">
 
 	<header>
-		<h3><?php echo bon_get_option( 'customize_section_title', 'yes' ); ?></h3>
+		<h2><?php echo bon_get_option( 'customize_section_title', 'yes' ); ?></h2>
 	</header>
 
 	<span class="separator"></span>
 
-	<div class="row entry-content">
+	<div class="row">
 
 		<?php if ( $mobile ) { ?>
 
 		<div class="column small-12 margin-medium bottom">
-			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'listing_small', '', array('class' => '') ); ?>
 		</div>
 
 		<?php } ?>
 
 		<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-			<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h5>
+			<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h3>
 			<p><?php echo bon_get_option( 'customize_section_content_1', 'yes' ); ?></p>
 			<a class="button flat main radius" data-toggle="collapse" href="#customizeCollapse" aria-expanded="false" aria-controls="customizeCollapse"><?php _e('Show more', 'bon'); ?></a>
 		</div>
@@ -47,7 +47,7 @@ if ( !empty( $imgs ) ) :
 		<?php if ( !$mobile ) { ?>
 
 		<div class="column small-4">
-			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'listing_small', '', array('class' => '') ); ?>
 		</div>
 
 		<?php } ?>
@@ -65,7 +65,7 @@ if ( !empty( $imgs ) ) :
 				<?php if ( !$mobile ) { ?>
 
 				<div class="column small-4">
-					<?php echo wp_get_attachment_image( $imgs['2']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+					<?php echo wp_get_attachment_image( $imgs['2']['id'], 'listing_small', '', array('class' => '') ); ?>
 				</div>
 
 				<?php } ?>
@@ -73,13 +73,13 @@ if ( !empty( $imgs ) ) :
 				<?php if ( $mobile ) { ?>
 
 				<div class="column small-12 margin-medium bottom">
-					<?php echo wp_get_attachment_image( $imgs['2']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+					<?php echo wp_get_attachment_image( $imgs['2']['id'], 'listing_small', '', array('class' => '') ); ?>
 				</div>
 
 				<?php } ?>
 
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-					<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h5>
+					<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h3>
 					<p><?php echo bon_get_option( 'customize_section_content_2', 'yes' ); ?></p>
 					<?php shandora_tool_cta(); ?>				
 				</div>
@@ -92,13 +92,13 @@ if ( !empty( $imgs ) ) :
 				<?php if ( $mobile ) { ?>
 
 				<div class="column small-12 margin-medium bottom">
-					<?php echo wp_get_attachment_image( $imgs['3']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+					<?php echo wp_get_attachment_image( $imgs['3']['id'], 'listing_small', '', array('class' => '') ); ?>
 				</div>
 
 				<?php } ?>
 
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-					<h5 class="text main"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h5>
+					<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h3>
 					<p><?php echo bon_get_option( 'customize_section_content_3', 'yes' ); ?></p>
 					<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="Contact us"><?php _e( 'Contact us', 'bon' ); ?></a>
 				</div>
@@ -106,7 +106,7 @@ if ( !empty( $imgs ) ) :
 				<?php if ( !$mobile ) { ?>
 
 				<div class="column small-4">
-					<?php echo wp_get_attachment_image( $imgs['3']['id'], 'listing_small', '', array('class' => 'rounded') ); ?>
+					<?php echo wp_get_attachment_image( $imgs['3']['id'], 'listing_small', '', array('class' => '') ); ?>
 				</div>
 
 				<?php } ?>

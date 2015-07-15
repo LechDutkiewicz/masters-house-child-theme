@@ -7,15 +7,15 @@
 			</div>
 			<div class="modal-body">
 				<form action="" method="post" id="visit-requestform" class="modal-form">
-					<div class="row collapse input-container">
+					<div class="row">
 						<div class="column large-12 small-11">											
 							<?php the_contact_form_content(); ?>
 							</div>
 					</div>
-					<div class="row collapse input-container">
+					<div class="row input-container">
 						<?php the_email_input(); ?>
 					</div>									
-					<div class="row collapse input-container">
+					<div class="row input-container">
 						<?php the_phone_input(); ?>
 					</div>
 					<div>

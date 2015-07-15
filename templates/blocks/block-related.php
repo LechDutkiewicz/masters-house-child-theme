@@ -100,9 +100,9 @@ $related_query = get_posts( $args );
 if ( $related_query ) :
 	$compare_page = bon_get_option( 'compare_page' );
 	?>
-	<section>
+	<section class="padding-large top bottom">
 		<header>		
-			<h3><?php _e( 'You may also like', 'bon' ); ?></h3>
+			<h2><?php _e( 'You may also like', 'bon' ); ?></h2>
 			<hr />
 		</header>
 		<ul class="listings related <?php shandora_block_grid_column_class(); ?>" data-compareurl="<?php echo get_permalink( $compare_page ); ?>">

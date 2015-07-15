@@ -99,7 +99,7 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 		<div class="tab-contents">
 
 			<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
-			<div id="tab-target-details" class="tab-content active">
+			<div id="tab-target-details" class="tab-content active border-main">
 
 				<ul class="property-details">
 					<?php foreach ( $details as $key => $value ) { ?>
@@ -149,7 +149,7 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 
 			<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?> 
 
-			<div id="tab-target-spec" class="tab-content">
+			<div id="tab-target-spec" class="tab-content border-main">
 				<ul class="property-spec">
 
 					<?php foreach ( $specs as $key => $value ) { ?>
@@ -177,7 +177,7 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 				</ul>
 			</div>
 
-			<div id="tab-target-features" class="tab-content">
+			<div id="tab-target-features" class="tab-content border-main">
 
 				<ul class="bon-toolkit-accordion" id="accordion-services">
 					<?php

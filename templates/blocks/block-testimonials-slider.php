@@ -11,9 +11,9 @@ $loop = new WP_Query( $args );
 
 if ( $loop->have_posts() ) :
 	?>
-<section>
+<section class="padding-large top bottom">
 	<header class="section-header">
-		<h3 class="<?php echo shandora_is_home() ? 'home-section-header' : 'services-header'; ?>"><?php _e( 'Our clients rock', 'bon' ); ?></h3>
+		<h2 class="<?php echo shandora_is_home() ? 'home-section-header' : 'services-header'; ?>"><?php _e( 'Our clients rock', 'bon' ); ?></h2>
 		<?php if ( !shandora_is_home() ) echo '<hr />'; ?>
 	</header>
 	<?php open_testimonials_slider( $loop ); ?>

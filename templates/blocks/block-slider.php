@@ -3,16 +3,20 @@ $visited = shandora_get_meta( $post->ID, 'slider_returning' );
 
 $position = shandora_get_meta( $post->ID, 'slider_position' );
 
-$icon = 'sha-arrow-right';
-
 if ( $visited != 3 ) {
+	// get parameters for home call to action
 	$slogan = bon_get_option( 'home_slogan', 5 );
 	$ctas = bon_get_option( 'home_cta', 5 );
 } else {
+	// get parameters for home call to action for returning users, that opens modal with contact form
 	$slogan = bon_get_option( 'home_slogan_returning', 5 );
 	$ctas = bon_get_option( 'home_cta_returning', 5 );
 }
 
+// get parameters for drawing tool button
+$tool = bon_get_option( 'home_cta_tool');
+
+// adjust image size depending on device
 if ( current_theme_supports( 'get-the-image' ) ) {
 	if ( $_SESSION['layoutType'] === 'mobile' ) {
 		$size = 'featured_slider_mobile';
@@ -29,13 +33,13 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 
 	<div class="flex-caption home-cta-container top">
 		<?php if ( $slogan ) { ?>
-			<h2 class="primary-title"><span><?php echo $slogan; ?></span></h2>
+			<h1 class="primary-title"><span><?php echo $slogan; ?></span></h1>
 		<?php } ?>
 
 		<?php if ( $ctas ) { ?>
 		<div class="table border-spacing">
 			<div class="home-ctas-container table-row">
-				<?php shandora_home_cta( $ctas, $visited ); ?>
+				<?php shandora_home_cta( $ctas, $tool, $visited ); ?>
 			</div>
 		</div>
 		<?php } ?>

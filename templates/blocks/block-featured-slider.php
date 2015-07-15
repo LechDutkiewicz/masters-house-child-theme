@@ -15,7 +15,7 @@ $ctaArgs = array(
 ?>
 <section>
 	<header class="section-header">
-		<h3 class="home-section-header"><?php _e( 'Our ready projects', 'bon' ); ?></h3>
+		<h2 class="home-section-header"><?php _e( 'Our ready projects', 'bon' ); ?></h2>
 	</header>
 	<div class="row entry-row">
 		<div class="column large-12 featured-listing-carousel">

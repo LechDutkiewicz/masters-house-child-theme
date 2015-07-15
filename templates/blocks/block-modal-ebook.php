@@ -1,3 +1,10 @@
+<?php
+
+if ( !defined( 'ABSPATH' ) )
+	exit( 'No direct script access allowed' ); // Exit if accessed directly
+
+?>
+
 <div id="ebook-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ebook-modal-label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
