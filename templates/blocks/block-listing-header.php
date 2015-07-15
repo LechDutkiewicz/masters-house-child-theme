@@ -44,7 +44,7 @@ $size = ( isset( $_GET['view'] ) && $_GET['view'] == 'list' ) ? 'listing_list' :
 	}
 	?>	
 		<?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
-		<a class="header-link product-link" href="<?php the_permalink(); ?>">
+		<a class="header-link product-link" href="<?php the_permalink(); ?>" data-analytics-category="pick a cottage" data-analytics-action="click image link" data-analytics-selector="listing_image_link">
 			<div class="overlay"></div>
 			<?php
 			if ( current_theme_supports( 'get-the-image' ) ) {
