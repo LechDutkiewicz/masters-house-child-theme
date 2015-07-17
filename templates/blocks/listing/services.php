@@ -21,9 +21,11 @@ if ( !empty( $loop->posts ) ) :
 	</div>
 	<?php } ?>
 
-	<div class="services-container">
+</div>
 
-		<?php while ( $loop->have_posts() ) : $loop->the_post();
+<div class="row services-container">
+
+	<?php while ( $loop->have_posts() ) : $loop->the_post();
 
 	// setup variables
 		/*$more_title = shandora_get_meta( $post->ID, 'service_more_title' );
@@ -32,8 +34,8 @@ if ( !empty( $loop->posts ) ) :
 
 		?>
 
-		<div class="column large-12 service-container padding-medium top bottom <?php echo $exClass; ?> fade-in">
-			<div class="round-icon icon-wrapper bg-flat-<?php echo shandora_get_meta( $post->ID, 'featureiconcolor' ); ?>">
+		<div class="column large-12 service-container padding-medium top bottom <?php echo $exClass; ?> fade-in clearfix">
+			<div class="round-icon icon-wrapper bg-<?php echo shandora_get_meta( $post->ID, 'featureiconcolor' ); ?>">
 				<i class="icon-anim-left-right text bonicons <?php echo shandora_get_meta( $post->ID, 'featureicon' ); ?>"></i>
 			</div>
 			<div class="service-content">
@@ -84,9 +86,8 @@ if ( !empty( $loop->posts ) ) :
 		?>
 
 	</div>
-
-</div>
-<?php
-endif;
-wp_reset_query();
+	
+	<?php
+	endif;
+	wp_reset_query();
 

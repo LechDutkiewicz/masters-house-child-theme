@@ -24,7 +24,7 @@ if ( !empty( $loop->posts ) ) :
 	<div class="padding-medium clearfix">
 		<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 		<div class="column large-4 text service-container <?php echo $exClass; ?>">
-			<div class="round-icon icon-wrapper bg-flat-<?php echo shandora_get_meta( $post->ID, 'featureiconcolor' ); ?>">
+			<div class="round-icon icon-wrapper bg-<?php echo shandora_get_meta( $post->ID, 'featureiconcolor' ); ?>">
 				<i class="icon-anim-left-right bonicons <?php echo shandora_get_meta( $post->ID, 'featureicon' ); ?>"></i>
 			</div>
 			<div class="service-content">
