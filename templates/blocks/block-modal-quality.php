@@ -7,11 +7,11 @@ if ( !defined( 'ABSPATH' ) )
 
 <?php
 
-$imgs = array(
+/*$imgs = array(
 	1 => array(
 		'id' => pippin_get_image_id( bon_get_option( 'quality_section_house_image', 'yes' ) )
 		)
-	);
+	);*/
 
 $qualities = get_qualities();
 
@@ -30,9 +30,11 @@ $qualities = get_qualities();
 
 				<div class="quality-img-container">
 
+					<img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/qualities/wooden-house.png" class="auto" />
+
 					<?php if ( !empty( $imgs ) ) { ?>
 
-					<?php echo wp_get_attachment_image( $imgs['1']['id'], 'full', '', array('class' => '') ); ?>
+					<?php //echo wp_get_attachment_image( $imgs['1']['id'], 'full', '', array('class' => '') ); ?>
 
 					<?php } ?>
 
