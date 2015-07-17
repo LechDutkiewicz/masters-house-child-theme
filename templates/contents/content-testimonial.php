@@ -54,7 +54,9 @@ if ( $builder && is_singular( get_post_type() ) ) {
 		</header><!-- .entry-header -->
 
 		<div class="entry-content clear">
-			<?php the_content(); ?>
+			<div class="padding-large bottom">
+				<?php the_content(); ?>
+			</div>
 
 			<?php //display client's testimonial if there is one ?>
 			<?php if ( shandora_get_meta( $post->ID, 'testimonial' ) != "" ) { shandora_get_testimonial( $loop, $post ); } ?>
@@ -88,7 +90,7 @@ if ( $builder && is_singular( get_post_type() ) ) {
 			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h3 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'before' => 'Permalink to: ', 'echo' => false ) ) . '">', '</a></h3>', false ) ); ?>
 			<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[entry-icon class="show-for-large-up"] [entry-published format="M, d Y" text="' . __( 'Posted on ', 'bon' ) . '"] [entry-comments-link] [entry-terms limit="1" exclude_child="true" taxonomy="category"] [entry-edit-link]', 'bon' ) . '</div>' ); ?>
 			<?php the_excerpt(); ?>
-			<a class="flat button <?php echo $color; ?> radius" href="<?php the_permalink(); ?>"><?php _e( 'Read more', 'bon' ); ?></a>
+			<a class="flat button <?php echo $color; ?> radius" href="<?php the_permalink(); ?>" data-analytics-category="testimonials page" data-analytics-action="click read more from single page" data-analytics-selector="read_more_single"><?php _e( 'Read more', 'bon' ); ?></a>
 			<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 		</div><!-- .entry-summary -->
 
