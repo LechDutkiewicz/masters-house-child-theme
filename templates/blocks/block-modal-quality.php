@@ -25,6 +25,9 @@ $qualities = get_qualities();
 				<h4 class="modal-title" id="contact-modal-label"><?php echo bon_get_option( 'quality_section_title' ); ?></h4>
 			</div>
 			<div class="modal-body">
+
+				<?php if ( $_SESSION['layoutType'] !== 'mobile' ) { ?>
+
 				<div class="quality-img-container">
 
 					<?php if ( !empty( $imgs ) ) { ?>
@@ -40,9 +43,9 @@ $qualities = get_qualities();
 					<div class="quality-icon animate bounceIn" data-target="<?php echo $index; ?>" data-top="<?php echo $quality_item['top']; ?>"data-left="<?php echo $quality_item['left']; ?>"  data-tablet-top="<?php echo $quality_item['tablet-top']; ?>" data-tablet-left="<?php echo $quality_item['tablet-left']; ?>">
 
 						<?php if ( $quality_item['arrow'] ) { ?>
-							<div class="click-arrow">
-								<span><?php _e( 'Click here', 'bon'); ?></span>
-							</div>
+						<div class="click-arrow">
+							<span><?php _e( 'Click here', 'bon'); ?></span>
+						</div>
 						<?php } ?>
 
 						<div class="icon-bg" style="background-image:url('<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/qualities/<?php echo sanitize_title( $quality_item['name'] ); ?>.jpg');"></div>
@@ -56,15 +59,25 @@ $qualities = get_qualities();
 					<?php } ?>
 
 				</div>
+
+				<?php } ?>
+
 				<div class="desc-container">
-					<div class="clearfix margin-medium bottom active">
-						<div class="description-img" style="background-image:url('<?php echo bon_get_option( 'main_img' ); ?>');">
+
+					<?php if ( $_SESSION['layoutType'] !== 'mobile' ) { ?>
+
+					<div class="clearfix margin-medium bottom active<?php echo bon_get_option( 'main_img' ) ? '' : ' no-img'; ?>">
+						
+						<div class="description-img"<?php echo bon_get_option( 'main_img' ) ? 'style="background-image:url\'(' . bon_get_option( 'main_img' ) . '\')"' : ''; ?>>
 						</div>
+
 						<div class="description-headers">
 							<span class="like-h4"><?php echo bon_get_option( 'main_name' ); ?></span>
-							<span class="like-h5"><?php echo bon_get_option( 'main_desc' ); ?></span>
+							<p><?php echo bon_get_option( 'main_desc' ); ?></p>
 						</div>
 					</div>
+
+					<?php } ?>
 
 					<?php if ( !empty( $qualities ) ) { ?>
 
@@ -75,7 +88,7 @@ $qualities = get_qualities();
 						</div>
 						<div class="description-headers">
 							<span class="like-h4"><?php echo bon_get_option( sanitize_title( $quality_item['name'] ) . '_name' ); ?></span>
-							<span class="like-h5"><?php echo bon_get_option( sanitize_title( $quality_item['name'] ) . '_desc' ); ?></span>
+							<p><?php echo bon_get_option( sanitize_title( $quality_item['name'] ) . '_desc' ); ?></p>
 						</div>
 					</div>
 
