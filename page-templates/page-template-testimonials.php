@@ -79,7 +79,7 @@ wp_enqueue_script( 'bon-toolkit-map' );
 					'<?php if ( current_theme_supports( "get-the-image" ) && $imgID = shandora_get_meta( $post->ID, "map_img" ) ) get_the_image( array( "post_id" => $imgID, "size" => "map_img", "link_to_post" => false, "image_class" => array( "auto" ) ) ); ?>'+
 					'</header>'+
 					'<footer class="entry-footer property-price">'+
-					'<a href="<?php echo get_permalink( $link_target ); ?>" class="product-link">'+'<?php _e( "Read more", "bon"); ?>'+'</a>'+
+					'<a href="<?php echo get_permalink( $link_target ); ?>" class="product-link" data-analytics-category="testimonials page" data-analytics-action="click read more from map page" data-analytics-selector="read_more_map_item">'+'<?php _e( "Read more", "bon"); ?>'+'</a>'+
 					'</footer>'+
 					'</article>'+
 					'</div>'+
