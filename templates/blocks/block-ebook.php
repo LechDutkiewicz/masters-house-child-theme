@@ -13,16 +13,16 @@ if ( !empty( $loop->posts ) ) :
 					<div class="column large-9">
 						<div  class="row entry-row">
 							<div class="column large-12">
-								<h5 class="section-subheader text <?php echo shandora_get_meta( $post->ID, 'cta_color' ); ?>"><?php echo get_the_title(); ?></h5>
-								<h5><?php echo get_the_content(); ?></h5>
+								<span class="like-h4 text <?php echo shandora_get_meta( $post->ID, 'cta_color' ); ?>"><?php echo get_the_title(); ?></span>
+								<span class="like-h5"><?php echo get_the_content(); ?></span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="column large-12 large-uncendered small-11 small-centered bon-builder-element-calltoaction">
 								<div class="panel callaction <?php echo shandora_get_meta( $post->ID, 'cta_color' ); ?>">
 									<div class="panel-content">
-										<h2 class="action-title"><?php echo shandora_get_meta( $post->ID, 'cta_header' ); ?></h2>
-										<h3 class="action-content subheader"><?php echo shandora_get_meta( $post->ID, 'cta_subheader' ); ?></h3>
+										<span class="action-title like-h4"><?php echo shandora_get_meta( $post->ID, 'cta_header' ); ?></span>
+										<span class="action-content subheader like-h5"><?php echo shandora_get_meta( $post->ID, 'cta_subheader' ); ?></span>
 									</div>
 									<div class="panel-button">
 										<a href='#ebook-modal' role='button' data-toggle='modal' title="<?php echo get_the_title(); ?>">
@@ -36,8 +36,9 @@ if ( !empty( $loop->posts ) ) :
 					</div>
 					<?php if ( $_SESSION['layoutType'] !== 'mobile' ) : ?>
 						<div class="column large-3 hide-for-small">
-							<a href='#ebook-modal' role='button' data-toggle='modal' title="<?php echo get_the_title(); ?>">
+							<a href='#ebook-modal' class="hover-mask" role='button' data-toggle='modal' title="<?php echo get_the_title(); ?>">
 								<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'blog_small', 'link_to_post' => false, 'image_class' => 'auto' ) ); ?>
+								<div class="overlay"></div>
 							</a>
 						</div>
 					</div>

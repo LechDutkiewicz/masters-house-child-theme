@@ -12,7 +12,13 @@ $width = $_wp_additional_image_sizes[$size]['width'] + 50;
 
 <?php
 
-$list = new WP_query("post_type=Slidebox");
+$args = array(
+	'post_type' => 'Slidebox',
+	'posts_per_page' => 1,
+	'orderby' => 'menu_order'
+);
+
+$list = new WP_query( $args );
 
 if ( isset( $_COOKIE['slidebox'] ) && $_COOKIE['slidebox'] )
 	$exClass='hidden';
@@ -22,7 +28,7 @@ if ($list->have_posts()) : while ($list->have_posts()) : $list->the_post();
 
 <div id="slidebox" <?php echo $exClass ? "class='$exClass' " : ''; ?>style="width: <?php echo $width; ?>px">
 
-	<div class="slidebox-close bg-clouds">
+	<div class="slidebox-close bg-clouds darken-hover">
 		<span class="bonicons bi-chevron-<?php echo $exClass ? 'up': 'down'; ?>"></span>
 		<span class="bonicons bi-chevron-<?php echo $exClass ? 'up': 'down'; ?>"></span>
 		<span class="rotated-text"><?php _e( 'Hide', 'bon'); ?></span>

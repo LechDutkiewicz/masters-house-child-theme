@@ -1,7 +1,7 @@
 <div id="visit-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="visit-modal-label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg <?php echo bon_get_option( 'search_button_color', 'peter-river' ); ?>">
+			<div class="modal-header bg-<?php echo bon_get_option( 'search_button_color', 'peter-river' ); ?>">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h4 class="modal-title" id="visit-modal-label"><?php _e( 'Request a free visit', 'bon' ); ?></h4>
 			</div>

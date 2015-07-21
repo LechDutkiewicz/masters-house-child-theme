@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) )
 <div id="contact-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="contact-modal-label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg <?php echo bon_get_option( 'search_button_color', 'red' ); ?>">
+			<div class="modal-header bg-<?php echo bon_get_option( 'search_button_color', 'red' ); ?>">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h4 class="modal-title" id="contact-modal-label"><?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?></h4>
 			</div>

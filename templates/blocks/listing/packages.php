@@ -30,7 +30,7 @@ $packages = get_packages_list();
 	<section>
 		<nav class="tab-nav">
 			<?php foreach ($packages as $key => $package) { ?>
-			<a class="bg desaturate <?php echo $package['package_color']; ?><?php if ( $key === 0 ) echo ' active'; ?>" href="#tab-target-<?php echo sanitize_title( $package['package_name'] ); ?>"><?php echo $package['package_name']; ?></a>
+			<a class="bg-<?php echo $package['package_color']; ?><?php if ( $key === 0 ) echo ' active'; ?> darken-hover" href="#tab-target-<?php echo sanitize_title( $package['package_name'] ); ?>"><?php echo $package['package_name']; ?></a>
 			<?php } ?>
 		</nav>
 		<div class="tab-contents">

@@ -12,7 +12,7 @@ $imgs = array(
 
 	<section class="padding-large top bottom">
 
-		<a href="#quality-modal" role="button" data-toggle="modal" class="hover-mask" title="">
+		<a href="#quality-modal" role="button" data-toggle="modal" class="hover-mask" data-analytics-category="single page banners" data-analytics-action="click-quality-banner" data-analytics-selector="quality-banner">
 			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'full', '', array('class' => '') ); ?>
 			<div class="overlay"></div>
 		</a>

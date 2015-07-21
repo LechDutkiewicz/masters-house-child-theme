@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) )
 <div id="ebook-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="ebook-modal-label" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header bg <?php echo shandora_get_meta( $post->ID, 'cta_color' ); ?>">
+			<div class="modal-header bg-<?php echo shandora_get_meta( $post->ID, 'cta_color' ); ?>">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 				<h4 class="modal-title" id="ebook-modal-label"><?php _e( 'Fill out this form to get your free ebook', 'bon' ); ?></h4>
 			</div>
