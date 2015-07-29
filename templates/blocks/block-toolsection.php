@@ -41,7 +41,15 @@ if ( !empty( $imgs ) ) :
 		<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
 			<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h3>
 			<p><?php echo bon_get_option( 'customize_section_content_1', 'yes' ); ?></p>
+			<?php if ( !empty($imgs['2']['id']) && !empty($imgs['3']['id'] ) ) { ?>
+
 			<a class="button flat main radius" data-toggle="collapse" href="#customizeCollapse" aria-expanded="false" aria-controls="customizeCollapse"><?php _e('Show more', 'bon'); ?></a>
+			
+			<?php } else { ?>
+
+			<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="Contact us"><?php _e( 'Contact us', 'bon' ); ?></a>
+
+			<?php } ?>
 		</div>
 
 		<?php if ( !$mobile ) { ?>
@@ -53,6 +61,8 @@ if ( !empty( $imgs ) ) :
 		<?php } ?>
 
 	</div>
+
+	<?php if ( !empty($imgs['2']['id']) && !empty($imgs['3']['id'] ) ) { ?>
 
 	<div class="collapse panel-collapse" id="customizeCollapse">
 
@@ -116,6 +126,8 @@ if ( !empty( $imgs ) ) :
 		</div>
 
 	</div>
+
+	<?php } ?>
 
 	<?php bon_get_template_part( 'block', 'block-modal-customize' ); ?>
 
