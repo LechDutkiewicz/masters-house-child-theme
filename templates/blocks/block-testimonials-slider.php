@@ -16,11 +16,14 @@ if ( $loop->have_posts() ) :
 		<h2 class="<?php echo shandora_is_home() ? 'home-section-header' : 'services-header'; ?>"><?php _e( 'Our clients rock', 'bon' ); ?></h2>
 		<?php if ( !shandora_is_home() ) echo '<hr />'; ?>
 	</header>
+	<?php open_testimonials_slider_container(); ?>
 	<?php open_testimonials_slider( $loop ); ?>
 	<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 	<?php render_single_testimonial( $post ); ?>
 <?php endwhile; ?>
 <?php close_testimonials_slider(); ?>
+<?php get_slider_thumbnails( $loop ); ?>
+<?php close_testimonials_slider_container(); ?>
 </section>
 <?php
 endif;
