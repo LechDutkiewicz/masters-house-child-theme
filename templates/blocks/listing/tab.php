@@ -25,6 +25,12 @@ $windowssizes = shandora_get_windows( $windowssizes );
 $doorssizes = get_post_meta( $post->ID, bon_get_prefix() . 'listing_doorssizes' );
 $doorssizes = shandora_get_doors( $doorssizes );
 
+// Added by Maduranga.
+foreach(get_the_terms($post->ID,"property-type") as $term) { 
+	$termid = $term->term_id; 
+	$propertytype = $term->name;
+}
+
 // fetch additional parameters if cottage has construction layout
 if ( shandora_get_meta( $post->ID, 'listing_enable_construction' ) ) {
 
@@ -49,14 +55,34 @@ if ( array_key_exists( $status, $status_opt ) ) {
 
 //Changed by Lech Dutkiewicz
 
-$details = apply_atomic( 'property_details_tab_content', array(
+/*$details = apply_atomic( 'property_details_tab_content', array(
 	'price' => __( 'Price:', 'bon' ),
 	'monprice' => __( 'Monthly price:', 'bon' ),
 	'lotsize' => __( 'Size:', 'bon' ),
 	'terracesqmt' => __( 'Terrace size:', 'bon' ),
 	'rooms' => __( 'Rooms:', 'bon' ),
 	'floors' => __( 'Floors:', 'bon' ),
+	) );*/
+// Changed by Maduranga.	
+if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
+	$details = apply_atomic( 'property_details_tab_content', array(
+		'price' => __( 'Price:', 'bon' ),
+		'monprice' => __( 'Monthly price:', 'bon' ),
+		'lotsize' => __( 'Size:', 'bon' ),
+		'terracesqmt' => __( 'Small Cottages Terrace size:', 'bon' ),
+		'rooms' => __( 'Rooms:', 'bon' ),
+		'floors' => __( 'Floors:', 'bon' ),
 	) );
+}else {
+	$details = apply_atomic( 'property_details_tab_content', array(
+		'price' => __( 'Price:', 'bon' ),
+		'monprice' => __( 'Monthly price:', 'bon' ),
+		'lotsize' => __( 'Size:', 'bon' ),
+		'terracesqmt' => __( 'Terrace size:', 'bon' ),
+		'rooms' => __( 'Rooms:', 'bon' ),
+		'floors' => __( 'Floors:', 'bon' ),
+	) );
+}
 
 $specs = apply_atomic( 'property_specifications_tab_content', array(
 	'dimensions' => __( 'Dimensions:', 'bon' ),
