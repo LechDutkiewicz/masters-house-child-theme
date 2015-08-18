@@ -25,73 +25,73 @@ get_header();
         do_atomic('before_loop'); ?>
 
         <?php
-        $numberposts = (bon_get_option('listing_per_page')) ? bon_get_option('listing_per_page') : 8;
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        $orderby = bon_get_option('listing_orderby');
-        $order = bon_get_option('listing_order', 'DESC');
-        $key = '';
 
-        if(isset($_GET['search_orderby'])) {
-            switch ( $_GET['search_orderby'] ) {
-                case __( 'Price', 'bon' ):
-                $orderby = 'price';
-                break;
+        // get categories that should be displayed on all categories page
+        $cats = bon_get_option( 'cats_order' );
 
-                case __( 'Size', 'bon' ):
-                $orderby = 'size';
-                break; 
-                
-                default:
-                $orderby = 'price';
-                break;
-            }
+        foreach ($cats as $cat) {
+
+            // get term object for each category
+            $term = get_term($cat['cat_name'], 'property-type');
+            $id = $term->term_id;
+            // get color for each category
+            $color = get_option( "taxonomy_$id" );
+
+            ?>
+
+            <?php
+
+            // setup loop to fetch 1 most expensive item for each category to display it's image as category image
+            $listing_args = array(
+                'post_type' => 'listing',
+                'posts_per_page' => 1,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'property-type',
+                        'terms' => $id
+                        ),
+                    ),
+                'meta_key' => bon_get_prefix() . 'listing_price',
+                'orderby' => 'meta_value_num',
+                'order' => 'DSC'
+                );
+
+            $wp_query = new WP_Query($listing_args);
+
+            while ( have_posts() ) : the_post(); ?>
+
+            <li class="<?php echo extra_class($post->ID); ?>">
+                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
+                    <header class="entry-header">
+                        <a class="header-link product-link" href="<?php echo get_term_link( $term->slug, "property-type" ); ?>">
+                            <div class="overlay"></div>
+                            <?php
+                            if ( current_theme_supports( 'get-the-image' ) ) {
+                                if ( $_SESSION['layoutType'] === 'mobile' ) {
+                                    $size = 'mobile_tall';
+                                } else {
+                                    $size = 'listing_small';
+                                }
+                                $src = get_the_image( array( 'size' => $size, 'link_to_post' => false, 'image_class' => 'auto' ) );
+                            }
+                            ?>
+                        </a>
+                    </header>
+                    <footer class="entry-footer">
+                        <div class="property-price cat-link"><a href="<?php echo get_term_link( $term->slug, "property-type" ); ?>" class="product-link <?php echo $color['color']; ?>"><?php echo $term->name; ?></a></div>
+                    </footer>
+                </article>
+            </li>
+
+            <?php endwhile;
+
+            wp_reset_query();
+
+            ?>
+
+            <?php
         }
-        
-        if(isset($_GET['search_order'])) {
-            $order = $_GET['search_order'];
-        }
-        
-        switch ( $orderby ) {
-            case 'price':
-            $orderby = 'meta_value_num';
-            $key = bon_get_prefix() . 'listing_price';
-            break;
-            
-            case 'title':
-            $orderby = 'title';
-
-            break;
-
-            case 'size':
-            $orderby = 'meta_value_num';
-            $key = bon_get_prefix() . 'listing_lotsize';
-
-            break;
-
-            default:
-            $orderby = 'date';
-            break;
-        }
-        
-        
-        
-        $status_key = bon_get_prefix() . 'listing_status';
-        $listing_args = array(
-            'post_type' => 'listing',
-            'posts_per_page' => $numberposts,
-            'paged' => $paged,
-            'meta_key' => $key,
-            'orderby' => $orderby,
-            'order' => $order,
-            'meta_key__not_in' => $status_key,
-            'meta_value__not_in' => array( 'sold', 'rented')
-            );
-
-        $wp_query = new WP_Query($listing_args);
-
-        bon_get_template_part('loop', 'listing');
-
-        bon_get_template_part( 'loop','nav' ); // Loads the loop-nav.php template. ?>
+        ?>
         
         <?php 
 

@@ -34,21 +34,12 @@ if ( is_singular( get_post_type() ) ) {
 
 	$view = isset( $_GET['view'] ) ? $_GET['view'] : 'grid';
 
-	// added by Lech Dutkiewicz to fetch property's category
-
-	/*$term_meta = wp_get_post_terms( $post->ID, 'property-type' );
-	$ex_class = $term_meta[0]->slug;
-
-	$property_taxonomies = get_terms( 'property-type', array( 'slug' => $ex_class ) );
-	$color = $property_taxonomies[0]->term_id;
-	$color = get_option( "taxonomy_$color" );*/
-
 	if ( ($wp_query->current_post + 1) == ($wp_query->post_count) ) {
 		$ex_class .= ' last';
 	}
 	?>
 	<li class="<?php echo extra_class($post->ID) . $ex_class; ?>">
-		<article id="post-<?php the_ID(); ?>" <?php post_class(get_cat_color($post->ID)); ?> itemscope itemtype="http://schema.org/Product">
+		<article id="post-<?php the_ID(); ?>" <?php post_class( array( get_cat_color($post->ID), 'hover-shadow' ) ); ?> itemscope itemtype="http://schema.org/Product">
 
 			<?php
 			if ( $view == 'list' ) {
