@@ -69,7 +69,7 @@ if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 		'price' => __( 'Price:', 'bon' ),
 		'monprice' => __( 'Monthly price:', 'bon' ),
 		'lotsize' => __( 'Size:', 'bon' ),
-		'terracesqmt' => __( 'Small Cottages Terrace size:', 'bon' ),
+		'terracesqmt' => __( 'Terrace size:', 'bon' ),
 		'rooms' => __( 'Rooms:', 'bon' ),
 		'floors' => __( 'Floors:', 'bon' ),
 	) );
@@ -95,9 +95,9 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 	'windowssizes' => __( 'Windows sizes:', 'bon' ),
 	'doors' => __( 'Doors:', 'bon' ),
 	'doorssizes' => __( 'Doors sizes:', 'bon' ),
-	'roofsize' => __( 'Roof size', 'bon' ),
-	'columnssizes' => __( 'Columns size', 'bon' ),
-	'rafterssizes' => __( 'Rafters size', 'bon' ),
+	'roofsize' => __( 'Roof size', 'bon' ) . ':',
+	'columnssizes' => __( 'Columns size', 'bon' ) . ':',
+	'rafterssizes' => __( 'Rafters size', 'bon' ) . ':',
 	) );
 	?>
 	<section>
