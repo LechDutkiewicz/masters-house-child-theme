@@ -16,12 +16,34 @@ if ( !defined( 'ABSPATH' ) )
  *
  *
  */
-	?>
+?>
 
 <section>
 	<div class="row entry-row">
 		<div class="column large-12">
-			<img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/village-map.jpg" class="auto full">
+
+			<script>
+
+			var cottages = {<?php
+				foreach ( $cottages = get_village_map() as $key => $cottage )
+				{
+					echo PHP_EOL;
+					$output = $key . ":";
+					$output .= '{';
+					$output .= "'id':" . "'". $cottage['id'] ."',";
+					$output .= "'format':" . "'". $cottage['format'] ."',";
+					$output .= "'url':" . "'". $cottage['url'] ."'";
+					$output .= '},';
+
+					echo $output;
+				}
+				?>
+			};
+
+			</script>
+
+			<?php echo file_get_contents( trailingslashit( BON_THEME_URI ) . 'assets/images/village-map/village-map.svg' ); ?>
+
 		</div>
 	</div>
 </section>

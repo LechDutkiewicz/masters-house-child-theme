@@ -3,8 +3,14 @@
 	<?php while ( have_posts() ) : the_post(); ?>
 
 	<?php
-
-	bon_get_template_part( 'content', ( post_type_supports( get_post_type(), 'post-formats' ) ? get_post_format() : get_post_type() ) );
+	if ( get_post_type() === 'post' )
+	{
+		bon_get_template_part( 'content', ( post_type_supports( get_post_type(), 'post-formats' ) ? get_post_format() : get_post_type() ) );
+	}
+	else
+	{
+		bon_get_template_part( 'content', ( post_type_supports( get_post_type(), 'post-formats' ) ? get_post_format() . '-' . get_post_type() : get_post_type() ) );
+	}
 	?>
 
 	<?php
