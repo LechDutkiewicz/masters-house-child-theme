@@ -39,7 +39,7 @@ if ( $related ) {
 	<section class="entry-content clear listing-excerpt margin-large top">
 
 		<header class="entry-header clear">
-			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h2 class="entry-title">', '</h2>', false ) ); ?>
+			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h3 class="entry-title">', '</h3>', false ) ); ?>
 		</header><!-- .entry-header -->
 
 		<?php bon_get_template_part( 'block', 'listinggallery' ); ?>

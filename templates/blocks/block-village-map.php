@@ -32,7 +32,8 @@ if ( !defined( 'ABSPATH' ) )
 					$output .= '{';
 					$output .= "'id':" . "'". $cottage['id'] ."',";
 					$output .= "'format':" . "'". $cottage['format'] ."',";
-					$output .= "'url':" . "'". $cottage['url'] ."'";
+					$output .= "'url':" . "'". $cottage['url'] ."',";
+					$output .= "'title':" . "'". $cottage['title'] ."'";
 					$output .= '},';
 
 					echo $output;
