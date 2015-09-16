@@ -22,7 +22,7 @@
 						<input type="hidden" name="subject" value="<?php echo "[" . __( 'Free visit request', 'bon' ) . "]"; ?>" />
 						<input type="hidden" name="receiver" value="<?php echo get_option( 'admin_email' ); ?>" />
 						<input type="hidden" name="messages" value="<?php _e( 'Visit request', 'bon' ); ?>" />
-						<input class="flat button <?php echo bon_get_option( 'cta_button_color', 'emerald' ); ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Request a free visit', 'bon' ); ?>" />
+						<input class="flat button <?php echo bon_get_option( 'cta_button_color', 'emerald' ); ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Request a free visit', 'bon' ); ?>" <?php the_ga_event( "Contact", "Click Send", "Visit Request Form" ); ?> />
 						<span class="contact-loader"><img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/loader.gif" alt="loading..." />
 					</div>
 					<div class="sending-result"><div class="green bon-toolkit-alert"></div></div>

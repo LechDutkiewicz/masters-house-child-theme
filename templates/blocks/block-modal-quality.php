@@ -30,7 +30,7 @@ $qualities = get_qualities();
 
 					<?php foreach ( $qualities as $index => $quality_item ) { ?>
 
-					<div class="quality-icon animate bounceIn" data-target="<?php echo $index; ?>" data-top="<?php echo $quality_item['top']; ?>"data-left="<?php echo $quality_item['left']; ?>"  data-tablet-top="<?php echo $quality_item['tablet-top']; ?>" data-tablet-left="<?php echo $quality_item['tablet-left']; ?>" data-analytics-category="quality-widget" data-analytics-action="click-icon" data-analytics-selector="description-icon">
+					<div class="quality-icon animate bounceIn" data-target="<?php echo $index; ?>" data-top="<?php echo $quality_item['top']; ?>"data-left="<?php echo $quality_item['left']; ?>"  data-tablet-top="<?php echo $quality_item['tablet-top']; ?>" data-tablet-left="<?php echo $quality_item['tablet-left']; ?>" <?php the_ga_event( "Quality Widget", "Click Icon", bon_get_option( sanitize_title( $quality_item['name'] ) . '_name' ), get_the_permalink() ); ?>>
 
 						<?php if ( $quality_item['arrow'] ) { ?>
 						<div class="click-arrow">

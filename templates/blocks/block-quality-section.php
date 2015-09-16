@@ -15,7 +15,7 @@ $imgs = array(
 		<span class="hover-mask">
 			<?php echo wp_get_attachment_image( $imgs['1']['id'], 'full', '', array('class' => '') ); ?>
 			<span class="overlay"></span>		
-			<a href="#quality-modal" role="button" data-toggle="modal" class="flat button main radius cta button-absolute bottom right hide-for-small" data-analytics-category="single page banners" data-analytics-action="click-quality-banner" data-analytics-selector="quality-banner"><?php _e( 'Read more', 'bon' ); ?></a>
+			<a href="#quality-modal" role="button" data-toggle="modal" class="flat button main radius cta button-absolute bottom right hide-for-small" <?php the_ga_event( "Banners", "Click", "Quality Banner" ); ?>><?php _e( 'Read more', 'bon' ); ?></a>
 			</span>
 
 		<?php bon_get_template_part( 'block', 'block-modal-quality' ); ?>

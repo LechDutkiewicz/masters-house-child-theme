@@ -53,7 +53,7 @@ if ( !empty( $loop->posts ) ) :
 
 					<?php if ( shandora_get_meta( $post->ID, 'feature_scroll_to' ) && is_singular( 'listing' ) ) { ?>
 
-					<a href="#faq" role="button" class="button flat main radius tiny scrollTo" title="<?php _e( 'Ask a question', 'bon'); ?>"  data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" data-analytics-category="faq" data-analytics-action="click scroll to button" data-analytics-selector="faq-scroll-to">
+					<a href="#faq" role="button" class="button flat main radius tiny scrollTo" title="<?php _e( 'Ask a question', 'bon'); ?>"  data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" <?php the_ga_event( "FAQ", "Click Ask a Question From Services Button" ); ?>>
 						<span class="cta-headline"><?php _e( 'Ask a question', 'bon'); ?></span>
 					</a>
 

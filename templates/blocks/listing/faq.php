@@ -30,7 +30,7 @@ if ( $loop->have_posts() ) {
 						<?php } ?>
 						<li class="accordion-group">
 							<input type="radio" name="toggle-section-faq" id="toggle-target-<?php echo $loop->current_post + 20; ?>" <?php if ($loop->current_post == 0) echo 'checked="checked"'; ?>>
-							<label for="toggle-target-<?php echo $loop->current_post + 20; ?>" class="accordion-section-title"><?php the_title(); ?></label>
+							<label for="toggle-target-<?php echo $loop->current_post + 20; ?>" class="accordion-section-title" <?php the_ga_event( "FAQ", "Pick a Question", get_the_title() ); ?>><?php the_title(); ?></label>
 							<span class="accordion-open"><i class="sha-arrow-down"></i></span>
 							<span class="accordion-close"><i class="sha-arrow-right"></i></span>
 							<div class="toggle-content"><?php echo get_the_content(); ?></div>
@@ -42,11 +42,11 @@ if ( $loop->have_posts() ) {
 				endwhile; ?>
 			</ul>
 			<?php if ($loop->post_count > 5 && is_singular( 'listing' ) ) { ?>
-			<a class="button flat main radius" data-toggle="collapse" href="#faqCollapse" aria-expanded="false" aria-controls="faqCollapse" title="<?php _e( 'Show more', 'bon'); ?>">
+			<a class="button flat main radius" data-toggle="collapse" href="#faqCollapse" aria-expanded="false" aria-controls="faqCollapse" title="<?php _e( 'Show more', 'bon'); ?>" <?php the_ga_event( "FAQ", "Click Show More" ); ?>>
 				<?php _e('Show more questions', 'bon'); ?>
 			</a>
 			<?php } ?>
-			<a href="#contact-modal" role="button" data-toggle="modal" class="button flat <?php echo $button_color = bon_get_option( 'search_button_color', 'emerald' ); ?> radius" title="<?php _e( 'Leave us a message', 'bon'); ?>" data-modal-title="<?php _e( 'Leave us a message', 'bon'); ?>" data-analytics-category="contact-form" data-analytics-action="open from faq" data-analytics-selector="faq-contact">
+			<a href="#contact-modal" role="button" data-toggle="modal" class="button flat <?php echo $button_color = bon_get_option( 'search_button_color', 'emerald' ); ?> radius" title="<?php _e( 'Leave us a message', 'bon'); ?>" data-modal-title="<?php _e( 'Leave us a message', 'bon'); ?>" <?php the_ga_event( array( "FAQ", "Click to Ask Another Question" ), array( "Contact", "Open", "FAQ" ) ); ?>>
 				<span class="cta-headline"><?php _e( 'Ask another question', 'bon'); ?></span>
 			</a>
 			<?php bon_get_template_part( 'block', 'modal-contact'); ?>

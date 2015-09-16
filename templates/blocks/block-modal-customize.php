@@ -33,7 +33,7 @@ if ( !defined( 'ABSPATH' ) )
 						<input type="hidden" name="listing_id" value="<?php echo $post->ID; ?>" />
 						<input type="hidden" name="receiver" value="<?php echo get_option( 'admin_email' ); ?>" />
 						<input type="hidden" name="title" value="<?php echo get_the_title(); ?>" />
-						<input class="flat button <?php echo bon_get_option( 'cta_button_color', 'emerald' ); ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Send', 'bon' ); ?>" />
+						<input class="flat button <?php echo bon_get_option( 'cta_button_color', 'emerald' ); ?> radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Send', 'bon' ); ?>" <?php the_ga_event( "Contact", "Click Send", "Customize Form" ); ?> />
 						<span class="contact-loader"><img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/loader.gif" alt="loading..." />
 					</div>
 					<div class="sending-result"><div class="green bon-toolkit-alert"></div></div>

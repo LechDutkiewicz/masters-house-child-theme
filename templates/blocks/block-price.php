@@ -34,11 +34,19 @@ $packages = get_packages_list();
 			<div class="column large-12 search-order">
 				<select name="package_form">
 
-					<?php foreach ($packages as $key => $package) { ?>
+					<?php
+					if ( $packages !== null )
+					{
+						foreach ($packages as $key => $package)
+						{
+							?>
 
-					<option value="<?php echo sanitize_text_field( $package['package_name'] ); ?>"<?php if ($key === 0) echo ' selected="selected"'; ?>><?php echo $package['package_name']; ?></option>
+							<option value="<?php echo sanitize_text_field( $package['package_name'] ); ?>"<?php if ($key === 0) echo ' selected="selected"'; ?>><?php echo $package['package_name']; ?></option>
 
-					<?php } ?>
+							<?php
+						}
+					}
+					?>
 
 				</select>
 				<input type="hidden" id="post_id" name="post_id" value="<?php echo $post->ID; ?>">
@@ -52,8 +60,8 @@ $packages = get_packages_list();
 
 </div>
 
-
-
-<a href="#contact-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta expand" title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>">
+<a href="#contact-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta expand" title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" <?php the_ga_event( array( 'CTA', 'Click buy', defined('CTA_EXISTS') ? 'Bottom': 'Top' ), array( "Contact", "Open", "Order" ) ); ?>>
 	<span class="cta-headline"><?php _e( 'Contact us', 'bon' ); ?></span><span class="cta-subline"><?php _e( 'and order your cottage', 'bon' ); ?></span>
 </a>
+
+<?php define('CTA_EXISTS', true); ?>
