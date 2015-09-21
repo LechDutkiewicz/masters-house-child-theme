@@ -19,7 +19,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 
 // setup vars
-$related = shandora_get_meta( $post->ID, 'related_cottage');
+$related = shandora_get_meta( $post->ID, 'listing_related_cottage');
 
 if ( $related ) {
 

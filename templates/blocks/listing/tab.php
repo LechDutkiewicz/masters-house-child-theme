@@ -53,16 +53,6 @@ if ( array_key_exists( $status, $status_opt ) ) {
 	$status = $status_opt[$status];
 }
 
-//Changed by Lech Dutkiewicz
-
-/*$details = apply_atomic( 'property_details_tab_content', array(
-	'price' => __( 'Price:', 'bon' ),
-	'monprice' => __( 'Monthly price:', 'bon' ),
-	'lotsize' => __( 'Size:', 'bon' ),
-	'terracesqmt' => __( 'Terrace size:', 'bon' ),
-	'rooms' => __( 'Rooms:', 'bon' ),
-	'floors' => __( 'Floors:', 'bon' ),
-	) );*/
 // Changed by Maduranga.	
 if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 	$details = apply_atomic( 'property_details_tab_content', array(
@@ -72,8 +62,8 @@ if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 		'terracesqmt' => __( 'Terrace size:', 'bon' ),
 		'rooms' => __( 'Rooms:', 'bon' ),
 		'floors' => __( 'Floors:', 'bon' ),
-	) );
-}else {
+		) );
+} else {
 	$details = apply_atomic( 'property_details_tab_content', array(
 		'price' => __( 'Price:', 'bon' ),
 		'monprice' => __( 'Monthly price:', 'bon' ),
@@ -81,7 +71,7 @@ if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 		'terracesqmt' => __( 'Terrace size:', 'bon' ),
 		'rooms' => __( 'Rooms:', 'bon' ),
 		'floors' => __( 'Floors:', 'bon' ),
-	) );
+		) );
 }
 
 $specs = apply_atomic( 'property_specifications_tab_content', array(
@@ -98,48 +88,53 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 	'roofsize' => __( 'Roof size', 'bon' ) . ':',
 	'columnssizes' => __( 'Columns size', 'bon' ) . ':',
 	'rafterssizes' => __( 'Rafters size', 'bon' ) . ':',
-	) );
-	?>
-	<section>
-		<nav class="tab-nav">
+	)
+);
+?>
+<section>
+	<nav class="tab-nav">
 
-			<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
+		<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
 
-			<a class="active" href="#tab-target-details"><?php _e( 'Details', 'bon' ); ?></a>
+		<a class="active" href="#tab-target-details"><?php _e( 'Details', 'bon' ); ?></a>
 
-			<?php } ?>
+		<?php } ?>
 
-			<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?>
+		<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?>
 
-			<a href="#tab-target-spec"><?php _e( 'Specifications', 'bon' ); ?></a>
+		<a href="#tab-target-spec"><?php _e( 'Specifications', 'bon' ); ?></a>
 
-			<?php } ?>
+		<?php } ?>
 
-			<a class="<?php
-			if ( empty( $details ) || !is_array( $details ) ) {
-				echo 'active';
-			}
-			?>" href="#tab-target-features"><?php _e( 'Additional services', 'bon' ); ?></a>
+		<?php if ( $_SESSION['layoutType'] !== 'mobile' ) { ?>
 
-		</nav>
-		<div class="tab-contents">
+		<a class="<?php
+		if ( empty( $details ) || !is_array( $details ) ) {
+			echo 'active';
+		}
+		?>" href="#tab-target-features"><?php _e( 'Additional services', 'bon' ); ?></a>
 
-			<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
-			<div id="tab-target-details" class="tab-content active border-main">
+		<?php } ?>
 
-				<ul class="property-details">
-					<?php foreach ( $details as $key => $value ) { ?>
-					<?php if ( !empty( $$key ) ) { ?> 
-					<li>
-						<strong><?php echo $value; ?> </strong>
+	</nav>
+	<div class="tab-contents">
 
-						<?php
+		<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
+		<div id="tab-target-details" class="tab-content active border-main">
+
+			<ul class="property-details">
+				<?php foreach ( $details as $key => $value ) { ?>
+				<?php if ( !empty( $$key ) ) { ?> 
+				<li>
+					<strong><?php echo $value; ?> </strong>
+
+					<?php
 						// display other layout if meta is price
-						if ( $key === 'price' ) {
+					if ( $key === 'price' ) {
 
-							shandora_get_listing_price();
+						shandora_get_listing_price();
 
-						} else {
+					} else {
 
 						// display regular layout for all other meta values
 						?>
@@ -165,8 +160,7 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 
 					</li>
 					<?php } ?>
-					<?php }
-					?>
+					<?php }	?>
 				</ul>
 
 			</div>
@@ -203,6 +197,8 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 				</ul>
 			</div>
 
+			<?php if ( $_SESSION['layoutType'] !== 'mobile' ) { ?>
+
 			<div id="tab-target-features" class="tab-content border-main">
 
 				<ul class="bon-toolkit-accordion" id="accordion-services">
@@ -212,6 +208,8 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 				</ul>
 
 			</div>
+
+			<?php } ?>
 
 			<?php } ?>
 

@@ -51,7 +51,7 @@ if ( $listing_gal ) {
 				?>
 			</ul>
 			<?php if ( $with_thumbnail == 'yes' || $with_thumbnail == 'both' ) : ?>
-				<ul id="bx-pager" class="large-custom-grid-7 small-custom-grid-6">
+				<ul id="bx-pager" class="bx-pager large-custom-grid-7 small-custom-grid-6">
 					<?php
 					$i = 0;
 					foreach ( $attachments as $attachment_id ) {

@@ -11,7 +11,7 @@ $loop = new WP_Query( $args );
 
 if ( $loop->have_posts() ) :
 	?>
-<section class="padding-large top bottom">
+<section class="padding-large top<?php echo $_SESSION['layoutType'] !== 'mobile' ? ' bottom' : ''; ?>">
 	<header class="section-header">
 		<h2 class="<?php echo shandora_is_home() ? 'home-section-header' : 'services-header'; ?>"><?php _e( 'Our clients rock', 'bon' ); ?></h2>
 		<?php if ( !shandora_is_home() ) echo '<hr />'; ?>
@@ -22,7 +22,7 @@ if ( $loop->have_posts() ) :
 	<?php render_single_testimonial( $post ); ?>
 <?php endwhile; ?>
 <?php close_testimonials_slider(); ?>
-<?php get_slider_thumbnails( $loop ); ?>
+<?php if ( $_SESSION['layoutType'] !== 'mobile' ) get_slider_thumbnails( $loop ); ?>
 <?php close_testimonials_slider_container(); ?>
 </section>
 <?php

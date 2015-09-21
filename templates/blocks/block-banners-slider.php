@@ -18,7 +18,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
 
 <?php if (!empty($banners)) { ?>
 
-<section class="padding-large top bottom">
+<section id="banners-slider" class="padding-large top bottom">
     <ul class="slides bxslider-no-thumb-no-controls autostart" data-pause="5000">
         <?php foreach ( $banners as $index => $banner ) { ?>
 

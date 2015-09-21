@@ -23,18 +23,13 @@ if ( !empty( $loop->posts ) ) :
 
 </div>
 
-<div class="row services-container">
+<div id="services-container" class="row services-container">
 
 	<?php while ( $loop->have_posts() ) : $loop->the_post();
 
-	// setup variables
-		/*$more_title = shandora_get_meta( $post->ID, 'service_more_title' );
-		$more_content = shandora_get_meta( $post->ID, 'service_more_content', false, false );
-		$sanitazed_title = sanitize_title( $more_title );*/
-
 		?>
 
-		<div class="column large-12 service-container padding-medium top bottom <?php echo $exClass; ?> fade-in clearfix">
+		<div class="column large-12 service-container padding-medium top bottom <?php echo $exClass; ?> clearfix">
 			<div class="round-icon icon-wrapper bg-<?php echo shandora_get_meta( $post->ID, 'featureiconcolor' ); ?>">
 				<i class="icon-anim-left-right text bonicons <?php echo shandora_get_meta( $post->ID, 'featureicon' ); ?>"></i>
 			</div>
@@ -51,7 +46,7 @@ if ( !empty( $loop->posts ) ) :
 
 					<?php } ?>
 
-					<?php if ( shandora_get_meta( $post->ID, 'feature_scroll_to' ) && is_singular( 'listing' ) ) { ?>
+					<?php if ( shandora_get_meta( $post->ID, 'feature_scroll_to' ) && is_singular( 'listing' ) && $_SESSION['layoutType'] !== 'mobile' ) { ?>
 
 					<a href="#faq" role="button" class="button flat main radius tiny scrollTo" title="<?php _e( 'Ask a question', 'bon'); ?>"  data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" <?php the_ga_event( "FAQ", "Click Ask a Question From Services Button" ); ?>>
 						<span class="cta-headline"><?php _e( 'Ask a question', 'bon'); ?></span>
