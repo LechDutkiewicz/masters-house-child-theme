@@ -1,4 +1,24 @@
 <?php
+
+if ( !defined( 'ABSPATH' ) )
+	exit( 'No direct script access allowed' ); // Exit if accessed directly
+
+/**
+ * Shandora listing gallery
+ * This block handles product gallery displayed on product page
+ *
+ *
+ * @author		Lech Dutkiewicz
+ * @copyright	Copyright (c) Lech Dutkiewicz
+ * @link		http://techsavvymarketers.pl
+ * @since		Version 1.1
+ * @package 	Layouts
+ * @category 	Layout
+ *
+ *
+ */
+
+// setup vars
 $listing_gal = shandora_get_meta( get_the_ID(), 'listing_gallery' );
 
 $layout = get_theme_mod( 'theme_layout' );
@@ -21,7 +41,7 @@ if ( $listing_gal ) {
 		?>
 	<section>
 		<div class="entry-gallery badge-container">
-			<?php the_badge(); ?>
+			<?php if ( get_post_type() == "listing" ) the_badge(); ?>
 			<?php
 			$with_thumbnail = bon_get_option( 'listing_gallery_thumbnail' );
 

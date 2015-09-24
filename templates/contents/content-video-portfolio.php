@@ -1,6 +1,4 @@
 <?php
-global $bonbuilder;
-$builder = get_post_meta( get_the_ID(), bon_get_prefix() . 'builder', true );
 
 if ( $_SESSION['layoutType'] === 'mobile' ) {
 	$size = 'mobile_regular';
@@ -16,7 +14,7 @@ $color = get_option( "taxonomy_$color" );
 $color = $color['color'];
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('listing'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('listing format-video'); ?>>
 
 	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
 
@@ -35,7 +33,7 @@ $color = $color['color'];
 		<?php //display client's testimonial if there is one ?>
 		<?php if ( shandora_get_meta( $post->ID, 'testimonial' ) != "" ) { shandora_get_testimonial( $loop, $post ); } ?>
 
-		<?php bon_get_template_part( 'block', 'listing-excerpt' ); ?>		
+		<?php bon_get_template_part( 'block', 'listing-excerpt' ); ?>
 
 		<?php do_atomic( "after_single_post_content" ); ?>
 
