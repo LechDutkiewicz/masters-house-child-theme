@@ -151,9 +151,8 @@ get_header();
 		<div class="column large-3 small-4 agent-detail">				
 			<figure>
 				<?php
-				$img_id = shandora_get_meta( $agent_id, 'agentpic' );
 				if ( current_theme_supports( 'get-the-image' ) )
-					get_the_image( array( 'post_id' => $img_id, 'size' => $size, 'link_to_post' => false, 'image_class' => 'auto' ) );
+					get_the_image( array( 'post_id' => $agent_id, 'size' => $size, 'link_to_post' => false, 'image_class' => 'auto' ) );
 				?>
 			</figure>
 		</div>
@@ -174,27 +173,7 @@ get_header();
 	<div class="column large-12">
 		<p><?php echo $contentContact; ?></p>
 	</div>
-	<div id="detail-tab" class="column tabs-container large-12">
-		<section>
-			<nav class="tab-nav">
-				<a class="active" href="#tab-target-contact"><?php _e( 'Contact', 'bon' ); ?></a>
-				<a href="#tab-target-faq"><?php _e( 'FAQ', 'bon' ); ?></a>
-			</nav>
-			<div class="tab-contents">
-				<div id="tab-target-contact" class="tab-content active">
-
-					<?php bon_get_template_part( 'forms', 'agent-contactform' ); ?>
-					
-				</div>
-			</div>
-			<div class="tab-contents">
-				<div id="tab-target-faq" class="tab-content">
-					<?php bon_get_template_part( 'block', 'listing/faq' ); ?>						
-				</div>
-			</div>
-		</section>
-	</div>
-
+	<?php bon_get_template_part( 'block', 'contactform-faq' ); ?>
 <?php endif; ?>
 
 </section>
