@@ -29,7 +29,7 @@ $color = $color['color'];
 		<?php bon_get_template_part( 'block', 'listinggallery' ); ?>
 
 		<div class="padding-large bottom">
-			<?php //the_content(); ?>
+			<?php if ( get_the_content() ) the_content(); ?>
 		</div>
 
 		<?php //display client's testimonial if there is one ?>

@@ -22,12 +22,12 @@ $args = array(
 	'post_type' => 'promotions',
 	'posts_per_page' => 1,
 	'orderby' => 'menu_order'
-);
+	);
 
 $loop = new WP_Query( $args );
 
 while ( $loop->have_posts() ) : $loop->the_post();
-	?>
+?>
 
 <section>
 	<header class="section-header">
@@ -35,13 +35,17 @@ while ( $loop->have_posts() ) : $loop->the_post();
 	</header>
 	<div class="row entry-row">
 		<div class="column large-12">
-			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'full', 'image_class' => 'auto' ) ); ?>
+			<?php if ( current_theme_supports( 'get-the-image' ) && get_the_content() ) { ?>
+			<?php get_the_image( array( 'size' => 'full', 'image_class' => 'auto' ) ); ?>
 			<a href="<?php the_permalink(); ?>" class="flat button main radius cta button-absolute bottom right hide-for-small"><?php _e( 'Read more', 'bon' ); ?></a>
+			<?php } else if ( current_theme_supports( 'get-the-image' ) && !get_the_content() ) { ?>
+			<?php get_the_image( array( 'size' => 'full', 'image_class' => 'auto', 'link_to_post' => false ) ); ?>
+			<?php } ?>
 		</div>
 	</div>
 </section>
 
-	<?php
+<?php
 endwhile;
 wp_reset_query();
 
