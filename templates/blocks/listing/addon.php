@@ -1,12 +1,5 @@
 <?php
 
-/*$args = array(
-	'post_type' => 'addon',
-	'posts_per_page' => 10,
-	'orderby' => 'menu_order',
-	'order' => 'ASC',
-	);*/
-
 $addons = 'cottage';
 
 if ( shandora_get_meta( get_the_ID(), 'listing_enable_packages' ) ) {
@@ -55,9 +48,10 @@ if ( !empty( $loop->posts ) ) {
 			<?php
 		}
 		endwhile;
-		wp_reset_query();
 		?>
 	</ul>
 </div>
-<?php } ?>
+<?php }
+wp_reset_query();
+?>
 
