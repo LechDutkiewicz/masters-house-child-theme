@@ -23,7 +23,7 @@ $list = new WP_query( $args );
 if ( isset( $_COOKIE['slidebox'] ) && $_COOKIE['slidebox'] )
 	$exClass='hidden';
 
-if ($list->have_posts()) : while ($list->have_posts()) : $list->the_post();
+if ( $list->have_posts() && !in_array('page-template-village-map', get_body_class()) ) : while ($list->have_posts()) : $list->the_post();
 ?>
 
 <div id="slidebox" <?php echo $exClass ? "class='$exClass' " : ''; ?>style="width: <?php echo $width; ?>px">
