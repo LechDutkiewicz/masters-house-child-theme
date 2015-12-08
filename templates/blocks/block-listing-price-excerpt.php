@@ -24,7 +24,7 @@ $packages = get_packages_list();
 
 
 <div class="price-box text-center">
-	<div class="price text main"><?php shandora_get_listing_price( true, true, true ); ?></div>
+	<div class="price text-main"><?php shandora_get_listing_price( true, true, true ); ?></div>
 	<small>(<?php _e( 'includes VAT', 'bon' ); ?>)</small>
 
 	<?php if ( shandora_get_meta( $post->ID, 'listing_enable_packages' ) && !defined('PACKAGE_FORM') ) { ?>

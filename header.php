@@ -17,7 +17,6 @@
 
 ?>
 <body data-spy="scroll" data-target=".affix-nav-container"  id="totop" <?php body_class( $class ); ?><?php if ( WP_ENV === 'production' && !is_user_logged_in() && bon_get_option('google_adwords') ) { ?> onload="_googWcmGet('phone', '<?php echo esc_attr( bon_get_option( 'hgroup1_content' ) ); ?>')"<?php } ?>>
-	<a href="#main-content" class="sr-only sr-only-focusable"><?php _e( 'Skip to main content', 'bon'); ?></a>
 	<div id="outer-wrap">
 
 	<!-- BEGIN Header -->

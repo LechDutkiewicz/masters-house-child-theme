@@ -14,7 +14,7 @@ $imgs = array(
 if ( !empty( $imgs ) && !$mobile ) :
 	?>
 
-<section class="customize">
+<section class="customize hide-for-small">
 
 	<header class="section-header">
 		<h2 class="home-section-header"><?php echo bon_get_option( 'customize_section_title_home', 'yes' ); ?></h3>
@@ -31,7 +31,7 @@ if ( !empty( $imgs ) && !$mobile ) :
 		<?php } ?>
 
 		<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-			<h3 class="text <?php echo bon_get_option( 'tool_button_color', 'peterRiver' ); ?>"><?php echo bon_get_option( 'customize_section_header_home', 'yes' ); ?></h3>
+			<h3 class="text-<?php echo bon_get_option( 'tool_button_color', 'peterRiver' ); ?>"><?php echo bon_get_option( 'customize_section_header_home', 'yes' ); ?></h3>
 			<p><?php echo bon_get_option( 'customize_section_content_home', 'yes' ); ?></p>
 			<?php shandora_tool_cta(); ?>	
 		</div>

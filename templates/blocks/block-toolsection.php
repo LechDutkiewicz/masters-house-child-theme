@@ -20,7 +20,7 @@ $imgs = array(
 if ( !empty( $imgs ) ) :
 	?>
 
-<section class="customize padding-large top bottom">
+<section class="customize padding-large top bottom hide-for-small">
 
 	<header>
 		<h2><?php echo bon_get_option( 'customize_section_title', 'yes' ); ?></h2>
@@ -39,15 +39,17 @@ if ( !empty( $imgs ) ) :
 		<?php } ?>
 
 		<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-			<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h3>
+			<h3 class="text-main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h3>
 			<p><?php echo bon_get_option( 'customize_section_content_1', 'yes' ); ?></p>
 			<?php if ( !empty($imgs['2']['id']) && !empty($imgs['3']['id'] ) ) { ?>
 
-			<a class="button flat main radius" data-toggle="collapse" href="#customizeCollapse" aria-expanded="false" aria-controls="customizeCollapse" <?php the_ga_event( "Customize", "Open Customization Section" ); ?>><?php _e('Show more', 'bon'); ?></a>
+			<a class="button flat main radius" role="button" data-toggle="collapse" href="#customizeCollapse" aria-expanded="false" aria-controls="customizeCollapse" <?php the_ga_event( "Customize", "Open Customization Section" ); ?> data-title-shrinked="<?php _e('Show more', 'bon')?>" data-title-collapsed="<?php _e('Collapse', 'bon'); ?>">
+				<span><?php _e('Show more', 'bon'); ?></span><i class="bonicons bi-plus"></i>
+			</a>
 			
 			<?php } else { ?>
 
-			<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="Contact us" <?php the_ga_event( "Customize", "Open Contact Form" ); ?>><?php _e( 'Contact us', 'bon' ); ?></a>
+			<a href="#" role="button" data-modal-title="<?php _e("Please describe some details", "bon"); ?>" data-reveal-id="contact-modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="<?php _e( 'Contact us', 'bon'); ?>" <?php the_ga_event( array( "Customize", "Open Contact Form" ), array( 'CTA', 'Click buy', 'Customize' ), array( "Contact", "Open", "Customization Section" ) ); ?>><?php _e( 'Contact us', 'bon' ); ?></a>
 
 			<?php } ?>
 		</div>
@@ -64,7 +66,7 @@ if ( !empty( $imgs ) ) :
 
 	<?php if ( !empty($imgs['2']['id']) && !empty($imgs['3']['id'] ) ) { ?>
 
-	<div class="collapse panel-collapse" id="customizeCollapse">
+	<div class="collapse" id="customizeCollapse">
 
 		<div class="well">
 
@@ -89,7 +91,7 @@ if ( !empty( $imgs ) ) :
 				<?php } ?>
 
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-					<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h3>
+					<h3 class="text-main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h3>
 					<p><?php echo bon_get_option( 'customize_section_content_2', 'yes' ); ?></p>
 					<?php shandora_tool_cta(); ?>				
 				</div>
@@ -108,9 +110,9 @@ if ( !empty( $imgs ) ) :
 				<?php } ?>
 
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-					<h3 class="text main"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h3>
+					<h3 class="text-main"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h3>
 					<p><?php echo bon_get_option( 'customize_section_content_3', 'yes' ); ?></p>
-					<a href="#customize-modal" role="button" data-toggle="modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="<?php _e( 'Contact us', 'bon'); ?>" <?php the_ga_event( array( "Customize", "Open Contact Form" ), array( 'CTA', 'Click buy', 'Customize' ), array( "Contact", "Open", "Customization Section" ) ); ?>><?php _e( 'Contact us', 'bon' ); ?></a>
+					<a href="#" role="button" data-modal-title="<?php _e("Please describe some details", "bon"); ?>" data-reveal-id="contact-modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="<?php _e( 'Contact us', 'bon'); ?>" <?php the_ga_event( array( "Customize", "Open Contact Form" ), array( 'CTA', 'Click buy', 'Customize' ), array( "Contact", "Open", "Customization Section" ) ); ?>><?php _e( 'Contact us', 'bon' ); ?></a>
 				</div>
 
 				<?php if ( !$mobile ) { ?>
@@ -128,8 +130,6 @@ if ( !empty( $imgs ) ) :
 	</div>
 
 	<?php } ?>
-
-	<?php bon_get_template_part( 'block', 'block-modal-customize' ); ?>
 
 </section>
 

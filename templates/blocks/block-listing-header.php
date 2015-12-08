@@ -3,23 +3,8 @@ $size = ( isset( $_GET['view'] ) && $_GET['view'] == 'list' ) ? 'listing_list' :
 ?>
 <header class="entry-header badge-container">
 
-	<?php the_badge(); ?>
+	<?php the_badge();
 
-	<?php
-	$_overlay_btns = bon_get_option( 'overlay_buttons', array( 'link' => true, 'gallery' => true, 'compare' => true ) );
-
-	$link_btn = $_overlay_btns['link'] == true ? true : false;
-	$gallery_btn = $_overlay_btns['gallery'] == true ? true : false;
-	$compare_btn = $_overlay_btns['compare'] == true ? true : false;
-
-	if ( ( bon_get_option( 'show_overlay', 'yes' ) == 'yes' ) && ( $link_btn || $gallery_btn || $compare_btn ) ) :
-		?>
-		<div class="listing-hover">
-			<span class="mask"></span>
-			<?php echo shandora_get_listing_hover_action( get_the_ID() ); ?>
-		</div>
-	<?php endif; ?>
-	<?php
 	if ( get_post_type() == 'listing' ) {
 
 		$terms = get_the_terms( get_the_ID(), "property-type" );
@@ -45,7 +30,6 @@ $size = ( isset( $_GET['view'] ) && $_GET['view'] == 'list' ) ? 'listing_list' :
 	?>	
 		<?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
 		<a class="header-link product-link" href="<?php the_permalink(); ?>" <?php the_ga_event('Cottage List', 'Pick single cottage', 'Image'); ?>>
-			<div class="overlay"></div>
 			<?php
 			if ( current_theme_supports( 'get-the-image' ) ) {
 				if ( $_SESSION['layoutType'] === 'mobile' ) {

@@ -26,16 +26,19 @@ if ( isset( $_COOKIE['slidebox'] ) && $_COOKIE['slidebox'] )
 if ( $list->have_posts() && !in_array('page-template-village-map', get_body_class()) ) : while ($list->have_posts()) : $list->the_post();
 ?>
 
-<div id="slidebox" <?php echo $exClass ? "class='$exClass' " : ''; ?>style="width: <?php echo $width; ?>px">
+<div id="slidebox" class="hide-for-small<?php echo $exClass ? " $exClass" : ''; ?>" style="width: <?php echo $width; ?>px">
 
 	<div class="slidebox-close bg-clouds darken-hover">
 		<span class="bonicons bi-chevron-<?php echo $exClass ? 'up': 'down'; ?>"></span>
 		<span class="bonicons bi-chevron-<?php echo $exClass ? 'up': 'down'; ?>"></span>
 		<span class="rotated-text"><?php _e( 'Hide', 'bon'); ?></span>
-		<span class="sr-only"><?php _e( 'Close', 'bon'); ?></span>
 	</div>
 
 	<div class="slidebox-inner">
+
+		<?php if ( $title = shandora_get_meta( $post->ID, 'slidebox_title' ) ) { ?>
+		<span class="like-h3 only-shrinked"><?php echo $title; ?></span>
+		<?php } ?>
 		
 		<a class="hover-mask only-expanded" href="<?php echo get_permalink( shandora_get_meta( $post->ID, 'slidebox_link' ) ); ?>" title="<?php echo __( 'Link to', 'bon') . ' ' . get_the_title( shandora_get_meta( $post->ID, 'slidebox_link' ) ); ?>">
 			<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'link_to_post' => false, 'before' => '<div class="slidebox-image">', 'after' => '</div>', 'image_class' => array('auto', 'margin-medium', 'bottom') ) ); ?>
@@ -43,7 +46,7 @@ if ( $list->have_posts() && !in_array('page-template-village-map', get_body_clas
 		</a>
 
 		<?php if ( $title = shandora_get_meta( $post->ID, 'slidebox_title' ) ) { ?>
-		<span class="like-h3"><?php echo $title; ?></span>
+		<span class="like-h3 only-expanded"><?php echo $title; ?></span>
 		<?php } ?>
 
 		<?php if ( $anchor = shandora_get_meta( $post->ID, 'slidebox_anchor' ) ) { ?>

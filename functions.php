@@ -124,7 +124,7 @@ function shandora_get_main_header() {
 		<div class="<?php echo $header_col_class; ?> column" id="company-info">
 			<div class="row">
 				<?php if ( $header_col_1 ) : ?>
-				<div class="<?php echo $col_class; ?> column small-text-center small-margin medium bottom">
+				<div class="<?php echo $col_class; ?> column text-center small-margin medium bottom">
 					<div class="icon hide-for-small">
 						<span class="sha-phone"></span>
 					</div>
@@ -160,12 +160,12 @@ function shandora_get_main_header() {
 				</div>
 			<?php endif; ?>
 			<?php if ( $header_col_2 ) : ?>
-			<div class="<?php echo $col_class; ?> column hide-for-small small-text-center">
+			<div class="<?php echo $col_class; ?> column hide-for-small text-center">
 				<div class="icon">
 					<span class="sha-calendar"></span>
 				</div>
 				<span class="info-title"><?php echo bon_get_option( 'hgroup2_title' ); ?></span>
-				<span class="phone visit"><strong><a href='#visit-modal' role='button' data-toggle='modal' title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></strong></span>
+				<span class="phone visit"><strong><a href="#" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></strong></span>
 			</div>
 		<?php endif; ?>
 	</div>
