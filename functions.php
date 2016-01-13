@@ -124,48 +124,45 @@ function shandora_get_main_header() {
 		<div class="<?php echo $header_col_class; ?> column" id="company-info">
 			<div class="row">
 				<?php if ( $header_col_1 ) : ?>
-				<div class="<?php echo $col_class; ?> column text-center small-margin medium bottom">
-					<div class="icon hide-for-small">
-						<span class="sha-phone"></span>
+				<div class="<?php echo $col_class; ?> column small-margin medium bottom">
+					<div class="row">
+						<div class="large-3 columns">
+							<div class="icon hide-for-small">
+								<span class="sha-phone"></span>
+							</div>
+						</div>
+						<div class="large-9 columns">
+							<span class="info-title"><?php echo esc_attr( bon_get_option( 'hgroup1_title' ) ); ?></span>
+							<?php
+							$phone_html = '';
+							$phone = explode( ',', esc_attr( bon_get_option( 'hgroup1_content' ) ) );
+							$phone_count = count( $phone );
+							if ( $phone_count > 1 ) {
+								foreach ( $phone as $number ) {
+									$phone_html .= '<strong>' . $number . '</strong>';
+								}
+							} else {
+								$phone_html .= get_formatted_phone_number();
+							}
+							?>
+							<span class="phone phone-<?php echo $phone_count; ?>"><?php echo $phone_html; ?></span>
+						</div>
 					</div>
-					<span class="info-title"><?php echo esc_attr( bon_get_option( 'hgroup1_title' ) ); ?></span>
-					<?php
-					$phone_html = '';
-					$phone = explode( ',', esc_attr( bon_get_option( 'hgroup1_content' ) ) );
-					$phone_count = count( $phone );
-					if ( $phone_count > 1 ) {
-						foreach ( $phone as $number ) {
-							$phone_html .= '<strong>' . $number . '</strong>';
-						}
-					} else {
-						$phone_html = '<strong>';
-
-						// make phone tag a clickable link for mobile devices that will fire a Google Analytics event
-						if ( $_SESSION['layoutType'] == 'mobile' ) {
-							$phone_html .= '<a href="tel:' . esc_attr( bon_get_option( 'hgroup1_content' ) ) . '"' . get_ga_event( "Contact", "Call", "Menu Bar" ) . '>';
-						}
-
-						$phone_html .= "<span class='phone phone-$phone_count'>";
-						$phone_html .= esc_attr( bon_get_option( 'hgroup1_content' ) );
-						$phone_html .= "</span>";
-
-						if ( $_SESSION['layoutType'] == 'mobile' ) {
-							$phone_html .='</a>';
-						}
-
-						$phone_html .='</strong>';
-					}
-					?>
-					<?php echo $phone_html; ?>
 				</div>
 			<?php endif; ?>
 			<?php if ( $header_col_2 ) : ?>
-			<div class="<?php echo $col_class; ?> column hide-for-small text-center">
-				<div class="icon">
-					<span class="sha-calendar"></span>
+			<div class="<?php echo $col_class; ?> column hide-for-small">
+				<div class="row">
+					<div class="large-3 columns">
+						<div class="icon">
+							<span class="sha-calendar"></span>
+						</div>
+					</div>
+					<div class="large-9 columns">
+						<span class="info-title"><?php echo bon_get_option( 'hgroup2_title' ); ?></span>
+						<span class="phone visit"><strong><a href="#" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></strong></span>
+					</div>
 				</div>
-				<span class="info-title"><?php echo bon_get_option( 'hgroup2_title' ); ?></span>
-				<span class="phone visit"><strong><a href="#" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></strong></span>
 			</div>
 		<?php endif; ?>
 	</div>
@@ -194,6 +191,43 @@ function get_formatted_phone_number() {
 	$output .='</strong>';
 
 	return $output;
+}
+
+function shandora_get_banner_opening_tag( $name ) {
+
+	$page = bon_get_option( $name . '_slide_page' );
+	$destination_page = bon_get_option( $name . '_slide_page_destination' );
+	$tool = bon_get_option( $name . '_slide_tool' );
+	$modal = bon_get_option( $name . '_slide_modal' );
+	$destination_modal = bon_get_option( $name . '_slide_modal_destination' );
+	$output = '';
+
+	if ( $page && $destination_page ) {
+		$output .= '<a href="' . get_the_permalink( $destination_page ) . '" class="hover-mask" title="' . __( 'Link to ', 'bon') . get_the_title( $destination_page) . '"' . get_ga_event( "Banners", "Click", "FAQ Banner" ) . '>';
+		return $output;
+	}
+
+	if ( $tool ) {
+
+		$link = bon_get_option( 'tool_section_cta_link_url' );
+
+		if ( $link != "" ) {
+
+			$onClick = 'onclick="window.open(\'' . $link . '\', \'VPWindow\', \'width=1024,height=768,toolbar=0,resizable=1,scrollbars=1,status=0,location=0\'); return false;"';
+
+			$output .= "<a href='$link' data-function='open-tool' class='hover-mask' $onClick " . get_ga_event( array( "Banners", "Click", "Tool Banner" ), array( "Customize", "Open Tool" ) ) . ">";
+			return $output;
+		}
+
+	}
+
+	if ( $modal && $destination_modal ) {
+
+		$output .= "<a href='#' data-reveal-id='" . $destination_modal . "-modal' role='button' data-toggle='modal' class='hover-mask' title='" . __( 'Open window with more information', 'bon') . "'" . get_ga_event( "Banners", "Click", "Quality Banner" ) . ">";
+		return $output;
+
+	}
+
 }
 
 
