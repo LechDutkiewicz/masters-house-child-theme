@@ -80,15 +80,15 @@ function shandora_get_main_header() {
 	$header_col_class = 'large-9';
 	$col_class = 'large-6';
 	$logo_class = 'uncentered';
-	$logo_col_class = 'large-3';
+	$logo_col_class = 'large-3 medium-2';
 	if ( $header_col_1 == true && $header_col_2 == true ) {
-		$header_col_class = 'large-9 small-12';
-		$col_class = 'large-6 small-12';
+		$header_col_class = 'large-9 medium-10 small-12';
+		$col_class = 'medium-6 small-12';
 	} else if ( $header_col_1 == true && $header_col_2 == false ) {
-		$header_col_class = 'large-5 small-12';
+		$header_col_class = 'medium-5 small-12';
 		$col_class = 'large-12';
 	} else if ( $header_col_1 == false && $header_col_2 == true ) {
-		$header_col_class = 'large-5 small-12';
+		$header_col_class = 'medium-5 small-12';
 		$col_class = 'large-12';
 	} else {
 
@@ -102,7 +102,7 @@ function shandora_get_main_header() {
 	<hgroup id="main-header" class="<?php echo $header_style; ?> slide <?php echo $state; ?>">
 		<div class="row">
 			<?php $is_text = ((bon_get_option( 'logo' ) != '') ? false : true); ?>
-			<div class="<?php echo $logo_col_class; ?> column small-centered large-<?php echo $logo_class; ?> <?php echo ($is_text) ? 'text-logo' : ''; ?>" id="logo">
+			<div class="<?php echo $logo_col_class; ?> column small-centered medium-<?php echo $logo_class; ?> <?php echo ($is_text) ? 'text-logo' : ''; ?>" id="logo">
 				<div id="nav-toggle" class="navbar-handle show-for-small"></div>
 				<?php
 				$tag = 'h1';
@@ -126,12 +126,12 @@ function shandora_get_main_header() {
 				<?php if ( $header_col_1 ) : ?>
 				<div class="<?php echo $col_class; ?> column small-margin medium bottom">
 					<div class="row">
-						<div class="large-3 columns">
+						<div class="medium-3 columns">
 							<div class="icon hide-for-small">
 								<span class="sha-phone"></span>
 							</div>
 						</div>
-						<div class="large-9 columns">
+						<div class="medium-9 columns mobile-text-center">
 							<span class="info-title"><?php echo esc_attr( bon_get_option( 'hgroup1_title' ) ); ?></span>
 							<?php
 							$phone_html = '';
@@ -139,13 +139,13 @@ function shandora_get_main_header() {
 							$phone_count = count( $phone );
 							if ( $phone_count > 1 ) {
 								foreach ( $phone as $number ) {
-									$phone_html .= '<strong>' . $number . '</strong>';
+									$phone_html .= '<span class="like-h4 bold">' . $number . '</span>';
 								}
 							} else {
 								$phone_html .= get_formatted_phone_number();
 							}
 							?>
-							<span class="phone phone-<?php echo $phone_count; ?>"><?php echo $phone_html; ?></span>
+							<span class="phone like-h4 text-white phone-<?php echo $phone_count; ?>"><?php echo $phone_html; ?></span>
 						</div>
 					</div>
 				</div>
@@ -153,14 +153,14 @@ function shandora_get_main_header() {
 			<?php if ( $header_col_2 ) : ?>
 			<div class="<?php echo $col_class; ?> column hide-for-small">
 				<div class="row">
-					<div class="large-3 columns">
+					<div class="medium-3 columns">
 						<div class="icon">
 							<span class="sha-calendar"></span>
 						</div>
 					</div>
-					<div class="large-9 columns">
+					<div class="medium-9 columns">
 						<span class="info-title"><?php echo bon_get_option( 'hgroup2_title' ); ?></span>
-						<span class="phone visit"><strong><a href="#" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></strong></span>
+						<span class="phone visit like-h4"><a href="#" class="text-white" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></span>
 					</div>
 				</div>
 			</div>
@@ -176,7 +176,7 @@ function shandora_get_main_header() {
 
 function get_formatted_phone_number() {
 
-	$output = '<strong>';
+	$output = "";
 
 	if ( $_SESSION['layoutType'] == 'mobile' ) {
 		$output .= '<a href="tel:' . esc_attr( bon_get_option( 'hgroup1_content' ) ) . '"' . get_ga_event( "Contact", "Call", "Menu Bar" ) . '>';
@@ -187,8 +187,6 @@ function get_formatted_phone_number() {
 	if ( $_SESSION['layoutType'] == 'mobile' ) {
 		$output .='</a>';
 	}
-
-	$output .='</strong>';
 
 	return $output;
 }
