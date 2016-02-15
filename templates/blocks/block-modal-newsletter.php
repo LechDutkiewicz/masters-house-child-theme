@@ -10,11 +10,11 @@ if ( !defined( 'ABSPATH' ) )
 		<div class="modal-inner-frame">
 			<div class="modal-header">
 				<div class="header-line line-before"></div>
-				<span class="modal-title like-h4"><?php _e( 'Subscribe to our newsletter', 'bon' ); ?></span>
+				<span class="modal-title like-h4 uppercase"><?php _e( 'Subscribe to our newsletter', 'bon' ); ?></span>
 				<div class="header-line line-after"></div>
 			</div>
 			<div class="modal-content-body">
-				<div class="modal-claim like-h4 dotted text-center">
+				<div class="modal-claim like-h4 dotted text-center uppercase">
 					<div class="topbottom"></div>
 					<?php _e( 'You will be first to know about our news and special offers', 'bon' ); ?>
 				</div>

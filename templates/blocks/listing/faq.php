@@ -29,7 +29,7 @@ if ( $loop->have_posts() ) {
 					<div class="well">
 						<?php } ?>
 						<li class="accordion-group">
-							<input type="radio" name="toggle-section-faq" id="toggle-target-<?php echo $loop->current_post + 20; ?>" <?php if ($loop->current_post == 0) echo 'checked="checked"'; ?>>
+							<input type="radio" name="toggle-section-faq" id="toggle-target-<?php echo $loop->current_post + 20; ?>">
 							<label for="toggle-target-<?php echo $loop->current_post + 20; ?>" class="accordion-section-title" <?php the_ga_event( "FAQ", "Pick a Question", get_the_title() ); ?>><?php the_title(); ?></label>
 							<span class="accordion-open"><i class="sha-arrow-down"></i></span>
 							<span class="accordion-close"><i class="sha-arrow-right"></i></span>

@@ -32,7 +32,7 @@ $packages = get_packages_list();
 
 	<form class="custom package-form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST" name="package-form">
 		<div class="row">
-			<div class="column large-12 search-order">
+			<div class="column small-12 search-order">
 				<select name="package_form">
 
 					<?php
@@ -52,8 +52,15 @@ $packages = get_packages_list();
 				</select>
 				<input type="hidden" id="post_id" name="post_id" value="<?php echo $post->ID; ?>">
 			</div>
+			<div class="column small-12 text-center">
+				<a href="#" role="button" data-reveal-id="packages-modal" class="text-peter-river" title="<?php _e( 'More information about packages', 'bon' ); ?>">
+					<span class="bi-stack"><i class="bonicons bi-circle bi-stack-2x"></i><i class="bonicons bi-info bi-stack-1x bi-inverse"></i></span><span><?php _e( "more information", "bon" ); ?></span>
+				</a>
+			</div>
 		</div>
 	</form>
+
+	<?php bon_get_template_part( 'block', 'modal-packages' ); ?>
 
 	<?php define('PACKAGE_FORM', true); ?>
 
@@ -65,4 +72,4 @@ $packages = get_packages_list();
 	<span class="cta-headline"><?php _e( 'Contact us', 'bon' ); ?></span><span class="cta-subline"><?php _e( 'and order your cottage', 'bon' ); ?></span>
 </a>
 
-<?php define('CTA_EXISTS', true); ?>
+<?php if ( !defined('CTA_EXISTS') ) { define('CTA_EXISTS', true); } ?>

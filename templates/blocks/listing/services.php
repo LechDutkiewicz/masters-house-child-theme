@@ -1,5 +1,3 @@
-<?php if ( $_SESSION['layoutType'] === 'mobile' ) $exClass = 'text-center'; ?>
-
 <?php
 
 $args = array(
@@ -29,16 +27,16 @@ if ( !empty( $loop->posts ) ) :
 
 		?>
 
-		<div class="column large-12 service-container padding-medium top bottom <?php echo $exClass; ?> clearfix">
+		<div class="column large-12 service-container padding-medium top bottom mobile-text-center clearfix">
 			<div class="round-icon icon-wrapper bg-<?php echo shandora_get_meta( $post->ID, 'featureiconcolor' ); ?>">
 				<i class="icon-anim-left-right text bonicons <?php echo shandora_get_meta( $post->ID, 'featureicon' ); ?>"></i>
 			</div>
 			<div class="service-content">
-				<span class="like-h4 fade-in"><?php the_title(); ?></span>
+				<span class="like-h4 uppercase fade-in"><?php the_title(); ?></span>
 				<p class="entry-content"><?php echo get_the_content(); ?>
 
 					<?php // create read more button to open modal with extended information if it's available ?>
-					<?php if ( $more_title && $more_content ) { ?>
+					<?php if ( isset($more_title) && $more_title && $more_content ) { ?>
 
 					<a href="#<?php echo sanitize_title( $more_title ); ?>" role="button" data-toggle="modal" class="button flat main radius tiny" title="">
 						<span class="cta-headline"><?php _e( 'Read more', 'bon'); ?></span>
@@ -59,7 +57,7 @@ if ( !empty( $loop->posts ) ) :
 		</div>
 
 		<?php // create modal with extended information if it's available ?>
-		<?php if ( $more_title && $more_content ) { ?>
+		<?php if ( isset($more_title) && $more_title && $more_content ) { ?>
 
 		<div id="<?php echo $sanitazed_title; ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="<?php echo $sanitazed_title; ?>-modal-label" aria-hidden="true">
 			<div class="modal-dialog modal-lg">

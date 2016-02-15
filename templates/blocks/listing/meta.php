@@ -34,7 +34,7 @@
 	<li class="area"><div class="meta-wrap">
 		<i class="sha-area"></i>
 		<span class="meta-value">
-			<?php echo $size . ' ' . strtolower($sizemeasurement); ?>
+			<?php echo $size . ' ' . $sizemeasurement; ?>
 		</span></div>
 	</li>
 

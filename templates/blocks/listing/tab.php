@@ -1,6 +1,34 @@
 <?php
 //Changed by Lech Dutkiewicz
 
+// setup vars for addons type posts
+// addons are items included in price, they appear as the first tap
+
+$addons = 'cottage';
+
+if ( shandora_get_meta( get_the_ID(), 'listing_enable_packages' ) ) {
+	$addons = 'big';
+} else if ( shandora_get_meta( get_the_ID(), 'listing_enable_construction' ) ) {
+	$addons = 'construction';
+}
+
+$addons_loop_args = array(
+	'post_type' => 'addon',
+	'posts_per_page' => -1,
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
+	'meta_query' => array(
+		array(
+			'key' => 'shandora_enabled_' . $addons,
+			'value' => true,
+			'compare' => '==='
+			),
+		),
+	'post__not_in' => shandora_get_excluded_addons(),
+	);
+
+// setup vars for other tabs
+
 $price = shandora_get_meta( $post->ID, 'listing_price', true );
 //$monprice = shandora_get_meta( $post->ID, 'listing_monprice' );
 $lotsize = shandora_get_meta( $post->ID, 'listing_lotsize' );
@@ -49,7 +77,7 @@ $heightmeasurement = bon_get_option( 'height_measure' );
 
 $status_opt = shandora_get_search_option( 'status' );
 
-if ( array_key_exists( $status, $status_opt ) ) {
+if ( isset( $status ) && array_key_exists( $status, $status_opt ) ) {
 	$status = $status_opt[$status];
 }
 
@@ -62,6 +90,19 @@ if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 		'terracesqmt' => __( 'Terrace size:', 'bon' ),
 		'rooms' => __( 'Rooms:', 'bon' ),
 		'floors' => __( 'Floors:', 'bon' ),
+		'dimensions' => __( 'Dimensions:', 'bon' ),
+		'height' => __( 'Height:', 'bon' ),
+		'wallheight' => __( 'Wall height:', 'bon' ),
+		'wallthickness' => __( 'Wall thickness:', 'bon' ),
+		'floorthickness' => __( 'Floor thickness:', 'bon' ),
+		'roofthickness' => __( 'Roof thickness:', 'bon' ),
+		'windows' => __( 'Windows:', 'bon' ),
+		'windowssizes' => __( 'Windows sizes:', 'bon' ),
+		'doors' => __( 'Doors:', 'bon' ),
+		'doorssizes' => __( 'Doors sizes:', 'bon' ),
+		'roofsize' => __( 'Roof size', 'bon' ) . ':',
+		'columnssizes' => __( 'Columns size', 'bon' ) . ':',
+		'rafterssizes' => __( 'Rafters size', 'bon' ) . ':',
 		) );
 } else {
 	$details = apply_atomic( 'property_details_tab_content', array(
@@ -71,32 +112,51 @@ if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 		'terracesqmt' => __( 'Terrace size:', 'bon' ),
 		'rooms' => __( 'Rooms:', 'bon' ),
 		'floors' => __( 'Floors:', 'bon' ),
+		'dimensions' => __( 'Dimensions:', 'bon' ),
+		'height' => __( 'Height:', 'bon' ),
+		'wallheight' => __( 'Wall height:', 'bon' ),
+		'wallthickness' => __( 'Wall thickness:', 'bon' ),
+		'floorthickness' => __( 'Floor thickness:', 'bon' ),
+		'roofthickness' => __( 'Roof thickness:', 'bon' ),
+		'windows' => __( 'Windows:', 'bon' ),
+		'windowssizes' => __( 'Windows sizes:', 'bon' ),
+		'doors' => __( 'Doors:', 'bon' ),
+		'doorssizes' => __( 'Doors sizes:', 'bon' ),
+		'roofsize' => __( 'Roof size', 'bon' ) . ':',
+		'columnssizes' => __( 'Columns size', 'bon' ) . ':',
+		'rafterssizes' => __( 'Rafters size', 'bon' ) . ':',
 		) );
 }
 
-$specs = apply_atomic( 'property_specifications_tab_content', array(
-	'dimensions' => __( 'Dimensions:', 'bon' ),
-	'height' => __( 'Height:', 'bon' ),
-	'wallheight' => __( 'Wall height:', 'bon' ),
-	'wallthickness' => __( 'Wall thickness:', 'bon' ),
-	'floorthickness' => __( 'Floor thickness:', 'bon' ),
-	'roofthickness' => __( 'Roof thickness:', 'bon' ),
-	'windows' => __( 'Windows:', 'bon' ),
-	'windowssizes' => __( 'Windows sizes:', 'bon' ),
-	'doors' => __( 'Doors:', 'bon' ),
-	'doorssizes' => __( 'Doors sizes:', 'bon' ),
-	'roofsize' => __( 'Roof size', 'bon' ) . ':',
-	'columnssizes' => __( 'Columns size', 'bon' ) . ':',
-	'rafterssizes' => __( 'Rafters size', 'bon' ) . ':',
-	)
-);
+// $specs = apply_atomic( 'property_specifications_tab_content', array(
+// 	'dimensions' => __( 'Dimensions:', 'bon' ),
+// 	'height' => __( 'Height:', 'bon' ),
+// 	'wallheight' => __( 'Wall height:', 'bon' ),
+// 	'wallthickness' => __( 'Wall thickness:', 'bon' ),
+// 	'floorthickness' => __( 'Floor thickness:', 'bon' ),
+// 	'roofthickness' => __( 'Roof thickness:', 'bon' ),
+// 	'windows' => __( 'Windows:', 'bon' ),
+// 	'windowssizes' => __( 'Windows sizes:', 'bon' ),
+// 	'doors' => __( 'Doors:', 'bon' ),
+// 	'doorssizes' => __( 'Doors sizes:', 'bon' ),
+// 	'roofsize' => __( 'Roof size', 'bon' ) . ':',
+// 	'columnssizes' => __( 'Columns size', 'bon' ) . ':',
+// 	'rafterssizes' => __( 'Rafters size', 'bon' ) . ':',
+// 	)
+// );
 ?>
 <section>
 	<nav class="tab-nav">
 
+		<?php if ( !empty( $addons_loop_args ) && is_array( $addons_loop_args ) ) { ?> 
+
+		<a class="active" href="#tab-target-addons"><?php _e( 'Price includes', 'bon' ); ?></a>
+
+		<?php } ?>
+
 		<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
 
-		<a class="active" href="#tab-target-details"><?php _e( 'Details', 'bon' ); ?></a>
+		<a href="#tab-target-details"><?php _e( 'Details', 'bon' ); ?></a>
 
 		<?php } ?>
 
@@ -119,99 +179,141 @@ $specs = apply_atomic( 'property_specifications_tab_content', array(
 	</nav>
 	<div class="tab-contents">
 
-		<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
-		<div id="tab-target-details" class="tab-content active border-main">
+		<?php if ( !empty( $addons_loop_args ) && is_array( $addons_loop_args ) ) { ?> 
+		<div id="tab-target-addons" class="tab-content active border-main">
+			<?php 
+			// setup new loop
+			$loop = new WP_Query( $addons_loop_args );
+			$posts = $loop->post_count;
+			$posts_per_column = ceil( $posts / 2 );
 
-			<ul class="property-details">
-				<?php foreach ( $details as $key => $value ) { ?>
-				<?php if ( !empty( $$key ) ) { ?> 
-				<li>
-					<strong><?php echo $value; ?> </strong>
-
-					<?php
-						// display other layout if meta is price
-					if ( $key === 'price' ) {
-
-						shandora_get_listing_price();
-
-					} else {
-
-						// display regular layout for all other meta values
-						?>
-
-						<span>
+			if ( !empty( $loop->posts ) ) {
+				?>
+				<div class="row">
+					<div class="column small-12 medium-6">
+						<ul>
+							<?php while ( $loop->have_posts() ) { $loop->the_post(); ?>
+							<li><?php the_title(); ?></li>
+							<?php if ( !( $loop->current_post + 1 >= $posts ) && (( $loop->current_post + 1) % $posts_per_column === 0 ) ) { ?>
+						</ul>
+					</div>
+					<div class="column small-12 medium-6">
+						<ul>
 							<?php
-							echo $$key;
-
-							if ( $key === 'lotsize' || $key === 'terracesqmt' ) {
-
-								echo ' ' . $sizemeasurement;
-
-							}
-
-							if ( $key === 'price' || $key === 'monprice' ) {
-
-								echo ' ' . $currency;
-
-							} ?>
-						</span>
-
-						<?php } ?>
-
-					</li>
-					<?php } ?>
-					<?php }	?>
-				</ul>
-
-			</div>
-
-			<?php } ?>
-
-			<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?> 
-
-			<div id="tab-target-spec" class="tab-content border-main">
-				<ul class="property-spec">
-
-					<?php foreach ( $specs as $key => $value ) { ?>
-
-					<?php if ( !empty( $$key ) ) { ?> 
-
-					<li>
-						<strong><?php echo $value; ?> </strong>
-						<span>
-							<?php
-							echo $$key;
-							if ( $key === 'height' || $key === 'wallheight' || $key === 'wallthickness' || $key === 'floorthickness' || $key === 'roofthickness' ) {
-								echo ' ' . $heightmeasurement;
-							} else if ( $key === 'roofsize' ) {
-								echo ' ' . $sizemeasurement;
-							}
-							?>
-						</span>
-					</li>
-
-					<?php } ?>
-
-					<?php }	?>
-
-				</ul>
-			</div>
-
-			<?php if ( $_SESSION['layoutType'] !== 'mobile' ) { ?>
-
-			<div id="tab-target-features" class="tab-content border-main">
-
-				<ul class="bon-toolkit-accordion" id="accordion-services">
-					<?php
-					bon_get_template_part( 'block', trailingslashit( get_post_type() ) . 'additional-services' );
+						}
+					}
 					?>
 				</ul>
-
 			</div>
+		</div>
+		<?php }
+		wp_reset_query();
+		?>
+	</div>
 
-			<?php } ?>
+	<?php } ?>
 
-			<?php } ?>
+	<?php if ( !empty( $details ) && is_array( $details ) ) { ?> 
+	<div id="tab-target-details" class="tab-content border-main">
+
+		<ul class="property-details">
+			<?php foreach ( $details as $key => $value ) { ?>
+			<?php if ( !empty( $$key ) ) { ?> 
+			<li>
+				<strong><?php echo $value; ?> </strong>
+
+				<?php
+						// display other layout if meta is price
+				if ( $key === 'price' ) {
+
+					shandora_get_listing_price();
+
+				} else {
+
+						// display regular layout for all other meta values
+					?>
+
+					<span>
+						<?php
+						echo $$key;
+
+						if ( $key === 'lotsize' || $key === 'terracesqmt' ) {
+
+							echo ' ' . $sizemeasurement;
+
+						} else if ( $key === 'price' || $key === 'monprice' ) {
+
+							echo ' ' . $currency;
+
+						} else if ( $key === 'height' || $key === 'wallheight' || $key === 'wallthickness' || $key === 'floorthickness' || $key === 'roofthickness' ) {
+
+							echo ' ' . $heightmeasurement;
+
+						} else if ( $key === 'roofsize' ) {
+
+							echo ' ' . $sizemeasurement;
+							
+						}
+
+						?>
+					</span>
+
+					<?php } ?>
+
+				</li>
+				<?php } ?>
+				<?php }	?>
+			</ul>
 
 		</div>
-	</section>
+
+		<?php } ?>
+
+		<?php if ( !empty( $specs ) && is_array( $specs ) ) { ?> 
+
+		<div id="tab-target-spec" class="tab-content border-main">
+			<ul class="property-spec">
+
+				<?php foreach ( $specs as $key => $value ) { ?>
+
+				<?php if ( !empty( $$key ) ) { ?> 
+
+				<li>
+					<strong><?php echo $value; ?> </strong>
+					<span>
+						<?php
+						echo $$key;
+						if ( $key === 'height' || $key === 'wallheight' || $key === 'wallthickness' || $key === 'floorthickness' || $key === 'roofthickness' ) {
+							echo ' ' . $heightmeasurement;
+						} else if ( $key === 'roofsize' ) {
+							echo ' ' . $sizemeasurement;
+						}
+						?>
+					</span>
+				</li>
+
+				<?php } ?>
+
+				<?php }	?>
+
+			</ul>
+		</div>
+
+		<?php } ?>
+
+		<?php if ( $_SESSION['layoutType'] !== 'mobile' ) { ?>
+
+		<div id="tab-target-features" class="tab-content border-main">
+
+			<ul class="bon-toolkit-accordion" id="accordion-services">
+				<?php
+				bon_get_template_part( 'block', trailingslashit( get_post_type() ) . 'additional-services' );
+				?>
+			</ul>
+
+		</div>
+
+		<?php } ?>
+
+	</div>
+</section>

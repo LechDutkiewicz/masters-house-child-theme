@@ -1,39 +1,36 @@
 <?php
 $visited = shandora_get_meta( $GLOBALS['home-img'], 'slider_returning' );
-
-if ( $visited != 3 ) {
-	// get parameters for home call to action
-	$slogan = bon_get_option( 'home_slogan', 5 );
-	$ctas = bon_get_option( 'home_cta', 5 );
-} else {
-	// get parameters for home call to action for returning users, that opens modal with contact form
-	$slogan = bon_get_option( 'home_slogan_returning', 5 );
-	$ctas = bon_get_option( 'home_cta_returning', 5 );
-}
-
-// get parameters for drawing tool button
-$tool = bon_get_option( 'home_cta_tool');
-
 ?>
 <section>
 	<header class="section-header">
-		<?php if ( $slogan ) { ?>
-		<h2 class="home-section-header"><?php echo $slogan; ?></h2>
-		<?php } ?>
+		<h2 class="home-section-header"><?php echo $visited !== "3" ? __( "Your house of rest and relaxation", "bon" ) : __( "Do you find it hard which house to choose?", "bon" ); ?></h2>
 	</header>
-
-	<?php if ( $ctas ) { ?>
 	<div  class="row entry-row">
 		<div class="padding-medium clearfix">
 			<div class="column large-12 text-center home-ctas-container bottom">
 				<div class="table centered border-spacing">
 					<div class="home-ctas-container table-row">
-						<?php shandora_home_cta( $ctas, $tool, $visited ); ?>
+
+						<?php if ( $visited != 3 ) { ?>
+
+						<a href="<?php echo get_the_permalink( bon_get_option( 'catalog_page' ) ); ?>" class="button flat large radius main" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
+							<span><?php _e( "Choose your project", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+						</a>
+						<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat large radius clouds" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
+							<span><?php _e( "Learn more about us", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+						</a>
+
+						<?php } else { ?>
+
+						<a href="#" class="button flat large radius main" data-reveal-id="visit-modal" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
+							<span><?php _e( "Order a free consultation", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+						</a>
+
+						<?php } ?>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<?php } ?>
-
 </section>

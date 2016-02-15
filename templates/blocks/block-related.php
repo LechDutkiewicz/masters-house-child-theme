@@ -14,9 +14,9 @@ $price_max = $price + ( $price * 20 / 100 );
 $size_min = $size - ( $size * 20 / 100 );
 $size_max = $size + ( $size * 20 / 100 );
 
-$loc_query = array();
+// $loc_query = array();
 $type_query = array();
-$feat_query = array();
+// $feat_query = array();
 $tax_query = array();
 
 /* if( $locs ) {
