@@ -3,10 +3,6 @@
 if ( is_singular( get_post_type() ) ) {
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="http://schema.org/Product">
-		<header class="entry-header clear">
-			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="entry-title" itemprop="name">', '</h1>', false ) ); ?>
-
-		</header><!-- .entry-header -->
 
 		<?php do_atomic( 'before_single_entry_content' ); ?>
 
@@ -31,7 +27,7 @@ if ( is_singular( get_post_type() ) ) {
 	$view = isset( $_GET['view'] ) ? $_GET['view'] : 'grid';
 
 	if ( ($wp_query->current_post + 1) == ($wp_query->post_count) ) {
-		$ex_class .= ' last';
+		$ex_class = ' last';
 	}
 	?>
 	<li class="<?php echo extra_class($post->ID) . $ex_class; ?>">

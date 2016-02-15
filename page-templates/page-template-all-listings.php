@@ -58,32 +58,12 @@ get_header();
 
             $wp_query = new WP_Query($listing_args);
 
-            while ( have_posts() ) : the_post(); ?>
+            while ( have_posts() ) : the_post();
 
-            <li class="<?php echo extra_class($post->ID); ?>">
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
-                    <header class="entry-header">
-                        <a class="header-link product-link" href="<?php echo get_term_link( $term->slug, "property-type" ); ?>">
-                            <div class="overlay"></div>
-                            <?php
-                            if ( current_theme_supports( 'get-the-image' ) ) {
-                                if ( $_SESSION['layoutType'] === 'mobile' ) {
-                                    $size = 'mobile_tall';
-                                } else {
-                                    $size = 'listing_small';
-                                }
-                                $src = get_the_image( array( 'size' => $size, 'link_to_post' => false, 'image_class' => 'auto' ) );
-                            }
-                            ?>
-                        </a>
-                    </header>
-                    <footer class="entry-footer">
-                        <div class="property-price cat-link"><a href="<?php echo get_term_link( $term->slug, "property-type" ); ?>" class="product-link <?php echo $color['color']; ?>"><?php echo $term->name; ?></a></div>
-                    </footer>
-                </article>
-            </li>
+            // bon_get_template_part( "content", "category" );
+            include ( locate_template("templates/contents/content-category.php") );
 
-            <?php endwhile;
+            endwhile;
 
             wp_reset_query();
 

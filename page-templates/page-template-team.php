@@ -65,7 +65,7 @@ $agent_id = bon_get_option( 'global_agent' )[0];
                                     <?php if ( has_post_thumbnail() ) { ?>
                                     <div class="profile-header center">
                                         <?php if ( current_theme_supports( 'get-the-image' ) ) {
-                                            $thumbnail = get_the_image( array( 'size' => 'thumbnail', 'link_to_post' => false, 'before' => '<figure class="agent-image">', 'after' => '</figure>', 'image_class' => array('circle') ) );
+                                            $thumbnail = get_the_image( array( 'size' => 'thumbnail', 'link_to_post' => false, 'before' => '<figure class="agent-image">', 'after' => '</figure>' ) );
                                         } ?>
                                     </div>
                                     <?php } ?>
@@ -139,7 +139,7 @@ $agent_id = bon_get_option( 'global_agent' )[0];
                                     <?php if ( has_post_thumbnail() ) { ?>
                                     <div class="profile-header center">
                                         <?php if ( current_theme_supports( 'get-the-image' ) ) {
-                                            $thumbnail = get_the_image( array( 'size' => 'thumbnail', 'link_to_post' => false, 'before' => '<figure class="agent-image">', 'after' => '</figure>', 'image_class' => array('circle') ) );
+                                            $thumbnail = get_the_image( array( 'size' => 'thumbnail', 'link_to_post' => false, 'before' => '<figure class="agent-image">', 'after' => '</figure>' ) );
                                         } ?>
                                     </div>
                                     <?php } ?>
