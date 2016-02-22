@@ -24,7 +24,7 @@ $ctaArgs = array(
 				$cats = bon_get_option( 'cats_home' );
 
 				if ( isset($cats) && !empty($cats) ) { ?>				
-				<ul class="listings small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+				<ul class="listings mobile-block-grid-1 xsmall-block-grid-2 small-block-grid-4">
 					<?php
 					foreach ($cats as $cat) {
 
