@@ -26,8 +26,8 @@ $packages = get_packages_list();
 
 ?>
 
-<div id="packages-tab" class="column large-12 tabs-container">
-	<section>
+<div id="packages-tab" class="collapse column large-12 tabs-container">
+	<section class="padding-large bottom">
 		<nav class="tab-nav">
 			<?php foreach ($packages as $key => $package) { ?>
 			<a class="<?php if ( $key === 0 ) echo ' active'; ?> darken-hover" href="#tab-target-<?php echo sanitize_title( $package['package_name'] ); ?>"><?php echo $package['package_name']; ?></a>
