@@ -16,7 +16,7 @@ $loop = new WP_Query(
 
 	<?php if ( $loop->have_posts() ) { ?>	
 
-	<section id="banners-slider" class="padding-large top hide-for-small">
+	<section id="banners-slider" class="padding-large top show-for-medium-up">
 		<div class="slider-container thumbs-inside">
 			<ul class="slides bxslider-thumbs-only autostart" data-pause="8000" data-pager="banners-pager">
 
