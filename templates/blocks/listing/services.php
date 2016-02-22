@@ -11,16 +11,6 @@ $loop = new WP_Query( $args );
 if ( !empty( $loop->posts ) ) :
 	?>
 
-<div class="row">
-
-	<?php if ( pippin_get_image_id( bon_get_option( 'features_section_image', 'yes' ) ) && !shandora_is_home() && $_SESSION['layoutType'] !== 'mobile' ) { ?>
-	<div class="column large-12 margin-large bottom">
-		<?php echo wp_get_attachment_image( pippin_get_image_id( bon_get_option( 'features_section_image', 'yes' ) ), 'full', '', array('class' => '') ); ?>
-	</div>
-	<?php } ?>
-
-</div>
-
 <div id="services-container" class="row services-container">
 
 	<?php while ( $loop->have_posts() ) : $loop->the_post();
@@ -32,7 +22,7 @@ if ( !empty( $loop->posts ) ) :
 				<i class="icon-anim-left-right text bonicons <?php echo shandora_get_meta( $post->ID, 'featureicon' ); ?>"></i>
 			</div>
 			<div class="service-content">
-				<span class="like-h4 uppercase fade-in"><?php the_title(); ?></span>
+				<span class="like-h4 uppercase fade-in block"><?php the_title(); ?></span>
 				<p class="entry-content"><?php echo get_the_content(); ?>
 
 					<?php // create read more button to open modal with extended information if it's available ?>
@@ -46,7 +36,7 @@ if ( !empty( $loop->posts ) ) :
 
 					<?php if ( shandora_get_meta( $post->ID, 'feature_scroll_to' ) && is_singular( 'listing' ) && $_SESSION['layoutType'] !== 'mobile' ) { ?>
 
-					<a href="#faq" role="button" class="button flat main radius tiny scrollTo" title="<?php _e( 'Ask a question', 'bon'); ?>"  data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" <?php the_ga_event( "FAQ", "Click Ask a Question From Services Button" ); ?>>
+					<a href="#faq" role="button" class="button flat main radius tiny scrollTo show-for-medium-up" title="<?php _e( 'Ask a question', 'bon'); ?>"  data-modal-title="<?php echo __( 'Contact us', 'bon' ) . ' ' . __( 'and order your cottage', 'bon' ); ?>" <?php the_ga_event( "FAQ", "Click Ask a Question From Services Button" ); ?>>
 						<span class="cta-headline"><?php _e( 'Ask a question', 'bon'); ?></span>
 					</a>
 
