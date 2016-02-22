@@ -16,7 +16,7 @@ $loop = new WP_Query( $args );
 if ( $loop->have_posts() ) {
 	if ( is_singular( 'listing' ) ) {
 		?>
-		<section class="padding-large top bottom" id="faq">
+		<section class="padding-large top bottom show-for-medium-up" id="faq">
 			<header>
 				<h2><?php _e( 'FAQ', 'bon' ); ?></h2>
 				<hr />

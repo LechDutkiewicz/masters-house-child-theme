@@ -191,14 +191,14 @@ if($termid == "31" || $termid == "256" || $termid == "34" || $termid == "35") {
 				?>
 				<div class="row">
 					<div class="column small-12 medium-6">
-						<ul>
+						<ul class="no-bullet">
 							<?php while ( $loop->have_posts() ) { $loop->the_post(); ?>
-							<li><?php the_title(); ?></li>
+							<li><i class="bonicons bi-check-square-o text-asbestos"></i> <?php the_title(); ?></li>
 							<?php if ( !( $loop->current_post + 1 >= $posts ) && (( $loop->current_post + 1) % $posts_per_column === 0 ) ) { ?>
 						</ul>
 					</div>
 					<div class="column small-12 medium-6">
-						<ul>
+						<ul class="no-bullet">
 							<?php
 						}
 					}

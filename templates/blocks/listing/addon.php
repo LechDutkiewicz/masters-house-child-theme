@@ -35,7 +35,7 @@ if ( !empty( $loop->posts ) ) {
 		<h5 class="text-main margin-medium top"><?php _e( 'Price includes', 'bon' ); ?></h5>
 	</div>
 	<div class="column small-12 large-6">
-		<ul>
+		<ul class="no-bullet">
 			<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<li>
 				<?php the_title(); ?>
@@ -44,7 +44,7 @@ if ( !empty( $loop->posts ) ) {
 		</ul>
 	</div>
 	<div class="column small-12 large-6">
-		<ul>
+		<ul class="no-bullet">
 			<?php
 		}
 		endwhile;
