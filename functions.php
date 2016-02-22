@@ -160,7 +160,7 @@ function shandora_get_main_header() {
 					</div>
 					<div class="medium-9 columns">
 						<span class="info-title"><?php echo bon_get_option( 'hgroup2_title' ); ?></span>
-						<span class="phone visit like-h4"><a href="#" class="text-white" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?></a></span>
+						<span class="phone visit like-h4"><a href="#" class="text-white" data-reveal-id="visit-modal" title="<?php echo esc_attr( bon_get_option( 'hgroup2_line1' ) ); ?>" <?php the_ga_event( "Contact", "Open Visit Request", "Menu Bar" ); ?>><i class="bonicons bi-sign-in"></i> <?php _e( "Order a free consultation", "bon" ); ?></a></span>
 					</div>
 				</div>
 			</div>
