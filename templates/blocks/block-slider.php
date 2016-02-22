@@ -26,11 +26,11 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 			<h1>		
 				<span class="bold"><?php _e( "Your house", "bon" ); ?></span>
 			</h1>
-			<h2 class="like-h3">
+			<h2 class="like-h4 uppercase">
 				<span><?php _e( "of rest and relaxation", "bon" ); ?></span>
 			</h2>
 			<?php } else { ?>
-			<h2 class="like-h3">
+			<h2 class="like-h4 uppercase">
 				<span><?php _e( "Do you find it hard", "bon" ); ?></span>
 			</h2>
 			<h1>	
@@ -47,7 +47,7 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 			<a href="<?php echo get_the_permalink( bon_get_option( 'catalog_page' ) ); ?>" class="button flat large radius main" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
 				<span><?php _e( "Choose your project", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
 			</a>
-			<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat large radius clouds" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
+			<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat radius clouds" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
 				<span><?php _e( "Learn more about us", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
 			</a>
 
