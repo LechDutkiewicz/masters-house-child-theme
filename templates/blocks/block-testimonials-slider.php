@@ -11,7 +11,7 @@ $loop = new WP_Query( $args );
 
 if ( $loop->have_posts() ) { ?>
 
-<section class="padding-large top<?php echo $_SESSION['layoutType'] !== 'mobile' ? ' bottom' : ''; ?>">
+<section class="padding-large top<?php echo $_SESSION['layoutType'] !== 'mobile' ? ' bottom' : ''; ?> show-for-medium-up">
 	<header class="section-header">
 		<h2 class="<?php echo shandora_is_home() ? 'home-section-header' : 'services-header'; ?>"><?php _e( 'Our clients rock', 'bon' ); ?></h2>
 		<?php if ( !shandora_is_home() ) echo '<hr />'; ?>

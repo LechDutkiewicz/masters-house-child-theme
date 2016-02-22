@@ -44,10 +44,10 @@ if ( $related ) {
 
 		<?php bon_get_template_part( 'block', 'listinggallery' ); ?>
 		<div class="row">
-			<div class="column large-8" itemprop="description">
+			<div class="column medium-8" itemprop="description">
 				<?php the_content(); ?>
 			</div>
-			<div class="column large-4 top-cta">
+			<div class="column medium-4 top-cta">
 				<?php bon_get_template_part( 'block', 'listing-price-excerpt' ); ?>
 			</div>
 		</div>

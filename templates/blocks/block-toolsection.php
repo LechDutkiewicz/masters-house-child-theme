@@ -39,7 +39,7 @@ if ( !empty( $imgs ) ) :
 		<?php } ?>
 
 		<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-			<h3 class="text-main"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h3>
+			<h3 class="like-h4"><?php echo bon_get_option( 'customize_section_header_1', 'yes' ); ?></h3>
 			<p><?php echo bon_get_option( 'customize_section_content_1', 'yes' ); ?></p>
 			<?php if ( !empty($imgs['2']['id']) && !empty($imgs['3']['id'] ) ) { ?>
 
@@ -91,7 +91,7 @@ if ( !empty( $imgs ) ) :
 				<?php } ?>
 
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-					<h3 class="text-main"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h3>
+					<h3 class="like-h4"><?php echo bon_get_option( 'customize_section_header_2', 'yes' ); ?></h3>
 					<p><?php echo bon_get_option( 'customize_section_content_2', 'yes' ); ?></p>
 					<?php shandora_tool_cta(); ?>				
 				</div>
@@ -110,7 +110,7 @@ if ( !empty( $imgs ) ) :
 				<?php } ?>
 
 				<div class="column small-<?php echo $mobile ? '12' : '8'; ?>">
-					<h3 class="text-main"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h3>
+					<h3 class="like-h4"><?php echo bon_get_option( 'customize_section_header_3', 'yes' ); ?></h3>
 					<p><?php echo bon_get_option( 'customize_section_content_3', 'yes' ); ?></p>
 					<a href="#" role="button" data-modal-title="<?php _e("Please describe some details", "bon"); ?>" data-reveal-id="contact-modal" class="flat button <?php echo $button_color = bon_get_option( 'cta_button_color', 'emerald' ); ?> radius cta" title="<?php _e( 'Contact us', 'bon'); ?>" <?php the_ga_event( array( "Customize", "Open Contact Form" ), array( 'CTA', 'Click buy', 'Customize' ), array( "Contact", "Open", "Customization Section" ) ); ?>><?php _e( 'Contact us', 'bon' ); ?></a>
 				</div>

@@ -53,14 +53,19 @@ $packages = get_packages_list();
 				<input type="hidden" id="post_id" name="post_id" value="<?php echo $post->ID; ?>">
 			</div>
 			<div class="column small-12 text-center">
-				<a href="#" role="button" data-reveal-id="packages-modal" class="text-peter-river" title="<?php _e( 'More information about packages', 'bon' ); ?>">
-					<span class="bi-stack"><i class="bonicons bi-circle bi-stack-2x"></i><i class="bonicons bi-info bi-stack-1x bi-inverse"></i></span><span><?php _e( "more information", "bon" ); ?></span>
-				</a>
+				<div class="table">
+					<a id="show-packages" class="text-peter-river table-row" href="#packages-tab" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="packages-tab" title="<?php _e( 'More information about versions', 'bon' ); ?>">
+						<div class="table-cell align-middle">
+							<span class="bi-stack"><i class="bonicons bi-circle bi-stack-2x"></i><i class="bonicons bi-info bi-stack-1x bi-inverse"></i></span>
+						</div>
+						<div class="table-cell align-middle">
+							<span><?php _e( "More information about versions", "bon" ); ?></span>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	</form>
-
-	<?php bon_get_template_part( 'block', 'modal-packages' ); ?>
 
 	<?php define('PACKAGE_FORM', true); ?>
 
