@@ -8,10 +8,10 @@ if ( is_singular( get_post_type() ) ) {
 
 		<section class="entry-content clear">
 			<div class="row">
-				<div class="column large-8" itemprop="description">
+				<div class="column medium-8" itemprop="description">
 					<?php the_content(); ?>
 				</div>
-				<div class="column large-4 top-cta">
+				<div class="column medium-4 top-cta">
 					<?php bon_get_template_part( 'block', 'block-price' ); ?>
 				</div>
 				<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
@@ -25,12 +25,8 @@ if ( is_singular( get_post_type() ) ) {
 } else {
 
 	$view = isset( $_GET['view'] ) ? $_GET['view'] : 'grid';
-
-	if ( ($wp_query->current_post + 1) == ($wp_query->post_count) ) {
-		$ex_class = ' last';
-	}
 	?>
-	<li class="<?php echo extra_class($post->ID) . $ex_class; ?>">
+	<li>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( array( get_cat_color($post->ID), 'hover-shadow' ) ); ?> itemscope itemtype="http://schema.org/Product">
 
 			<?php
