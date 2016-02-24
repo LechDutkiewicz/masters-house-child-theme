@@ -18,7 +18,7 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 	<div class="slider-bg" style="background-image:url('<?php echo esc_url( $src['url'] ); ?>')"></div>
 	<div class="mask <?php echo $visited; ?>"></div>
 
-	<div class="flex-caption home-cta-container top text-center">
+	<div class="flex-caption home-cta-container top">
 
 		<hgroup class="primary-title text-white">
 
@@ -45,10 +45,10 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 			<?php if ( $visited != 3 ) { ?>
 
 			<a href="<?php echo get_the_permalink( bon_get_option( 'catalog_page' ) ); ?>" class="button flat large radius main" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
-				<span><?php _e( "Choose your project", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+				<span><?php _e( "Choose your project", "bon" ); ?></span>
 			</a>
-			<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat radius clouds" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
-				<span><?php _e( "Learn more about us", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+			<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat large radius clouds" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
+				<span><?php _e( "Learn more about us", "bon" ); ?></span>
 			</a>
 
 			<?php } else { ?>

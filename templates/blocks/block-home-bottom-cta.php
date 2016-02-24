@@ -14,10 +14,10 @@ $visited = shandora_get_meta( $GLOBALS['home-img'], 'slider_returning' );
 						<?php if ( $visited != 3 ) { ?>
 
 						<a href="<?php echo get_the_permalink( bon_get_option( 'catalog_page' ) ); ?>" class="button flat large radius main" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
-							<span><?php _e( "Choose your project", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+							<span><?php _e( "Choose your project", "bon" ); ?></span>
 						</a>
-						<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat large radius clouds" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
-							<span><?php _e( "Learn more about us", "bon" ); ?></span><i class="bonicons bi-chevron-right"></i>
+						<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat large radius silver" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
+							<span><?php _e( "Learn more about us", "bon" ); ?></span>
 						</a>
 
 						<?php } else { ?>
