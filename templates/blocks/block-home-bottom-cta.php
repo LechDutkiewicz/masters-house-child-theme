@@ -14,7 +14,7 @@ $visited = shandora_get_meta( $GLOBALS['home-img'], 'slider_returning' );
 						<?php if ( $visited != 3 ) { ?>
 
 						<a href="<?php echo get_the_permalink( bon_get_option( 'catalog_page' ) ); ?>" class="button flat large radius main" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
-							<span><?php _e( "Choose your project", "bon" ); ?></span>
+							<span><?php _e( "Choose a house for you", "bon" ); ?></span>
 						</a>
 						<a href="<?php echo get_the_permalink( bon_get_option( 'quality_page' ) ); ?>" class="button flat large radius silver" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
 							<span><?php _e( "Learn more about us", "bon" ); ?></span>
