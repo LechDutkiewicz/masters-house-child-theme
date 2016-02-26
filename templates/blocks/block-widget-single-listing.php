@@ -27,6 +27,7 @@ $currency = bon_get_option( 'currency' );
 	<?php
 	if ( current_theme_supports( 'get-the-image' ) ) { ?>
 	<a href="<?php echo get_the_permalink(); ?>" title="<?php the_title_attribute( array('before' => __('Permalink to ','bon') ) ); ?>" <?php the_ga_event( 'Cottage List', 'Pick single cottage', 'Featured' ); ?>>
+		<div class="overlay"></div>
 		<?php
 		if ( $_SESSION['layoutType'] === 'mobile' ) {
 			get_the_image( array( 'size' => 'mobile_regular', 'before' => '<div class="featured-image">', 'after' => '</div>', 'link_to_post' => false ) );
@@ -35,7 +36,6 @@ $currency = bon_get_option( 'currency' );
 		}
 		?>
 	</a>
-	<div class="overlay"></div>
 	<?php } ?>
 	<span class="featured-item-meta hide-for-small lotsize"><?php echo $lotsize . ' ' . $sizemeasurement; ?></span>
 	<span class="featured-item-meta hide-for-small price"><?php echo $price . ' ' . $currency; ?></span>
