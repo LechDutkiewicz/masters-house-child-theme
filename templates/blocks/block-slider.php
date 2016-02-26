@@ -18,7 +18,7 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 	<div class="slider-bg" style="background-image:url('<?php echo esc_url( $src['url'] ); ?>')"></div>
 	<div class="mask <?php echo $visited; ?>"></div>
 
-	<div class="flex-caption home-cta-container top">
+	<div class="flex-caption home-cta-container top mobile-text-center">
 
 		<hgroup class="primary-title text-white">
 
