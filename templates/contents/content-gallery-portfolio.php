@@ -8,21 +8,11 @@ if ( $_SESSION['layoutType'] === 'mobile' ) {
 	$size = 'listing_large';
 }
 
-$term_meta = wp_get_post_terms( $post->ID, 'category' );
-$ex_class = $term_meta[0]->slug;
-$post_taxonomies = get_terms( 'category', array( 'slug' => $ex_class ) );
-$color = $post_taxonomies[0]->term_id;
-$color = get_option( "taxonomy_$color" );
-$color = $color['color'];
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('listing'); ?>>
 
 	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
-
-	<header class="entry-header <?php echo $color; ?>">
-		<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="entry-title">', '</h1>', false ) ); ?>
-	</header><!-- .entry-header -->
 
 	<div class="entry-content clear">
 
@@ -48,7 +38,7 @@ $color = $color['color'];
 
 	<?php } else { ?>
 
-	<header class="entry-header <?php echo $color; ?>">								
+	<header class="entry-header">								
 		<?php if ( current_theme_supports( 'get-the-image' ) ) { ?>
 		<div class="featured-image">
 			<a class="header-link" href="<?php the_permalink(); ?>">
@@ -63,7 +53,7 @@ $color = $color['color'];
 		<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h3 class="entry-title"><a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'before' => 'Permalink to: ', 'echo' => false ) ) . '">', '</a></h3>', false ) ); ?>
 		<?php echo apply_atomic_shortcode( 'entry_byline', '<div class="entry-byline">' . __( '[entry-icon class="show-for-large-up"] [entry-published format="M, d Y" text="' . __( 'Posted on ', 'bon' ) . '"] [entry-comments-link] [entry-terms limit="1" exclude_child="true" taxonomy="category"] [entry-edit-link]', 'bon' ) . '</div>' ); ?>
 		<?php the_excerpt(); ?>
-		<a class="flat button <?php echo $color; ?> radius" href="<?php the_permalink(); ?>" data-analytics-category="testimonials page" data-analytics-action="click read more from single page" data-analytics-selector="read_more_single"><?php _e( 'Read more', 'bon' ); ?></a>
+		<a class="flat button radius" href="<?php the_permalink(); ?>" data-analytics-category="testimonials page" data-analytics-action="click read more from single page" data-analytics-selector="read_more_single"><?php _e( 'Read more', 'bon' ); ?></a>
 		<?php wp_link_pages( array( 'before' => '<p class="page-links">' . '<span class="before">' . __( 'Pages:', 'bon' ) . '</span>', 'after' => '</p>' ) ); ?>
 	</div><!-- .entry-summary -->
 
