@@ -29,9 +29,9 @@ $loop = new WP_Query( $args );
 while ( $loop->have_posts() ) : $loop->the_post();
 ?>
 
-<section>
+<section class="padding-large top">
 	<header class="section-header">
-		<h3 class="home-section-header"><?php the_title(); ?></h3>
+		<h2 class="home-section-header"><?php the_title(); ?></h2>
 	</header>
 	<div class="row entry-row">
 		<div class="column large-12">
