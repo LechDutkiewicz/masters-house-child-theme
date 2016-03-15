@@ -18,14 +18,7 @@ if ( !defined( 'ABSPATH' ) )
  */
 
 $cottages = get_village_map();
-$thumbSize = '';
-
-$detect = new Mobile_Detect;
-if ( $detect->isMobile() && !$detect->isTablet() ) {
-	$thumb_size = 'listing_list';
-} else {
-	$thumb_size = 'mobile_tall';
-}
+$thumb_size = 'listing_list';
 
 ?>
 
@@ -67,7 +60,7 @@ if ( $detect->isMobile() && !$detect->isTablet() ) {
 		</script>
 
 		<figure id="canvas">
-			<?php echo file_get_contents( trailingslashit( BON_THEME_URI ) . 'assets/images/village-map/village-map.svg' ); ?>	
+			<?php echo file_get_contents( trailingslashit( BON_THEME_URI ) . 'assets/images/village-map/village-map-wide.svg' ); ?>	
 		</figure>
 
 	</div>
