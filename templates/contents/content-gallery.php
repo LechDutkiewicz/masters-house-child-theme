@@ -14,7 +14,7 @@
 	}
 	?>
 
-	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
+	<?php if ( is_singular( get_post_type() ) ) { ?>
 
 	<header class="entry-header <?php echo $color; ?>">
 		<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'attachment' => false, 'size' => $size, 'link_to_post' => false, 'before' => '<div class="featured-image">', 'after' => '</div>', 'image_class' => 'auto' ) ); ?>

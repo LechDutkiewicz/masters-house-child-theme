@@ -8,7 +8,7 @@
 	$color = $color['color'];
 	?>
 
-	<?php if ( is_singular( get_post_type() ) && !defined('RELATED_POSTS') ) { ?>
+	<?php if ( is_singular( get_post_type() ) ) { ?>
 
 		<header class="entry-header <?php echo $color; ?>">
 			<?php echo apply_atomic_shortcode( 'entry_title', the_title( '<h1 class="entry-title">', '</h1>', false ) ); ?>
