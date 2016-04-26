@@ -39,6 +39,7 @@ $thumb_size = 'listing_list';
 		<script>
 
 		var thumbSize = '<?php echo $thumb_size; ?>',
+		translatedView = '<?php _e('View', 'bon'); ?>',
 		cottages = {<?php
 			foreach ( $cottages as $key => $cottage )
 			{
@@ -49,7 +50,6 @@ $thumb_size = 'listing_list';
 				$output .= "'format':" . "'". $cottage['format'] ."',";
 				$output .= "'url':" . "'". $cottage['url'] ."',";
 				$output .= "'title':" . "'" . $cottage['title'] ."',";
-				$output .= "'translatedView':" . "'". __( 'View', 'bon') ."'";
 				$output .= '},';
 
 				echo $output;
@@ -60,7 +60,8 @@ $thumb_size = 'listing_list';
 		</script>
 
 		<figure id="canvas">
-			<?php echo file_get_contents( trailingslashit( BON_THEME_URI ) . 'assets/images/village-map/village-map-wide.svg' ); ?>	
+			<?php echo file_get_contents( trailingslashit( BON_THEME_URI ) . 'assets/images/village-map/village-map-wide.svg' ); ?>
+			<div class="thumbnails"></div>
 		</figure>
 
 	</div>
