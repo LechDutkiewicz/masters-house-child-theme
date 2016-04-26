@@ -52,7 +52,7 @@ $agent_email = shandora_get_meta( $agent_id, 'agentemail' );
 		<input type="hidden" name="subject" value="<?php _e( 'Contact from About us Page', 'bon' ); ?>" />
 		<input type="hidden" name="listing_id" value="" />
 		<input type="hidden" name="receiver" value="<?php echo $agent_email; ?>" />
-		<input class="flat button blue radius" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Submit', 'bon' ) ?>" <?php the_ga_event( "Contact", "Click Send", "Agent Form" ); ?>/>
+		<input class="flat button  <?php echo bon_get_option( 'cta_button_color', 'emerald' ); ?>  radius submit" name="submit" type="submit" id="submit" tabindex="5" value="<?php _e( 'Submit', 'bon' ) ?>" <?php the_ga_event( "Contact", "Click Send", "Agent Form" ); ?>/>
 		<span class="contact-loader"><img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/loader.gif" alt="loading..." /></span>
 	</div>
 	<div class="sending-result"><div class="green bon-toolkit-alert"></div></div>
