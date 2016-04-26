@@ -36,7 +36,7 @@ if ( !defined( 'ABSPATH' ) )
 							<input type="hidden" name="receiver" value="<?php echo bon_get_option( 'newsletter_email', get_bloginfo( 'admin_email' ) ); ?>" />
 							<input type="hidden" name="country" value="<?php echo get_locale(); ?>'" />
 							<div class='column small-12 input-container-alternate submit'>
-								<button class="flat button dark-gray submit" id="submit" <?php the_ga_event( "Contact", "Click Send", "Contact Form" ); ?>/><?php _e( 'Subscribe', 'bon' ) ?></button>
+								<button class="flat button dark-gray submit" id="submit" <?php the_ga_event( "Newsletter", "Subscribe", "Modal" ); ?>><?php _e( 'Subscribe', 'bon' ) ?></button>
 								<span class="contact-loader"><img src="<?php echo trailingslashit( BON_THEME_URI ); ?>assets/images/loader.gif" alt="loading..." /></span>
 							</div>
 						</div>
