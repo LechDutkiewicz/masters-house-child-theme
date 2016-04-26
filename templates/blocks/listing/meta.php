@@ -38,7 +38,7 @@ $post_meta_icons = get_related_meta_items();
 						</span>				
 						<?php if ( $has_modal ) { ?>
 						<div class="button-container">
-							<a href="#" class="button small midnight-blue flat radius" data-reveal-id="meta-modal-<?php echo sanitize_title( $meta_icon['name'] ); ?>"><?php _e( "Read more", "bon" ); ?></a>
+							<a href="#" class="button small midnight-blue flat radius" data-reveal-id="meta-modal-<?php echo sanitize_title( $meta_icon['name'] ); ?>" <?php the_ga_event('Read information', 'Single product', 'Modal-' . bon_get_option( sanitize_title( $meta_icon['name'] ) . '_name' ) ); ?>><?php _e( "Read more", "bon" ); ?></a>
 						</div>
 						<?php } ?>
 					</figcaption>
