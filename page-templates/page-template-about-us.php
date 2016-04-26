@@ -35,7 +35,7 @@ get_header();
 			$agent_email = get_option( 'admin_email' );
 		}
 		if ( $_SESSION['layoutType'] === 'mobile' ) {
-			$size = 'mobile_agent_large';
+			$size = 'mobile_agent_small';
 		} else {
 			$size = 'agent_large';
 		}
@@ -181,7 +181,7 @@ get_header();
 				<hr />
 			</header>
 			<div class="column medium-12">
-				<p><?php echo $contentContact; ?></p>
+				<?php echo $contentContact; ?>
 			</div>
 			<?php bon_get_template_part( 'block', 'contactform-faq' ); ?>
 			<?php } ?>
