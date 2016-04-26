@@ -16,7 +16,7 @@ get_header();
 	?>
 
 	<div id="body-container" class="container">
-		<a href="#body-container" class="scrollTo show-for-medium-up text-center animated delay3s bounceInDown" id="home-scroll">
+		<a href="#body-container" class="scrollTo show-for-medium-up text-center animated delay3s bounceInDown" id="home-scroll" <?php the_ga_event('CTA', 'Click on Home Page', 'Scroll down'); ?>>
 			<i class="bonicons bi-angle-double-down bi-3x animated text-white"></i>
 		</a>
 

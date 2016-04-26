@@ -54,7 +54,7 @@ if ( current_theme_supports( 'get-the-image' ) ) {
 			<?php } else { ?>
 
 			<a href="#" class="button flat large radius main" data-reveal-id="visit-modal" <?php the_ga_event( 'CTA', 'Click on Home Page', "Browse all Cottages" ); ?>>
-				<span><?php _e( "Order a free consultation", "bon" ); ?></span><i class="bonicons bi-sign-in"></i>
+				<span><?php _e( "Order a free consultation", "bon" ); ?></span>
 			</a>
 
 			<?php } ?>
