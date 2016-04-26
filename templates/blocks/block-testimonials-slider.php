@@ -20,7 +20,7 @@ if ( $loop->have_posts() ) { ?>
 	<div class="row padding-large top bottom clearfix">
 		<div class="column large-12 testimonials-slider-container">
 			<div id="testimonials-slider">
-				<ul class="slides testimonial-slides <?php if ( $loop->post_count > 1 ) { echo $_SESSION['layoutType'] !== 'mobile' ? 'bxslider-thumbs-only autostart' : 'bxslider-no-thumb-no-controls autostart'; } ?>"<?php if ( $loop->post_count > 1 ) { echo 'data-pause="8000" data-pager="testimonials-pager"'; } ?>>
+				<ul class="slides testimonial-slides <?php if ( $loop->post_count > 1 ) { echo $_SESSION['layoutType'] !== 'mobile' ? 'bxslider-thumbs-only autostart' : 'bxslider-no-thumb-no-controls autostart'; } ?>"<?php if ( $loop->post_count > 1 ) { echo ' data-pause="8000" data-pager="testimonials-pager"'; } ?>>
 
 					<?php while ( $loop->have_posts() ) { $loop->the_post(); ?>
 
